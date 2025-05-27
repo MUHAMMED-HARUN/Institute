@@ -1,12 +1,68 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Institute_Proj\\Institute_Proj\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\attribute\\rangeexattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\clscalss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\clsdepartment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RangeExAttribute.cs",
+              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\Attribute\\RangeExAttribute.cs",
+              "RelativeDocumentMoniker": "..\\DAL\\Attribute\\RangeExAttribute.cs",
+              "ToolTip": "C:\\Institute_Proj\\DAL\\Attribute\\RangeExAttribute.cs",
+              "RelativeToolTip": "..\\DAL\\Attribute\\RangeExAttribute.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwB4AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T22:59:38.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "clsCalss.cs",
+              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\clsCalss.cs",
+              "RelativeDocumentMoniker": "..\\DAL\\clsCalss.cs",
+              "ToolTip": "C:\\Institute_Proj\\DAL\\clsCalss.cs",
+              "RelativeToolTip": "..\\DAL\\clsCalss.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAA3wBAAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T22:54:31.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "clsDepartment.cs",
+              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\clsDepartment.cs",
+              "RelativeDocumentMoniker": "..\\DAL\\clsDepartment.cs",
+              "ToolTip": "C:\\Institute_Proj\\DAL\\clsDepartment.cs",
+              "RelativeToolTip": "..\\DAL\\clsDepartment.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T22:52:44.573Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
