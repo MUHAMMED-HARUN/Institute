@@ -1,3 +1,10 @@
+using BAL.interfaceCalsses;
+using BAL.IService;
+using DAL.EF;
+using DAL.interfaceCalsses;
+using DAL.IService;
+using Microsoft.EntityFrameworkCore;
+
 namespace Institute_Proj
 {
     public class Program
@@ -8,6 +15,13 @@ namespace Institute_Proj
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<AppDBContext>(option =>
+                option.UseSqlServer(builder.Configuration.GetConnectionString("cs")));
+
+            builder.Services.AddScoped<IPerson, PersonRepository>();
+            builder.Services.AddScoped<IPersonService, PersonService>();
+            builder.Services.AddScoped<IAddress, AddrssRepository>();
+            builder.Services.AddScoped<IAddressService, AddressService>();
 
             var app = builder.Build();
 

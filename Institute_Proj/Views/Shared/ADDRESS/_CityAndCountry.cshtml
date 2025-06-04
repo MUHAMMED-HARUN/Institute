@@ -1,0 +1,59 @@
+﻿@using BAL.ViewModel;
+@using BAL.interfaceCalsses;
+@model clsCityAndCountryViewModel;
+@inject IPersonService _personserv;
+
+@{
+    string prefix = ViewData.TemplateInfo.HtmlFieldPrefix ?? "";
+    string uniqueId = prefix.Replace(".", "_");
+    // تحميل قائمة الدول من الـ Service
+    SelectList Country = new SelectList(_personserv.GetCountriyList(), "ID", "CountryName");
+}
+
+<div class="row" data-prefix="@prefix">
+    <div class="col-md-4">
+        <fieldset>
+            <div asp-validation-summary="None" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="SelectedCountryID" class="control-label"></label>
+                <select asp-for="SelectedCountryID" asp-items="Country" id="SelectedCountryID_@uniqueId" data-unique-id="@uniqueId"
+                        data-prefix="@prefix" class="form-control select-country">
+                    <option value="">اختر دولة</option>
+                </select>
+                <span asp-validation-for="SelectedCountryID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PlaceOfBirthID" class="control-label"></label>
+                <select asp-for="PlaceOfBirthID" id="_CityAndCountry_@uniqueId" data-unique-id="@uniqueId"
+                        data-prefix="@prefix" onchange="CitySelectChange();" class="form-control select-city">
+                    <option value="">اختر مدينة</option>
+                </select>
+                <span asp-validation-for="PlaceOfBirthID" class="text-danger"></span>
+            </div>
+		</fieldset>
+	</div>
+</div>
+
+ @* !-- مكتبات التحقق من صحة البيانات على العميل -->
+ <script src="~/lib/jquery/dist/jquery.min.js"></script>
+ <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+ <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+ <script>
+     function CountrySelectChange() {
+         var countryId = document.getElementById("_CityAndCountry_SelectedCountryID").value;
+         $.ajax({
+             url: `/Address/GetCities?countryId=${countryId}`,
+             success: function (result) {
+                 var citySelect = document.getElementById("_CityAndCountry_PlaceOfBirthID");
+                 citySelect.innerHTML = "<option value=''>اختر مدينة</option>";
+
+                 for (let city of result) {
+                     citySelect.innerHTML += `<option value="${city.id}">${city.cityName}</option>`;
+                 } 
+             }
+         });
+     }
+     </script> *@

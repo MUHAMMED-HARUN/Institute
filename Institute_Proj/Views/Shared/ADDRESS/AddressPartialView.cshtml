@@ -1,0 +1,127 @@
+﻿@using BAL.ViewModel;
+@using BAL.interfaceCalsses;
+@model clsAddressPartialView;
+@inject IPersonService _personserv;
+
+@{
+    // هذا مهم لضبط الـ Prefix عند الربط بالـ Model
+    string prefix = ViewData.TemplateInfo.HtmlFieldPrefix ?? "";
+    string uniqueId = prefix.Replace(".", "_");
+    // تحميل قائمة الدول من الـ Service
+    SelectList Country = new SelectList(_personserv.GetCountriyList(), "ID", "CountryName");
+}
+
+<div class="row" data-prefix="@prefix">
+    <div class="col-md-4">
+        <fieldset>
+            <div asp-validation-summary="None" class="text-danger"></div>
+                  
+            <div class="form-group">
+                <label asp-for="SelectedCountryID" class="control-label"></label>
+				<select asp-for="SelectedCountryID" asp-items="Country"
+                        id="SelectedCountryID_@uniqueId" data-prefix="@prefix" data-unique-id="@uniqueId"
+                        onchange="CountrySelectChange();" class="form-control select-country">
+                    <option value="">اختر دولة</option>
+                </select>
+                <span asp-validation-for="SelectedCountryID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SelectedCityID" class="control-label"></label>
+                <select asp-for="SelectedCityID" id="SelectedCityID_@uniqueId" data-prefix="@prefix" data-unique-id="@uniqueId"
+                onchange="CitySelectChange();" class="form-control select-city">
+                    <option value="">اختر مدينة</option>
+                </select>
+                <span asp-validation-for="SelectedCityID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SelectedDistrictID" class="control-label"></label>
+                <select asp-for="SelectedDistrictID" id="SelectedDistrictID_@uniqueId"
+                        data-prefix="@prefix" data-unique-id="@uniqueId" onchange="DistrictSelectChange();" class="form-control select-district">
+                    <option value="">اختر قضاء</option>
+                </select>
+                <span asp-validation-for="SelectedDistrictID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SelectedNeighborhoodID" class="control-label"></label>
+                <select asp-for="SelectedNeighborhoodID" id="SelectedNeighborhoodID_@uniqueId"
+                        data-prefix="@prefix" data-unique-id="@uniqueId" class="form-control select-neighborhood">
+                    <option value="">اختر حي</option>
+                </select>
+                <span asp-validation-for="SelectedNeighborhoodID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AddressDetails" class="control-label"></label>
+                <input asp-for="AddressDetails" class="form-control" />
+                <span asp-validation-for="AddressDetails" class="text-danger"></span>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<!-- مكتبات التحقق من صحة البيانات على العميل -->
+@* <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+ *@@* 
+<script>
+    function CountrySelectChange() {
+        var countryId = document.getElementById("SelectedCountryID-@uniqueId").value;
+        $.ajax({
+            url: `/Address/GetCities?countryId=${countryId}`,
+            success: function (result) {
+                var citySelect = document.getElementById("SelectedCityID-@uniqueId");
+                citySelect.innerHTML = "<option value=''>اختر مدينة</option>";
+
+                for (let city of result) {
+                    citySelect.innerHTML += `<option value="${city.id}">${city.cityName}</option>`;
+                }
+
+                // تفريغ الأقضية والأحياء عند تغيير الدولة
+                document.getElementById("SelectedDistrictID-@uniqueId").innerHTML = "<option value=''>اختر قضاء</option>";
+                document.getElementById("SelectedNeighborhoodID-@uniqueId").innerHTML = "<option value=''>اختر حي</option>";
+            }
+        });
+    }
+
+    function CitySelectChange() {
+        var cityId = document.getElementById("SelectedCityID-@uniqueId").value;
+        $.ajax({
+            url: `/Address/GetDistricts?CityId=${cityId}`,
+            success: function (result) {
+                var districtSelect = document.getElementById("SelectedDistrictID-@uniqueId");
+                districtSelect.innerHTML = "<option value=''>اختر قضاء</option>";
+
+                for (let district of result) {
+                    districtSelect.innerHTML += `<option value="${district.id}">${district.districtName}</option>`;
+                }
+
+                // تفريغ الأحياء عند تغيير القضاء
+                document.getElementById("addressPartialView_SelectedNeighborhoodID").innerHTML = "<option value=''>اختر حي</option>";
+            }
+        });
+    }
+
+    function DistrictSelectChange() {
+        var districtId = document.getElementById("addressPartialView_SelectedDistrictID").value;
+        $.ajax({
+            url: `/Address/GetNeighborhoods?DistrictId=${districtId}`,
+            method: "GET",
+            success: function (result) {
+                var neighborhoodSelect = document.getElementById("addressPartialView_SelectedNeighborhoodID");
+                neighborhoodSelect.innerHTML = "<option value=''>اختر حي</option>";
+
+                for (let neighborhood of result) {
+                    neighborhoodSelect.innerHTML += `<option value="${neighborhood.id}">${neighborhood.neighborhoodName}</option>`;
+                }
+            },
+            error: function () {
+                alert("حدث خطأ أثناء تحميل الأحياء.");
+            }
+        });
+    }
+</script>
+ *@

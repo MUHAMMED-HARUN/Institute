@@ -1,0 +1,121 @@
+﻿@model BAL.ViewModel.clsPersonViewModel
+@using BAL.ViewModel
+@{
+    var viewDataForAddressWithPrefix = new ViewDataDictionary<clsAddressPartialView>(ViewData,Model.addressPartialView);
+    viewDataForAddressWithPrefix.TemplateInfo.HtmlFieldPrefix = "addressPartialView";
+
+    var viewDataForCountryAndCityWithPrefix = new ViewDataDictionary<clsCityAndCountryViewModel>(ViewData,Model.CityAndCountry);
+    viewDataForCountryAndCityWithPrefix.TemplateInfo.HtmlFieldPrefix = "CityAndCountry";
+}
+<h4>clsPersonViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="NewOrEdit" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <label asp-for="PersonID" class="control-label"></label>
+                <input asp-for="PersonID" class="form-control" />
+                <span asp-validation-for="PersonID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NationalNumber" class="control-label"></label>
+                <input asp-for="NationalNumber" class="form-control" />
+                <span asp-validation-for="NationalNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FatherName" class="control-label"></label>
+                <input asp-for="FatherName" class="form-control" />
+                <span asp-validation-for="FatherName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GrandFatherName" class="control-label"></label>
+                <input asp-for="GrandFatherName" class="form-control" />
+                <span asp-validation-for="GrandFatherName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+           
+             @* <partial name="~/Views/Shared/ADDRESS/AddressPartialView.cshtml" model="@Model.addressPartialView" new ViewDataDictionary { TemplateInfo=new TemplateInfo { HtmlFieldPrefix="DeliveryAddress" } /> *@
+
+            @Html.Partial("~/Views/Shared/ADDRESS/AddressPartialView.cshtml", Model.addressPartialView, viewDataForAddressWithPrefix)
+
+            <div class="form-group">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MotherName" class="control-label"></label>
+                <input asp-for="MotherName" class="form-control" />
+                <span asp-validation-for="MotherName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MotherLastName" class="control-label"></label>
+                <input asp-for="MotherLastName" class="form-control" />
+                <span asp-validation-for="MotherLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RelationshipsID" class="control-label"></label>
+                <select asp-for="RelationshipsID" asp-items="ViewBag.Relations"></select>
+                <span asp-validation-for="RelationshipsID" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Gendor" /> @Html.DisplayNameFor(model => model.Gendor)
+                </label>
+            </div>
+@*             <partial name="~/Views/Shared/ADDRESS/_CityAndCountry.cshtml" model="@Model.CityAndCountry" /> *@
+
+            @Html.Partial("~/Views/Shared/ADDRESS/_CityAndCountry.cshtml", Model.CityAndCountry, viewDataForCountryAndCityWithPrefix)
+			<div class="form-group">
+                <div class="preview-box"></div>
+			</div>
+            <div class="form-group">
+                <label  class="control-label"></label>
+                <input name="ImageFile" type="file" id="imgInput" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="NationalIDImage" class="control-label"></label>
+                <input asp-for="NationalIDImage" class="form-control" />
+                <span asp-validation-for="NationalIDImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/AddressFunc.js"></script>
+     <script src="~/js/FileFunc.js"></script>
+     <script>
+         document.getElementById('imgInput').addEventListener('change', function () {
+             previewImage(this, 'preview-box');
+         });
+     </script>
+
+  
+}
+
+
