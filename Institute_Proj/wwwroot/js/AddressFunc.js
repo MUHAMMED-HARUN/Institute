@@ -57,7 +57,22 @@
 
 
 
+function loadPartialView(url, targetSelector, prefix = '') {
+    $.ajax({
+        url: url,
+        type: 'GET',
+        data: { prefix: prefix },
+        success: function (html) {
+            $(targetSelector).html(html);
+        },
+        error: function (xhr, status, error) {
+            console.error('Error loading partial view:', error);
+        }
+    });
+}
+
 $(document).ready(function () {
+
     (function ($) {
         // تسجيل حدث عند تغيير الدولة
         $(document).on('change', '.select-country', function () {

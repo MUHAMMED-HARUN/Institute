@@ -1,14 +1,14 @@
 ﻿@using BAL.ViewModel;
 @using BAL.interfaceCalsses;
 @model clsCityAndCountryViewModel;
-@inject IPersonService _personserv;
+@inject IAddressService _addressServ;
 
 @{
     // هذا مهم لضبط الـ Prefix عند الربط بالـ Model
     ViewData.TemplateInfo.HtmlFieldPrefix = "_CityAndCountry";
     var uniqueId = ViewBag.uniqueId ?? Guid.NewGuid().ToString();
     // تحميل قائمة الدول من الـ Service
-    SelectList Country = new SelectList(_personserv.GetCountriyList(), "ID", "CountryName");
+    SelectList Country = new SelectList(_addressServ.GetCountryList(), "ID", "CountryName");
 }
 
 <div class="row">

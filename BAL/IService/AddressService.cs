@@ -1,4 +1,5 @@
 ﻿using BAL.interfaceCalsses;
+using DAL.interfaceCalsses;
 using DAL.IService;
 using DAL.Models;
 using System;
@@ -17,8 +18,8 @@ namespace BAL.IService
         public clsDistrict District { get; set; }
         public clsNeighborhood Neighborhood { get; set; }
 
-        private readonly AddrssRepository _addrssRepository;
-        public AddressService(AddrssRepository addrssRepository)
+        private readonly IAddress _addrssRepository;
+        public AddressService(IAddress addrssRepository)
         {
             _addrssRepository = addrssRepository;
         }

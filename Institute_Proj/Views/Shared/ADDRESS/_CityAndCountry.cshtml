@@ -1,13 +1,14 @@
 ﻿@using BAL.ViewModel;
 @using BAL.interfaceCalsses;
 @model clsCityAndCountryViewModel;
-@inject IPersonService _personserv;
+@inject IAddressService _addressServ;
 
 @{
     string prefix = ViewData.TemplateInfo.HtmlFieldPrefix ?? "";
     string uniqueId = prefix.Replace(".", "_");
     // تحميل قائمة الدول من الـ Service
-    SelectList Country = new SelectList(_personserv.GetCountriyList(), "ID", "CountryName");
+    SelectList Country = new SelectList(Model.countriys, "ID", "CountryName");
+    SelectList Cities = new SelectList(Model.Cities, "ID", "CityName");
 }
 
 <div class="row" data-prefix="@prefix">
@@ -26,7 +27,7 @@
 
             <div class="form-group">
                 <label asp-for="PlaceOfBirthID" class="control-label"></label>
-                <select asp-for="PlaceOfBirthID" id="_CityAndCountry_@uniqueId" data-unique-id="@uniqueId"
+                <select asp-for="PlaceOfBirthID" asp-items="Cities" id="_CityAndCountry_@uniqueId" data-unique-id="@uniqueId"
                         data-prefix="@prefix" onchange="CitySelectChange();" class="form-control select-city">
                     <option value="">اختر مدينة</option>
                 </select>

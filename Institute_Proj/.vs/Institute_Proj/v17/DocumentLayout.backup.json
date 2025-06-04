@@ -3,18 +3,27 @@
   "WorkspaceRootPath": "C:\\Institute_Proj\\Institute_Proj\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\views\\shared\\address\\addresspartialview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\shared\\address\\addresspartialview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\views\\shared\\address\\_cityandcountry.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\shared\\address\\_cityandcountry.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\controllers\\address\\addresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:controllers\\address\\addresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\controllers\\pepole\\peoplecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:controllers\\pepole\\peoplecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\institute_proj\\bal\\iservice\\personservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\views\\people\\neworedit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\people\\neworedit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\institute_proj\\bal\\interfacecalsses\\ipersonservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\dal.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,58 +33,84 @@
       "DocumentGroups": [
         {
           "DockedHeight": 314,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NewOrEdit.cshtml",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Views\\People\\NewOrEdit.cshtml",
+              "RelativeDocumentMoniker": "Views\\People\\NewOrEdit.cshtml",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Views\\People\\NewOrEdit.cshtml",
+              "RelativeToolTip": "Views\\People\\NewOrEdit.cshtml",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAFkAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-04T20:52:43.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Program.cs*",
-              "RelativeToolTip": "Program.cs*",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBcAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T17:09:20.99Z",
+              "Title": "_CityAndCountry.cshtml",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Views\\Shared\\ADDRESS\\_CityAndCountry.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\ADDRESS\\_CityAndCountry.cshtml",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Views\\Shared\\ADDRESS\\_CityAndCountry.cshtml",
+              "RelativeToolTip": "Views\\Shared\\ADDRESS\\_CityAndCountry.cshtml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAAB0AAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-04T20:46:37.506Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AddressController.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Address\\AddressController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Address\\AddressController.cs",
-              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Address\\AddressController.cs*",
-              "RelativeToolTip": "Controllers\\Address\\AddressController.cs*",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T17:08:35.658Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IPersonService.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\BAL\\interfaceCalsses\\IPersonService.cs",
-              "RelativeDocumentMoniker": "..\\BAL\\interfaceCalsses\\IPersonService.cs",
-              "ToolTip": "C:\\Institute_Proj\\BAL\\interfaceCalsses\\IPersonService.cs",
-              "RelativeToolTip": "..\\BAL\\interfaceCalsses\\IPersonService.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAkAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T17:07:24.372Z",
+              "Title": "AddressPartialView.cshtml",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Views\\Shared\\ADDRESS\\AddressPartialView.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\ADDRESS\\AddressPartialView.cshtml",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Views\\Shared\\ADDRESS\\AddressPartialView.cshtml*",
+              "RelativeToolTip": "Views\\Shared\\ADDRESS\\AddressPartialView.cshtml*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-04T20:07:22.051Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PersonService.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\BAL\\IService\\PersonService.cs",
-              "RelativeDocumentMoniker": "..\\BAL\\IService\\PersonService.cs",
-              "ToolTip": "C:\\Institute_Proj\\BAL\\IService\\PersonService.cs",
-              "RelativeToolTip": "..\\BAL\\IService\\PersonService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
+              "Title": "AddressController.cs",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Address\\AddressController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Address\\AddressController.cs",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Address\\AddressController.cs",
+              "RelativeToolTip": "Controllers\\Address\\AddressController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T17:06:56.401Z",
+              "WhenOpened": "2025-06-04T20:37:58.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DAL",
+              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\DAL.csproj",
+              "RelativeDocumentMoniker": "..\\DAL\\DAL.csproj",
+              "ToolTip": "C:\\Institute_Proj\\DAL\\DAL.csproj",
+              "RelativeToolTip": "..\\DAL\\DAL.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-04T20:35:25.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PeopleController.cs",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Pepole\\PeopleController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Pepole\\PeopleController.cs",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Pepole\\PeopleController.cs",
+              "RelativeToolTip": "Controllers\\Pepole\\PeopleController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAApwCEAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T20:06:36.587Z",
               "EditorCaption": ""
             }
           ]

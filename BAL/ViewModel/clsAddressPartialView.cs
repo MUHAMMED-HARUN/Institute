@@ -18,6 +18,9 @@ namespace BAL.ViewModel
 public clsAddressPartialView()
         {
             Counties = new List<clsCountriy>();
+            Cities = new List<clsCity>();
+            Districts = new List<clsDistrict>();
+            Neighborhoods = new List<clsNeighborhood>();
         }
         [Range(1, int.MaxValue)]
         public int? SelectedCountryID { get; set; }
@@ -30,7 +33,10 @@ public clsAddressPartialView()
         [Range(1, int.MaxValue)]
 
         public int? SelectedNeighborhoodID { get; set; }
-        public List<clsCountriy>? Counties { get; set; } 
+        public List<clsCountriy>? Counties { get; set; }
+        public List<clsCity>? Cities { get; set; }
+        public List<clsDistrict>? Districts { get; set; }
+        public List<clsNeighborhood>? Neighborhoods { get; set; }
         public string AddressDetails { get; set; }
     }
 }

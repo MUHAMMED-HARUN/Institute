@@ -10,16 +10,25 @@ using BAL.interfaceCalsses;
 using BAL.IService;
 using BAL.Attribute;
 using Microsoft.AspNetCore.Http;
+using BAL.Mapper;
 
 namespace BAL.ViewModel
 {
     public class clsPersonViewModel
     {
 
-
+        //public clsPersonViewModel(clsAddressPartialView addressPartialView,clsCityAndCountryViewModel cityAndCountry)
+        //{
+        //    BirthDate = DateTime.Now;
+        //    this.addressPartialView = addressPartialView;
+        //    this.CityAndCountry = cityAndCountry;
+        //}
         public clsPersonViewModel()
         {
-                BirthDate = DateTime.Now;
+            BirthDate = DateTime.Now;
+
+            addressPartialView = new clsAddressPartialView();
+            CityAndCountry = new clsCityAndCountryViewModel();
         }
 
         [Display(Name = "معرف الشخص")]
@@ -73,7 +82,8 @@ namespace BAL.ViewModel
         [Display(Name ="الصورة الشخصية")]
         public IFormFile ImageFile { get; set; }
         public string? ImagePath {  get; set; }
-        public string? NationalIDImage { get; set; }
+        public IFormFile NationalImageFile { get; set; }
+        public string? NationalImagePath { get; set; }
 
 
         //public int? AuditableEntityID { get; set; }

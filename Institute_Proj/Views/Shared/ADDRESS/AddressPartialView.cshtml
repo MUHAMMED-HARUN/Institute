@@ -1,14 +1,28 @@
 ﻿@using BAL.ViewModel;
 @using BAL.interfaceCalsses;
 @model clsAddressPartialView;
-@inject IPersonService _personserv;
+@inject IAddressService _AddressServ;
 
 @{
     // هذا مهم لضبط الـ Prefix عند الربط بالـ Model
     string prefix = ViewData.TemplateInfo.HtmlFieldPrefix ?? "";
     string uniqueId = prefix.Replace(".", "_");
     // تحميل قائمة الدول من الـ Service
-    SelectList Country = new SelectList(_personserv.GetCountriyList(), "ID", "CountryName");
+    SelectList Country;
+    if (Model.Counties != null)
+    {
+         Country = new SelectList(Model.Counties, "ID", "CountryName", Model.SelectedCountryID);
+    }
+    else
+    {
+         Country = new SelectList(_AddressServ.GetCountryList(), "ID", "CountryName", Model.SelectedCountryID);
+
+    }
+    SelectList Cities = new SelectList(Model.Cities, "ID", "CityName",Model.SelectedCityID);
+    SelectList Districts = new SelectList(Model.Districts, "ID", "DistrictName",Model.SelectedDistrictID);
+    SelectList Neighborhoods = new SelectList(Model.Neighborhoods, "ID", "NeighborhoodName",Model.SelectedNeighborhoodID);
+
+    
 }
 
 <div class="row" data-prefix="@prefix">
@@ -28,7 +42,7 @@
 
             <div class="form-group">
                 <label asp-for="SelectedCityID" class="control-label"></label>
-                <select asp-for="SelectedCityID" id="SelectedCityID_@uniqueId" data-prefix="@prefix" data-unique-id="@uniqueId"
+                <select asp-for="SelectedCityID" asp-items="Cities" id="SelectedCityID_@uniqueId" data-prefix="@prefix" data-unique-id="@uniqueId"
                 onchange="CitySelectChange();" class="form-control select-city">
                     <option value="">اختر مدينة</option>
                 </select>
@@ -37,7 +51,7 @@
 
             <div class="form-group">
                 <label asp-for="SelectedDistrictID" class="control-label"></label>
-                <select asp-for="SelectedDistrictID" id="SelectedDistrictID_@uniqueId"
+                <select asp-for="SelectedDistrictID" asp-items="Districts" id="SelectedDistrictID_@uniqueId"
                         data-prefix="@prefix" data-unique-id="@uniqueId" onchange="DistrictSelectChange();" class="form-control select-district">
                     <option value="">اختر قضاء</option>
                 </select>
@@ -46,7 +60,7 @@
 
             <div class="form-group">
                 <label asp-for="SelectedNeighborhoodID" class="control-label"></label>
-                <select asp-for="SelectedNeighborhoodID" id="SelectedNeighborhoodID_@uniqueId"
+                <select asp-for="SelectedNeighborhoodID" asp-items="Neighborhoods" id="SelectedNeighborhoodID_@uniqueId"
                         data-prefix="@prefix" data-unique-id="@uniqueId" class="form-control select-neighborhood">
                     <option value="">اختر حي</option>
                 </select>

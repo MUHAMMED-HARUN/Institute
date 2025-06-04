@@ -12,9 +12,11 @@ namespace BAL.ViewModel
         public clsCityAndCountryViewModel()
         {
             countriys = new List<clsCountriy>();
+            Cities = new List<clsCity>();
         }
         public int SelectedCountryID { get; set; }
         public List<clsCountriy>? countriys { get; set; }
+        public List<clsCity>?Cities { get; set; }
         //City ID
         public int PlaceOfBirthID { get; set; }
     }

@@ -13,10 +13,11 @@ namespace BAL.Mapper
     public class Mapper
     {
         IPersonService _personService;
-
-        public Mapper(IPersonService personService)
+        IAddressService _addressService;
+        public Mapper(IPersonService personService,IAddressService addressService)
         {
             _personService = personService;
+            _addressService = addressService;
         }
         public  clsPerson MapPerson(clsPersonViewModel model)
         {
@@ -40,7 +41,7 @@ namespace BAL.Mapper
             _personService.Person.PlaceOfBirthID = model.CityAndCountry.PlaceOfBirthID;
             clsFile file = new clsFile();
             _personService.Person.Image = file.SaveIFormFile(model.ImageFile, clsFile.GetFullPathOfPersonImagesDirectory());
-            _personService.Person.NationalIDImage = model.NationalIDImage;
+            _personService.Person.NationalIDImage = file.SaveIFormFile(model.NationalImageFile, clsFile.GetFullPathOfPersonImagesDirectory());
 
             return _personService.Person;
         }
@@ -65,7 +66,7 @@ namespace BAL.Mapper
 
             model.PersonID = person.PersonID;
             model.NationalNumber= person.NationalNumber;
-            model.FatherName= person.FatherName;
+            model.FirstName= person.FirstName;
             model.FatherName=person.FatherName;
             model.GrandFatherName= person.GrandFatherName;
             model.LastName= person.LastName;
@@ -77,10 +78,37 @@ namespace BAL.Mapper
             model.Gendor= person.Gendor;
             model.ImagePath = Path.Combine(clsFile.GetFullPathOfPersonImagesDirectory(), person.Image);
             // image of national id image
+
+            model.addressPartialView = MapAddress(person.AddressID);
+            model.CityAndCountry = MapCityAndCountry(person.PlaceOfBirthID);
+            return model;
         }
         public clsAddressPartialView MapAddress(int AddressID)
         {
+            clsAddressPartialView AdrsPartialview = new clsAddressPartialView();
+            clsAddress address=_addressService.GetAddressByID(AddressID);
+            if (address == null)
+                return new clsAddressPartialView();
+            AdrsPartialview.AddressDetails = address.AddressDetails;
+            AdrsPartialview.SelectedNeighborhoodID = address.NeighborhoodID;
+            AdrsPartialview.SelectedDistrictID = _addressService.GetNeighborhood(AdrsPartialview.SelectedNeighborhoodID.Value).DistrictID;
+            AdrsPartialview.SelectedCityID=_addressService.GetDistrict(AdrsPartialview.SelectedDistrictID.Value).CityID;
+            AdrsPartialview.SelectedCountryID=_addressService.GetCity(AdrsPartialview.SelectedCityID.Value).CountryID;
 
+            AdrsPartialview.Counties = _addressService.GetCountryList();
+            AdrsPartialview.Cities = _addressService.GetCityList(AdrsPartialview.SelectedCountryID.Value);
+            AdrsPartialview.Districts = _addressService.GetDistrictList(AdrsPartialview.SelectedCityID.Value);
+            AdrsPartialview.Neighborhoods = _addressService.GetNeighborhoodList(AdrsPartialview.SelectedDistrictID.Value);
+            return AdrsPartialview;
+        }
+        public clsCityAndCountryViewModel MapCityAndCountry(int CityID)
+        {
+            clsCityAndCountryViewModel CityAndCountryView= new clsCityAndCountryViewModel();
+            CityAndCountryView.PlaceOfBirthID = CityID;
+            CityAndCountryView.SelectedCountryID = _addressService.GetCity(CityID).CountryID;
+            CityAndCountryView.Cities = _addressService.GetCityList(CityAndCountryView.SelectedCountryID);
+            CityAndCountryView.countriys = _addressService.GetCountryList();
+            return CityAndCountryView;
         }
     }
 }
