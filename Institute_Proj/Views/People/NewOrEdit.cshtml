@@ -83,7 +83,9 @@
             @Html.Partial("~/Views/Shared/ADDRESS/_CityAndCountry.cshtml", Model.CityAndCountry, viewDataForCountryAndCityWithPrefix)
 			<div class="form-group">
                 <div class="preview-box">
-                    <img src="@Model.ImagePath" alt="الصورة غير متوفرة" />
+                    <img id="ImageSrc" src="@Model.ImagePath" alt="الصورة غير متوفرة" />
+                    <input id="ImageInput" type="text" asp-for="ImagePath" />
+                    <button id="ImageIDRemove">حذف</button>
                 </div>
 			</div>
             <div class="form-group">
@@ -93,12 +95,15 @@
 
             <div class="form-group">
                 <div class="IDpreview-box">
-                    <img src="@Model.NationalImagePath" alt="الصورة غير متوفرة" />
+                    <img id="ImageIDSrc" src="@Model.NationalImagePath" alt="الصورة غير متوفرة" />
+                    <input id="ImageIDInput" type="text" asp-for="NationalImagePath" />
+                    <button id="ImageNationlaIDRemove">حذف</button>
+
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label"></label>
-                <input name="NationalImageFile" type="file" id="IDimgInput" class="form-control" />
+                <input asp-for="NationalImageFile" type="file" id="IDimgInput" class="form-control" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -117,12 +122,34 @@
     <script src="~/js/AddressFunc.js"></script>
      <script src="~/js/FileFunc.js"></script>
      <script>
-         document.getElementById('imgInput').addEventListener('change', function () {
-             previewImage(this, 'preview-box');
+        document.getElementById('imgInput').addEventListener('change', function () {
+            previewImage(this, 'preview-box');
          });
         document.getElementById('IDimgInput').addEventListener('change', function () {
             previewImage(this, 'IDpreview-box');
         });
+
+        document.getElementById('ImageIDRemove').addEventListener('click', function () {
+            DeleteImageSrc("ImageSrc");
+        });
+        document.getElementById('ImageIDRemove').addEventListener('click', function () {
+            DeleteInputValue("ImageInput")
+        });
+        document.getElementById('ImageIDRemove').addEventListener('click', function () {
+                    DeleteInputValue("ImageFile")
+        });
+
+
+                document.getElementById('ImageNationlaIDRemove').addEventListener('click', function () {
+                     DeleteImageSrc("ImageIDSrc");
+        });
+        document.getElementById('ImageNationlaIDRemove').addEventListener('click', function () {
+                    DeleteInputValue("ImageIDInput")
+        });
+                document.getElementById('ImageNationlaIDRemove').addEventListener('click', function () {
+                    DeleteInputValue("IDimgInput")
+        });
+
      </script>
 
   

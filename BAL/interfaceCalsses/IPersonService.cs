@@ -1,4 +1,6 @@
 ﻿using DAL.Models;
+using DAL.Models.TableFilters;
+using DAL.Models.TableViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +23,6 @@ namespace BAL.interfaceCalsses
         public List<clsPerson> GetList();
         public Dictionary<string, int> RelationshipStatusArabic();
         public bool IsNationalNumberUnique(string NationalNumber,int PersonID=-1);
+        public List<clsPersonTableView> GetPersonTableView(clsPersonFilter Filter);
     }
 }

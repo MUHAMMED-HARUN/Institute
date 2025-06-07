@@ -25,7 +25,6 @@ public clsAddressPartialView()
         [Range(1, int.MaxValue)]
         public int? SelectedCountryID { get; set; }
         [Range(1, int.MaxValue)]
-
         public int? SelectedCityID { get; set; }
         [Range(1, int.MaxValue)]
 

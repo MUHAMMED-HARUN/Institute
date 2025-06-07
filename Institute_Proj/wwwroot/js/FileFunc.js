@@ -60,7 +60,6 @@
 //        alert("الملف المختار ليس صورة.");
 //    }
 //}
-
 function previewImage(inputElement, targetClass) {
     try {
         const file = inputElement.files[0];
@@ -78,7 +77,11 @@ function previewImage(inputElement, targetClass) {
         reader.onload = function (e) {
             const previewContainer = document.querySelector(`.${targetClass}`);
             if (previewContainer) {
-                previewContainer.innerHTML = `<img src="${e.target.result}" alt="الصورة" style="max-width: 100%; max-height: 200px;" />`;
+                const img = previewContainer.getElementsByTagName("img")[0];
+                const hiddenInput = previewContainer.getElementsByTagName("input")[0];
+                
+                if (img) img.src = e.target.result;
+                if (hiddenInput) hiddenInput.value = file.name;
             }
         };
 
@@ -93,3 +96,17 @@ function previewImage(inputElement, targetClass) {
         alert("حدث استثناء داخلي.");
     }
 }
+function DeleteImageSrc(targetImg) {
+    image = document.getElementById(targetImg)
+    if (image) {
+        image.src = "";
+    }
+}
+function DeleteInputValue(TargetInput) {
+    input = document.getElementById(TargetInput)
+    if (input) {
+        input.value = "";
+    }
+}
+
+

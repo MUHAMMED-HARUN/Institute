@@ -1,4 +1,5 @@
 C:\Institute_Proj\DAL\bin\Debug\net8.0\DAL.deps.json
+C:\Institute_Proj\DAL\bin\Debug\net8.0\DAL.runtimeconfig.json
 C:\Institute_Proj\DAL\bin\Debug\net8.0\DAL.dll
 C:\Institute_Proj\DAL\bin\Debug\net8.0\DAL.pdb
 C:\Institute_Proj\DAL\bin\Debug\net8.0\ViewModel.dll
@@ -13,6 +14,5 @@ C:\Institute_Proj\DAL\obj\Debug\net8.0\DAL.csproj.Up2Date
 C:\Institute_Proj\DAL\obj\Debug\net8.0\DAL.dll
 C:\Institute_Proj\DAL\obj\Debug\net8.0\refint\DAL.dll
 C:\Institute_Proj\DAL\obj\Debug\net8.0\DAL.pdb
-C:\Institute_Proj\DAL\obj\Debug\net8.0\ref\DAL.dll
-C:\Institute_Proj\DAL\bin\Debug\net8.0\DAL.runtimeconfig.json
 C:\Institute_Proj\DAL\obj\Debug\net8.0\DAL.genruntimeconfig.cache
+C:\Institute_Proj\DAL\obj\Debug\net8.0\ref\DAL.dll

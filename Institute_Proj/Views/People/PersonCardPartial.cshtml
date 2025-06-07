@@ -1,0 +1,134 @@
+﻿@model DAL.Models.TableViews.clsPersonTableView
+@if(Model!=null){
+    <div>
+        <h4>clsPersonTableView</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PersonID)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PersonID)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NationalNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NationalNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FatherName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FatherName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.GrandFatherName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.GrandFatherName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.MotherName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MotherName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.MotherLastName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MotherLastName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.MotherFullName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MotherFullName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.GendorText)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.GendorText)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CountryName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CountryName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AddressCityName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AddressCityName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DistrictName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DistrictName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NeighborhoodName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NeighborhoodName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AddressDetails)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AddressDetails)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PlaceOfBirthName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PlaceOfBirthName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.BirthDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PersonalStatus)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PersonalStatus)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="Index">Back to List</a>
+    </div>
+}
+

@@ -5,28 +5,80 @@
       "PackagePath": "staticwebassets\\Institute_Proj.bundle.scp.css"
     },
     {
-      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\121908d7-20f5-4bdf-ab57-2e4f7b682a90.jpg",
-      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\121908d7-20f5-4bdf-ab57-2e4f7b682a90.jpg"
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\130d15c8-066e-4dfd-b99b-f0f772643ed3.png",
+      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\130d15c8-066e-4dfd-b99b-f0f772643ed3.png"
     },
     {
-      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\2491cf69-faa6-4ad2-8124-1b434aa759d2.jpg",
-      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\2491cf69-faa6-4ad2-8124-1b434aa759d2.jpg"
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\1cfba7b2-9294-448c-bc14-95e33881a47c.png",
+      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\1cfba7b2-9294-448c-bc14-95e33881a47c.png"
     },
     {
-      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\63714ecd-f21c-483e-9a6e-a988619558d0.jpg",
-      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\63714ecd-f21c-483e-9a6e-a988619558d0.jpg"
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\642321a8-8645-477b-a7d5-c5dfad546955.png",
+      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\642321a8-8645-477b-a7d5-c5dfad546955.png"
     },
     {
-      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\8231b50d-a8b8-487f-9092-290c15be0cb3.png",
-      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\8231b50d-a8b8-487f-9092-290c15be0cb3.png"
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\72df7e43-01d2-466d-8e23-b7c631b3ee18.png",
+      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\72df7e43-01d2-466d-8e23-b7c631b3ee18.png"
     },
     {
-      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\c5648ddb-0719-48b8-9612-b374205c36e0.jpg",
-      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\c5648ddb-0719-48b8-9612-b374205c36e0.jpg"
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\9094030c-4768-4908-ad6f-aeb5d81e76ac.png",
+      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\9094030c-4768-4908-ad6f-aeb5d81e76ac.png"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\cf9486e8-a567-4ead-9530-30d1b68f91ee.png",
+      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\cf9486e8-a567-4ead-9530-30d1b68f91ee.png"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\css\\all.css",
+      "PackagePath": "staticwebassets\\css\\css\\all.css"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\css\\css\\all.min.css"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\css\\normalize.css",
+      "PackagePath": "staticwebassets\\css\\css\\normalize.css"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\css\\second-pr.css",
+      "PackagePath": "staticwebassets\\css\\css\\second-pr.css"
     },
     {
       "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\webfonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\css\\webfonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\webfonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\css\\webfonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\webfonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\css\\webfonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\webfonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\css\\webfonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\webfonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\css\\webfonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\webfonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\css\\webfonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\webfonts\\fa-v4compatibility.ttf",
+      "PackagePath": "staticwebassets\\css\\webfonts\\fa-v4compatibility.ttf"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\webfonts\\fa-v4compatibility.woff2",
+      "PackagePath": "staticwebassets\\css\\webfonts\\fa-v4compatibility.woff2"
     },
     {
       "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\favicon.ico",

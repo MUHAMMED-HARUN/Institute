@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Models;
+using DAL.Models.TableViews;
 using Microsoft.EntityFrameworkCore;
 namespace DAL.EF
 {
@@ -30,5 +31,16 @@ namespace DAL.EF
        public DbSet<clsTeacher> Teachers { get; set; }
        public DbSet<clsDistrict> Districts { get; set; }
 
+
+
+       public DbSet<clsPersonTableView> PersonTableView { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<clsPersonTableView>()
+                .HasNoKey() // لا يوجد مفتاح أساسي لأنه TVF
+                .ToView(null); // لأن هذا ليس View فعلي في قاعدة البيانات
+        }
     }
 }

@@ -29,6 +29,7 @@ namespace BAL.ViewModel
 
             addressPartialView = new clsAddressPartialView();
             CityAndCountry = new clsCityAndCountryViewModel();
+            IsEdit = false;
         }
 
         [Display(Name = "معرف الشخص")]
@@ -80,11 +81,11 @@ namespace BAL.ViewModel
         public int PlaceOfBirthID { get; set; }
         [DataType(DataType.ImageUrl)]
         [Display(Name ="الصورة الشخصية")]
-        public IFormFile ImageFile { get; set; }
-        public string? ImagePath {  get; set; }
-        public IFormFile NationalImageFile { get; set; }
-        public string? NationalImagePath { get; set; }
-
+        public IFormFile? ImageFile { get; set; }
+        public string ImagePath {  get; set; }
+        public IFormFile? NationalImageFile { get; set; }
+        public string NationalImagePath { get; set; }
+        public bool? IsEdit {  get; set; }
 
         //public int? AuditableEntityID { get; set; }
 

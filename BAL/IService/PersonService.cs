@@ -2,6 +2,8 @@
 using DAL.interfaceCalsses;
 using DAL.IService;
 using DAL.Models;
+using DAL.Models.TableFilters;
+using DAL.Models.TableViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,6 +75,10 @@ namespace BAL.IService
         {
             return _PersonRepository.IsNationalNumberUnique(NationalNumber, PersonID);
         }
-      
+        public List<clsPersonTableView> GetPersonTableView(clsPersonFilter Filter)
+        {
+            return _PersonRepository.GetPersonTableView(Filter);
+        }
+
     }
 }
