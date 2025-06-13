@@ -1,0 +1,189 @@
+﻿@using DAL.Models.TableViews
+@using DAL.Models.TableFilters
+@model clsPersonTableView;
+@{
+	string prefix = ViewData.TemplateInfo.HtmlFieldPrefix ?? "";
+	string uniqueId = prefix.Replace(".", "_");
+}
+<div>
+	<div>
+        <div class="col-12 col-md-auto d-flex align-items-center">
+            <label for="searchFieldSelect" class="form-label mb-0 me-2">بحث حسب</label>
+            <select id="searchFieldSelect" class="form-select w-auto">
+                <option selected value="-1">لا شيئ</option>
+                <option data-pattern="^\d{1,10}$" value="PersonID">المعرف الشخصي</option>
+                <option data-pattern="^\d{11}$" value="NationalNumber">الرقم الوطني</option>
+            </select>
+
+            <input type="text" id="searchInput" name="" class="form-control ms-2" style="min-width: 200px;" disabled placeholder="" />
+        </div>
+        <div>
+            <button type="button" id="btnSearch" class="btn btn-primary">بحث</button>
+        </div>
+	</div>
+	<div id="personCard"data-unique-id="@uniqueId"  data-prefix="@prefix" >
+
+@await Html.PartialAsync("~/Views/People/PersonCardPartial.cshtml",Model,ViewData)
+	</div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#searchFieldSelect").on("change", function () {
+            const selectedValue = $(this).val();
+            const input = $("#searchInput");
+            if (selectedValue === "-1") {
+                input.attr("name", "");
+                input.val("");  // تصحيح: يجب استخدام val() وليس value
+                input.attr("placeholder", "");
+                input.prop("disabled", true);
+            } else {
+                input.attr("name", selectedValue);
+                input.prop("disabled", false);
+                input.attr("placeholder", "أدخل " + $(this).find("option:selected").text());
+            }
+        });
+
+        $("#btnSearch").on("click", function () {
+            let input = $("#searchInput");
+            let fieldName = input.attr("name");
+            let fieldValue = input.val();
+            let uniqueId = $('#personCard').data('unique-id'); 
+            let prefix = $('#personCard').data('prefix');      
+            if (!CheckIsValid(fieldValue)) {
+                return;
+            }
+
+            if (!fieldName || fieldName === "-1") {
+                return;
+            }
+
+            let DataToSend={};
+            DataToSend[fieldName]=fieldValue;
+    DataToSend["prefix"]=prefix;
+
+            $.ajax({
+                url: '/People/PersonCardWithFilter',
+                type: 'Post',
+                data: { [fieldName]: fieldValue,prefix },
+                success: function (data) {
+
+                    $('#personCard').html(data);
+
+                    let personID = $(data).find(`#PersonID_${prefix}`).text();
+                    $(document).trigger('personCardUpdated',[personID]);
+
+                },
+                error: function (xhr, status, error) {
+                    alert("حدث خطأ أثناء البحث: " + error);
+                }
+            });
+        });
+
+        $("#searchInput").on("input", function () {
+            CheckIsValid($(this).val());
+        });
+
+        function CheckIsValid(fieldValue) {
+            const selectedOption = $("#searchFieldSelect").find("option:selected");
+            const pattern = new RegExp(selectedOption.data("pattern"));
+
+            $("#errorelement").remove();
+
+            if (!pattern.test(fieldValue)) {
+                const newElement = $("<p>", {
+                    text: "القيمة غير صالحة",
+                    class: "text-danger",
+                    id: "errorelement"
+                });
+                $("#searchInput").after(newElement);
+                return false;
+            }
+            return true;
+        }
+    });
+
+</script>
+@* <script>
+    $(document).ready(function () {
+        // تغيير اسم وحقل الإدخال حسب اختيار المستخدم
+        $("#searchFieldSelect").on("change", function () {
+            const selectedValue = $(this).val();
+            const input = $("#searchInput");
+            if (selectedValue === "-1") {
+                input.attr("name", "");
+                input.value = "";
+                input.attr("placeholder", "");
+                input.prop("disabled", true);
+            } else {
+                input.attr("name", selectedValue);
+                input.prop("disabled", false);
+                input.attr("placeholder", "أدخل " + $(this).find("option:selected").text());
+            }
+        });
+
+        // عند الضغط على زر البحث
+        $("#btnSearch").on("click", function () {
+            let input = $("#searchInput");
+            let fieldName = input.attr("name");
+            let fieldValue = input.val();
+
+            if (!CheckIsValid(fieldValue)) {
+                return;
+            }
+
+
+
+            if (fieldName && fieldName !== "-1") {
+                dataToSend[fieldName] = fieldValue;
+            }
+            else{
+                return;
+            }
+
+            $.ajax({
+                url: '/People/Search',
+                type: 'GET',
+                data: fieldName=fieldValue,
+                success: function (data) {
+                    $('#personCard').pattern(data);
+                },
+                error: function (xhr, status, error) {
+                    alert("حدث خطأ أثناء البحث: " + error);
+                }
+            });
+
+        });
+        $("#searchInput").on("change", function () {
+            const selectedOption = $("#searchFieldSelect").find("option:selected");
+            const pattern = new RegExp(selectedOption.data("pattern"));
+
+            CheckIsValid($(this).val())
+        });
+
+        function CheckIsValid(fildValue) {
+
+            const selectedOption = $("#searchFieldSelect").find("option:selected");
+            const pattern = new RegExp(selectedOption.data("pattern"));
+
+            document.getElementById("errorelement")?.remove();
+
+            if (!pattern.test(fildValue)) {
+
+                const newElement = document.createElement("p");
+                newElement.innerHTML = 'القيمة غير صالحة';
+                newElement.className = "text-danger";
+                newElement.id = 'errorelement';
+
+                const referenceElement = document.getElementById("searchInput");
+                referenceElement.insertAdjacentElement("afterend", newElement);
+                return false;
+            }
+            return true;
+        }
+</script> 
+
+<p class="m-0" asp-for="PersonID" data-prefix="" id="PersonID_" data-unique-id="">15</p>
+
+*@

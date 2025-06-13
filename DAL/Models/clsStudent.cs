@@ -12,6 +12,8 @@ namespace DAL.Models
     {
         [Key]
         public int ID { get; set; }
+        [ForeignKey("Person")]
+        public int PersonID { get; set; }
         public virtual clsPerson Person { get; set; }
         public DateTime EntryDate { get; set; }
         public DateTime? ExitDate { get; set; }

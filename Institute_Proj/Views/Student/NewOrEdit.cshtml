@@ -1,0 +1,73 @@
+﻿@model BAL.ViewModel.clsStudentViewModel
+@using DAL.Models.TableViews
+@{
+    ViewData["Title"] = "NewOrEdit";
+    var viewDataForPersonCardWithPrefix = new ViewDataDictionary<clsPersonTableView>(ViewData,Model.PersonTable);
+    viewDataForPersonCardWithPrefix.TemplateInfo.HtmlFieldPrefix = "PersonTable";
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $(document).on("personCardUpdated", function (event, personID) {
+            if (personID) {
+                $("#SPersonID").val(personID);
+                $("#SPPersonID").html(personID); 
+            }
+        });
+    });
+</script>
+<h1>NewOrEdit</h1>
+
+<h4>clsStudent</h4>
+<hr />
+<div class="row">
+    <div>
+        @await Html.PartialAsync("~/Views/People/PersonCardWithFilterPartila.cshtml",Model.PersonTable,viewDataForPersonCardWithPrefix)
+    </div>
+    <div class="col-md-4">
+        <form asp-action="NewOrEdit" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="StudentID" class="control-label"></label>
+				<p asp-for="StudentID">@Model.StudentID</p>
+                <input asp-for="StudentID" id="StudentInput" hidden />
+                <span asp-validation-for="StudentID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonID" id="" class="control-label"></label>
+				<p asp-for="PersonID" id="SPPersonID">@Model.PersonID</p>
+                <input asp-for="PersonID" id="SPersonID" hidden class="form-control" />
+                <span asp-validation-for="PersonID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EntryDate" class="control-label"></label>
+                <input asp-for="EntryDate" class="form-control" />
+                <span asp-validation-for="EntryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                                <label asp-for="ExitDate" class="control-label"></label>
+                <input asp-for="ExitDate" class="form-control" />
+                <span asp-validation-for="ExitDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

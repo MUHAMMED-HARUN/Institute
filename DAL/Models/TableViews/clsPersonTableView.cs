@@ -28,5 +28,7 @@ namespace DAL.Models.TableViews
         public string PlaceOfBirthName { get; set; }
         public DateTime BirthDate { get; set; }
         public string PersonalStatus { get; set; }
+        public string Image { get; set; }
+        public string NationalIDImage { get; set; }
     }
 }

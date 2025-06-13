@@ -13,12 +13,24 @@ namespace BAL.Mapper
     {
         IPersonService _personService;
         IAddressService _addressService;
-        public Mapper(IPersonService personService, IAddressService addressService)
+        IStudentService _studentService;
+        public Mapper(IPersonService personService, IAddressService addressService,IStudentService studentService)
         {
             _personService = personService;
             _addressService = addressService;
-        }
-        public clsPerson MapPerson(clsPersonViewModel model)
+			_studentService = studentService;
+		}
+		public Mapper(IPersonService personService, IStudentService studentService)
+		{
+			_personService = personService;
+			_studentService = studentService;
+		}
+		public Mapper(IPersonService personService, IAddressService addressService)
+		{
+			_personService = personService;
+			_addressService = addressService;
+		}
+		public clsPerson MapPerson(clsPersonViewModel model)
         {
 
             // Convert To IsExist(personID);
@@ -58,10 +70,10 @@ namespace BAL.Mapper
 
 
             if (model.NationalImageFile != null)
-                _personService.Person.NationalIDImage = file.ConvertFileNameToGuid(model.NationalImageFile.FileName); 
+                _personService.Person.NationalIDImage = file.ConvertFileNameToGuid(model.NationalImageFile.FileName);
             else
                   if (_personService.SaveMode == GlobalVar._SaveMode.Update)
-                _personService.Person.NationalIDImage =Path.GetFileName( model.NationalImagePath);
+                _personService.Person.NationalIDImage = Path.GetFileName(model.NationalImagePath);
 
             return _personService.Person;
         }
@@ -115,14 +127,17 @@ namespace BAL.Mapper
             clsPersonFilter filter = new clsPersonFilter();
             filter.PersonID = personID;
             clsPersonTableView person = _personService.GetPersonTableView(filter).FirstOrDefault();
-            if(person != null)
+            if (person != null)
             {
+                clsFile file =new clsFile();
                 person.FullName = null;
                 person.MotherFullName = null;
+                person.Image = Path.Combine(clsFile.GetFullPathOfPersonImagesDirectory(false), person.Image);
+                person.NationalIDImage= Path.Combine(clsFile.GetFullPathOfPersonImagesDirectory(false), person.NationalIDImage);
                 return person;
             }
-            return null;
-        
+            return new clsPersonTableView();
+
         }
         public clsAddressPartialView MapAddress(int AddressID)
         {
@@ -151,6 +166,46 @@ namespace BAL.Mapper
             CityAndCountryView.countriys = _addressService.GetCountryList();
             return CityAndCountryView;
         }
-    }
+        public clsStudent MapStudent(clsStudentViewModel model)
+        {
+
+            if (model.StudentID.HasValue)
+            {
+                _studentService.Student = _studentService.GetByStudentID(model.StudentID.Value);
+            }
+            else
+                _studentService.Student = new clsStudent();
+            _studentService.SaveMode = _studentService.Student.ID>0 ?
+                  GlobalVar._SaveMode.Update : GlobalVar._SaveMode.New;
+
+            _studentService.Student.PersonID = model.PersonID;
+            _studentService.Student.EntryDate= model.EntryDate;
+            _studentService.Student.ExitDate = model.ExitDate;
+            _studentService.Student.IsActive= model.IsActive;
+           
+			//  AuditableEntity;
+            return _studentService.Student;
+		}
+        public clsStudentViewModel MapStudent(int  studentID)
+        {
+            if ( studentID <= 0)
+                return new clsStudentViewModel();
+
+            clsStudent student =_studentService.GetByStudentID(studentID);
+
+            if (student == null)
+                return new clsStudentViewModel();
+
+            clsStudentViewModel model= new clsStudentViewModel();
+            model.StudentID = student.ID;
+
+            model.PersonTable = MapPersonCard(student.PersonID);
+            model.EntryDate = student.EntryDate;
+            model.ExitDate = student.ExitDate;
+            model.IsActive = student.IsActive;
+            model.PersonID = student.PersonID;
+            return model;
+        }
+	}
 }
 

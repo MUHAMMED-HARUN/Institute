@@ -3,8 +3,6 @@
     int i = 1;
 }
 <!-- رابط Bootstrap CSS (لو لم تضفه مسبقًا في Layout) -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
 <h4 class="mb-3">clsPersonFilter</h4>
 <hr />
 <div class="container">
@@ -80,7 +78,7 @@
 
                 @foreach (var peron in Model.personTableView)
                 {
-                    <tr class=`row-info{@i}`>
+                    <tr class="@($"row-info{i}")">
                         <td>@peron.PersonID</td>
                         <td>@peron.NationalNumber</td>
                         <td>@peron.FullName</td>
@@ -89,6 +87,7 @@
                         <td>@peron.BirthDate.ToString("yyyy-MM-dd")</td>
                         <td><a asp-action="NewOrEdit" asp-controller="People" asp-route-personID="@peron.PersonID"><i class="fa-solid fa-user-pen"></i></a></td>
                         <td data-id-Info="@peron.PersonID" data-tr-class-info="@($"row-info{i}")" class="showPersonCard"><i class="fa-solid fa-address-card"></i></td>
+                        <td class="DeletePerson" data-id-Info="@peron.PersonID" data-row-class-info="@($"row-info{i}")"><i class="fa-solid fa-user-xmark"></i></td>
                     </tr>
                     i++;
                 }
@@ -102,10 +101,7 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
-<!-- jQuery و Bootstrap JS (اختياري للـ components التفاعلية) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
         // تغيير اسم وحقل الإدخال حسب اختيار المستخدم
@@ -151,6 +147,7 @@
                 data: dataToSend,
                 success: function (data) {
                     $('#resultTableBody').html('');
+                    const i=0;
                     data.forEach(function (d) {
                         const tr = `<tr>
                                 <td>${d.personID}</td>
@@ -159,6 +156,9 @@
                                 <td>${d.phoneNumber}</td>
                                 <td>${d.gendorText}</td>
                                 <td>${d.birthDate}</td>
+                                <td><a asp-action="NewOrEdit" asp-controller="People" asp-route-personID="${d.personID}"><i class="fa-solid fa-user-pen"></i></a></td>
+                                <td data-id-Info="${d.personID}" data-tr-class-info="row-info${i}" class="showPersonCard"><i class="fa-solid fa-address-card"></i></td>
+                                <td class="DeletePerson" data-id-Info="${d.personID}" data-row-class-info="row-info${i}"><i class="fa-solid fa-user-xmark"></i></td>
                             </tr>`;
                         $('#resultTableBody').append(tr);
                     });
@@ -209,7 +209,7 @@
         $(document).on("click", ".showPersonCard", function () {
             const personID = $(this).data("idInfo");
             const trClass = $(this).data("trClassInfo");
-            const trElement = $(`[data-tr-class-info="${trClass}"]`).first();
+            const trElement = $(`.${trClass}`).first();
 
             $("#PersonCardPartial").remove();
 
@@ -231,6 +231,32 @@
             });
         });
 
+        $(document).on("click", ".DeletePerson", function () {
+            const personID = $(this).data("idInfo");
+            const rowClass = $(this).data("rowClassInfo");
+            const trElement = $(`.${rowClass}`).first();
+
+            if (confirm(`هل تريد حذف الشخص ,المعرف الشخصي = ${personID}`)) {
+                $.ajax({
+                    url: '/People/DeletePerson',
+                    type: `Get`,
+                    data: { PersonID: personID },
+                    success: function (isDeleted) {
+                        if (isDeleted) {
+                            alert("تم الحذف");
+                            trElement.remove();
+                        }
+                        else {
+                            alert("فشل الحذف");
+                        }
+                    },
+                    error: function () {
+                        alert("فشل الحذف");
+                    }
+                });
+            }
+
+        });
 
         function NewHtmlElement(ElementTag,ElementInnerHtml,Elementid){
             Element = document.createElement("div");

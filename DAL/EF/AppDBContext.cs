@@ -34,6 +34,7 @@ namespace DAL.EF
 
 
        public DbSet<clsPersonTableView> PersonTableView { get; set; }
+        public DbSet<clsStudentTableView> StudentTableView  { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -41,6 +42,10 @@ namespace DAL.EF
             modelBuilder.Entity<clsPersonTableView>()
                 .HasNoKey() // لا يوجد مفتاح أساسي لأنه TVF
                 .ToView(null); // لأن هذا ليس View فعلي في قاعدة البيانات
+           
+            modelBuilder.Entity<clsStudentTableView>()
+                .HasNoKey()
+                .ToView(null);
         }
     }
 }

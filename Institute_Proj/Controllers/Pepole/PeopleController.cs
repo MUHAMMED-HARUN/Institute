@@ -32,6 +32,7 @@ namespace Institute_Proj.Controllers.Pepole
             clsPersonFilter personFilter = new clsPersonFilter();
 
             personFilter.personTableView = _personService.GetPersonTableView(personFilter);
+            
             return View("PersonList", personFilter);
         }
         public IActionResult Search(clsPersonFilter personFilter)
@@ -79,15 +80,39 @@ namespace Institute_Proj.Controllers.Pepole
        
             return RedirectToAction("Index", "People");
         }
-        public IActionResult ShowPersonCard(int PersonID)
+        public IActionResult ShowPersonCard(int PersonID, string prefix)
         {
+            ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+
             Mapper mapper = new Mapper(_personService, _addressService);
             clsPersonTableView model = mapper.MapPersonCard(PersonID);
             if (model != null)
                 return PartialView("PersonCardPartial", model);
             else
-                return null;
-            
+                return PartialView("PersonCardPartial", new clsPersonTableView());
+
+        }
+        public IActionResult DeletePerson(int PersonID)
+        {
+                if (_personService.IsExist(PersonID))
+            {
+                return Json(_personService.Delete(PersonID));
+            }
+            else
+            {
+                return Json(false);
+            }
+        }
+        [HttpGet]
+        public IActionResult PersonCardWithFilter()
+        {
+            return PartialView("PersonCardWithFilterPartila", new clsPersonTableView());
+        }
+        [HttpPost]
+        public IActionResult PersonCardWithFilter(clsPersonFilter personFilter,string prefix)
+        {
+            ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+            return PartialView("PersonCardPartial", _personService.GetPersonTableView(personFilter).FirstOrDefault());
         }
         void SaveImagesPathToVar(int PersonID)
         {

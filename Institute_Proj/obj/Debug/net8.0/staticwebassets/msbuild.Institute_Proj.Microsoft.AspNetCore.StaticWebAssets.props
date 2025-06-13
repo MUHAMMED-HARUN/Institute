@@ -1216,6 +1216,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Models-Details\Person\Images\130d15c8-066e-4dfd-b99b-f0f772643ed3.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Models-Details\Person\Images\1b2fa9a9-ca2a-4d41-a090-4ff83fa26a88.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>Institute_Proj</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Institute_Proj</BasePath>
+      <RelativePath>Models-Details/Person/Images/1b2fa9a9-ca2a-4d41-a090-4ff83fa26a88.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Models-Details\Person\Images\1b2fa9a9-ca2a-4d41-a090-4ff83fa26a88.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Models-Details\Person\Images\1cfba7b2-9294-448c-bc14-95e33881a47c.png))">
       <SourceType>Package</SourceType>
       <SourceId>Institute_Proj</SourceId>
@@ -1231,6 +1247,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Models-Details\Person\Images\1cfba7b2-9294-448c-bc14-95e33881a47c.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Models-Details\Person\Images\2cb19303-543e-49a5-abb1-dad3ed129183.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>Institute_Proj</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Institute_Proj</BasePath>
+      <RelativePath>Models-Details/Person/Images/2cb19303-543e-49a5-abb1-dad3ed129183.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Models-Details\Person\Images\2cb19303-543e-49a5-abb1-dad3ed129183.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Models-Details\Person\Images\642321a8-8645-477b-a7d5-c5dfad546955.png))">
       <SourceType>Package</SourceType>

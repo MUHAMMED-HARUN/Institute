@@ -1,134 +1,103 @@
-﻿@model DAL.Models.TableViews.clsPersonTableView
-@if(Model!=null){
-    <div>
-        <h4>clsPersonTableView</h4>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PersonID)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PersonID)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.NationalNumber)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.NationalNumber)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.FirstName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.FirstName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.FatherName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.FatherName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.GrandFatherName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.GrandFatherName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.LastName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.LastName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.FullName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.FullName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.MotherName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.MotherName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.MotherLastName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.MotherLastName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.MotherFullName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.MotherFullName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.GendorText)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.GendorText)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PhoneNumber)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.CountryName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.CountryName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AddressCityName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AddressCityName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.DistrictName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.DistrictName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.NeighborhoodName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.NeighborhoodName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AddressDetails)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AddressDetails)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PlaceOfBirthName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PlaceOfBirthName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.BirthDate)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BirthDate)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PersonalStatus)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PersonalStatus)
-            </dd>
-        </dl>
-    </div>
-    <div>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-        <a asp-action="Index">Back to List</a>
-    </div>
+﻿
+@model DAL.Models.TableViews.clsPersonTableView
+@{
+	string prefix = ViewData.TemplateInfo.HtmlFieldPrefix ?? "";
+    string uniqueId = prefix.Replace(".", "_");
 }
+
+	<div class="card shadow rounded p-4" data-prefix="@prefix">
+        <div class="row mb-4 text-center">
+            <div class="col-md-6">
+                @* @model.image_uniqueId*@
+                <img src="@Model.Image" alt="Person Image"
+                     data-prefix="@prefix" id="Image_@uniqueId" data-unique-id="@uniqueId" class="img-thumbnail" style="max-height: 200px;" />
+                <p class="mt-2">الصورة الشخصية</p>
+            </div>
+            <div class="col-md-6">
+                @* @model.imageID_uniqueId*@
+            <img src="@Model.NationalIDImage" alt="ID Image"
+                     data-prefix="@prefix" id="IDPhotoUrl_@uniqueId" data-unique-id="@uniqueId" class="img-thumbnail" style="max-height: 200px;" />
+                <p class="mt-2">صورة الهوية</p>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="d-flex align-items-center gap-4">
+                <label asp-for="PersonID" class="fw-bold"></label>
+				<p class="m-0" asp-for="PersonID" data-prefix="@prefix" id="PersonID_@uniqueId" data-unique-id="@uniqueId">@Model.PersonID</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <label asp-for="NationalNumber" class="fw-bold"></label>
+                <p class="m-0" asp-for="NationalNumber" data-prefix="@prefix" id="NationalNumber_@uniqueId" data-unique-id="@uniqueId">@Model.NationalNumber</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <label asp-for="FirstName" class="fw-bold"></label>
+				<p class="m-0" asp-for="" data-prefix="@prefix" id="_@uniqueId" data-unique-id="FirstName_@uniqueId">@Model.FirstName</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <label asp-for="FatherName" class="fw-bold"></label>
+				<p class="m-0" asp-for="FatherName" data-prefix="@prefix" id="FatherName_@uniqueId" data-unique-id="@uniqueId">@Model.FatherName</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <label asp-for="GrandFatherName" class="fw-bold"></label>
+				<p class="m-0" asp-for="GrandFatherName" data-prefix="@prefix" id="GrandFatherName_@uniqueId" data-unique-id="@uniqueId">@Model.GrandFatherName</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <label asp-for="LastName" class="fw-bold"></label>
+				<p class="m-0" asp-for="LastName" data-prefix="@prefix" id="LastName_@uniqueId" data-unique-id="@uniqueId">@Model.LastName</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <label asp-for="MotherName" class="fw-bold"></label>
+				<p class="m-0" asp-for="MotherName" data-prefix="@prefix" id="MotherName_@uniqueId" data-unique-id="@uniqueId">@Model.MotherName</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <label asp-for="MotherLastName" class="fw-bold"></label>
+				<p class="m-0" asp-for="MotherLastName" data-prefix="@prefix" id="MotherLastName_@uniqueId" data-unique-id="@uniqueId">@Model.MotherLastName</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <label asp-for="GendorText" class="fw-bold"></label>
+				<p class="m-0" asp-for="GendorText" data-prefix="@prefix" id="GendorText_@uniqueId" data-unique-id="@uniqueId">@Model.GendorText</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <label asp-for="PhoneNumber" class="fw-bold"></label>
+				<p class="m-0" asp-for="PhoneNumber" data-prefix="@prefix" id="PhoneNumber_@uniqueId" data-unique-id="@uniqueId">@Model.PhoneNumber</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <label asp-for="CountryName" class="fw-bold"></label>
+				<p class="m-0" asp-for="CountryName" data-prefix="@prefix" id="CountryName_@uniqueId" data-unique-id="@uniqueId">@Model.CountryName</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <label asp-for="PlaceOfBirthName" class="fw-bold"></label>
+				<p class="m-0" asp-for="PlaceOfBirthName" data-prefix="@prefix" id="PlaceOfBirthName_@uniqueId" data-unique-id="@uniqueId">@Model.PlaceOfBirthName</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <label asp-for="BirthDate" class="fw-bold"></label>
+				<p class="m-0" asp-for="BirthDate" data-prefix="@prefix" id="BirthDate_@uniqueId" data-unique-id="@uniqueId">@Model.BirthDate.ToString("yyyy-MM-dd")</p>
+            </div>
+
+            <div class="d-flex align-items-center gap-4">
+                <label asp-for="PersonalStatus" class="fw-bold"></label>
+				<p class="m-0" asp-for="PersonalStatus" data-prefix="@prefix" id="PersonalStatus_@uniqueId" data-unique-id="@uniqueId">@Model.PersonalStatus</p>
+            </div>
+
+            <div class="col-12 d-flex align-items-center gap-4">
+				<label id="fulladdress_@uniqueId" class="fw-bold">العنوان الكامل</label>
+				<p id="fulladdress_@uniqueId" class="m-0">
+                    @Model.CountryName \ @Model.AddressCityName \ @Model.DistrictName \ @Model.NeighborhoodName \ @Model.AddressDetails
+                </p>
+            </div>
+        </div>
+    </div>
 

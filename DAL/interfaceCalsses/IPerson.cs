@@ -19,5 +19,7 @@ namespace DAL.interfaceCalsses
         public bool IsNationalNumberUnique(string NationalNumber, int PersonID = -1);
         public List<clsPersonTableView> GetPersonTableView(clsPersonFilter Filter);
 
+        public string GetSqlPersonTvfQuiery();
+        public object[] GetSqlPersonTvfPrameters(clsPersonFilter Filter);
     }
 }

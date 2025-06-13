@@ -12,7 +12,7 @@ namespace BAL.interfaceCalsses
     public interface IPersonService
     {
         GlobalVar._SaveMode SaveMode { get; set; }
-        public  clsPerson Person{ get; set; }
+        public clsPerson Person{ get; set; }
         public  clsAddress Address{ get; set; }
         public int Add(clsPerson person ,clsAddress address);
         public bool Update(clsPerson person,clsAddress address) ;
@@ -24,5 +24,6 @@ namespace BAL.interfaceCalsses
         public Dictionary<string, int> RelationshipStatusArabic();
         public bool IsNationalNumberUnique(string NationalNumber,int PersonID=-1);
         public List<clsPersonTableView> GetPersonTableView(clsPersonFilter Filter);
+        public bool IsExist(int PersonID);
     }
 }

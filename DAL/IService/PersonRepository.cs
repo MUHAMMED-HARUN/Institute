@@ -53,9 +53,8 @@ namespace DAL.IService
 
         public bool DeletePerson(int PersonID)
         {
-            //_Context.People.Remove(new clsPerson());
-            // change field Person.isdeleted to true;
-            return false;
+            return  _Context.Database.ExecuteSqlRaw("exec DeletePerson @PersonID = {0}", PersonID)>0;
+            
         }
 
         public bool EditPerson(clsPerson ToEditPerson,clsAddress address)
@@ -99,9 +98,30 @@ namespace DAL.IService
                 return !_Context.People.Any(p => p.NationalNumber == NationalNumber && p.PersonID != PersonID);
         }
 
-        public List<clsPersonTableView> GetPersonTableView(clsPersonFilter Filter)
+        public object[] GetSqlPersonTvfPrameters(clsPersonFilter Filter)
         {
-            string SqlPersonTVF = @"SELECT * FROM [dbo].[ufn_FilterPersons] (
+            object[] prams = { new SqlParameter("@PersonID", Filter.PersonID ?? (object)DBNull.Value),
+                new SqlParameter("@NationalNumber", Filter.NationalNumber ?? (object)DBNull.Value),
+                new SqlParameter("@FirstName", Filter.FirstName ?? (object)DBNull.Value),
+                new SqlParameter("@FatherName", Filter.FatherName ?? (object)DBNull.Value),
+                new SqlParameter("@LastName", Filter.LastName ?? (object)DBNull.Value),
+                new SqlParameter("@FullName", Filter.FullName ?? (object)DBNull.Value),
+                new SqlParameter("@MotherName", Filter.MotherName ?? (object)DBNull.Value),
+                new SqlParameter("@MotherLastName", Filter.MotherLastName ?? (object)DBNull.Value),
+                new SqlParameter("@PhoneNumber", Filter.PhoneNumber ?? (object)DBNull.Value),
+                new SqlParameter("@MinDate", Filter.MinDate ?? new DateTime(1900, 01, 01)),
+                new SqlParameter("@MaxDate", Filter.MaxDate ?? new DateTime(DateTime.Now.Ticks)),
+                new SqlParameter("@Gendor", Filter.Gendor ?? (object)DBNull.Value),
+                new SqlParameter("@PersonalStatus", Filter.PersonalStatus ?? (object)DBNull.Value),
+                new SqlParameter("@Country", Filter.Country ?? (object)DBNull.Value),
+                new SqlParameter("@City", Filter.City ?? (object)DBNull.Value),
+                new SqlParameter("@District", Filter.District ?? (object)DBNull.Value),
+                new SqlParameter("@Neighborhood", Filter.Neighborhood ?? (object)DBNull.Value)};
+            return prams;
+        }
+        public string GetSqlPersonTvfQuiery()
+        {
+            return @"
 @PersonID, 
 @NationalNumber,
 @FirstName, 
@@ -118,27 +138,12 @@ namespace DAL.IService
 @Country, 
 @City, 
 @District, 
-@Neighborhood)
-";
-         List<clsPersonTableView> PersonView=   _Context.PersonTableView.FromSqlRaw(SqlPersonTVF,
-                new SqlParameter("@PersonID", Filter.PersonID ?? (object)DBNull.Value),
-                new SqlParameter("@NationalNumber", Filter.NationalNumber ?? (object)DBNull.Value),
-                new SqlParameter("@FirstName", Filter.FirstName ?? (object)DBNull.Value),
-                new SqlParameter("@FatherName", Filter.FatherName ?? (object)DBNull.Value),
-                new SqlParameter("@LastName", Filter.LastName ?? (object)DBNull.Value),
-                new SqlParameter("@FullName", Filter.FullName ?? (object)DBNull.Value),
-                new SqlParameter("@MotherName", Filter.MotherName ?? (object)DBNull.Value),
-                new SqlParameter("@MotherLastName", Filter.MotherLastName ?? (object)DBNull.Value),
-                new SqlParameter("@PhoneNumber", Filter.PhoneNumber ?? (object)DBNull.Value),
-                new SqlParameter("@MinDate", Filter.MinDate ?? new DateTime(1900, 01, 01)),
-                new SqlParameter("@MaxDate", Filter.MaxDate ?? new DateTime(DateTime.Now.Ticks)),
-                new SqlParameter("@Gendor", Filter.Gendor ?? (object)DBNull.Value),
-                new SqlParameter("@PersonalStatus", Filter.PersonalStatus ?? (object)DBNull.Value),
-                new SqlParameter("@Country", Filter.Country ?? (object)DBNull.Value),
-                new SqlParameter("@City", Filter.City ?? (object)DBNull.Value),
-                new SqlParameter("@District", Filter.District ?? (object)DBNull.Value),
-                new SqlParameter("@Neighborhood", Filter.Neighborhood ?? (object)DBNull.Value)
-                ).ToList();
+@Neighborhood";
+        } 
+        public List<clsPersonTableView> GetPersonTableView(clsPersonFilter Filter)
+        {
+            string SqlPersonTVF = @"SELECT * FROM [dbo].[ufn_FilterPersons] (" + GetSqlPersonTvfQuiery()+")";
+         List<clsPersonTableView> PersonView=   _Context.PersonTableView.FromSqlRaw(SqlPersonTVF,GetSqlPersonTvfPrameters(Filter)).ToList();
             return PersonView;
         }
     }

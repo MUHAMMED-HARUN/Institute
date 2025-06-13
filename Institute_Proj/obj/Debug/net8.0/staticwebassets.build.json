@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vI6O25RUUlVXGNvpL8RZhuxmT1w9yLHO3HukW4G/lwk=",
+  "Hash": "Si/1MGa7lXHNvzgt9U3woUX7KyyvPvJxlKjrxlYhoNQ=",
   "Source": "Institute_Proj",
   "BasePath": "_content/Institute_Proj",
   "Mode": "Default",
@@ -1480,6 +1480,25 @@
       "OriginalItemSpec": "wwwroot\\Models-Details\\Person\\Images\\130d15c8-066e-4dfd-b99b-f0f772643ed3.png"
     },
     {
+      "Identity": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\1b2fa9a9-ca2a-4d41-a090-4ff83fa26a88.png",
+      "SourceId": "Institute_Proj",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\",
+      "BasePath": "_content/Institute_Proj",
+      "RelativePath": "Models-Details/Person/Images/1b2fa9a9-ca2a-4d41-a090-4ff83fa26a88.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Models-Details\\Person\\Images\\1b2fa9a9-ca2a-4d41-a090-4ff83fa26a88.png"
+    },
+    {
       "Identity": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\1cfba7b2-9294-448c-bc14-95e33881a47c.png",
       "SourceId": "Institute_Proj",
       "SourceType": "Discovered",
@@ -1497,6 +1516,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Models-Details\\Person\\Images\\1cfba7b2-9294-448c-bc14-95e33881a47c.png"
+    },
+    {
+      "Identity": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\2cb19303-543e-49a5-abb1-dad3ed129183.png",
+      "SourceId": "Institute_Proj",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\",
+      "BasePath": "_content/Institute_Proj",
+      "RelativePath": "Models-Details/Person/Images/2cb19303-543e-49a5-abb1-dad3ed129183.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Models-Details\\Person\\Images\\2cb19303-543e-49a5-abb1-dad3ed129183.png"
     },
     {
       "Identity": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\642321a8-8645-477b-a7d5-c5dfad546955.png",

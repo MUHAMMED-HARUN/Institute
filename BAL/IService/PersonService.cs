@@ -79,6 +79,9 @@ namespace BAL.IService
         {
             return _PersonRepository.GetPersonTableView(Filter);
         }
-
+        public bool IsExist(int PersonID)
+        {
+           return _PersonRepository.GetPersonByID(PersonID) != null;
+        }
     }
 }
