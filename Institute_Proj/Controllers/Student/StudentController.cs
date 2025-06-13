@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using BAL.ViewModel;
 using BAL.Mapper;
 using BAL.interfaceCalsses;
+using DAL.Models.TableFilters;
+using DAL.Models.TableViews;
 namespace Institute_Proj.Controllers.Student
 {
     public class StudentController : Controller
@@ -17,7 +19,13 @@ namespace Institute_Proj.Controllers.Student
         }
         public IActionResult Index()
         {
-            return View();
+            clsStudentFilter StudentFilter = new clsStudentFilter();
+            StudentFilter.studentTableView = _studentService.GetList(StudentFilter);
+            return View("StudentList", StudentFilter);
+        }
+        public IActionResult Search(clsStudentFilter StudentFilter)
+        {
+            return Json(_studentService.GetList(StudentFilter));
         }
         [HttpGet]
         public IActionResult NewOrEdit(int? studentID)
@@ -45,6 +53,20 @@ namespace Institute_Proj.Controllers.Student
               return RedirectToAction("Index", "Student");
            else
                 return View(Model); 
+        }
+        [HttpGet]
+        public IActionResult ShowStudentCard(int StudentID)
+        {
+            Mapper mapper = new Mapper(_personService, _studentService);
+            clsStudentTableVieweModel Model = mapper.MapStudentTable(StudentID);
+            return PartialView("StudentCard", Model);
+        }
+        public IActionResult DeleteStudent(int StudentID) 
+        {
+            if (_studentService.IsExist(StudentID))
+                return Json(_studentService.Delete(StudentID));
+            else
+                return Json(false);
         }
     }
 }

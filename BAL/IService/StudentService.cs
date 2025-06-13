@@ -2,6 +2,8 @@
 using DAL.interfaceCalsses;
 using DAL.IService;
 using DAL.Models;
+using DAL.Models.TableFilters;
+using DAL.Models.TableViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,6 +84,10 @@ namespace BAL.IService
         public bool IsUniqueStudent(int PersonID, int StudentID)
         {
          return   _StudentRepository.IsUniqueStudent(PersonID, StudentID);
+        }
+        public List<clsStudentTableView> GetList(clsStudentFilter filter)
+        {
+            return _StudentRepository.GetStudentTableView(filter);
         }
     }
 }

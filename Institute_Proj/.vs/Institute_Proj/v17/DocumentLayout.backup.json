@@ -3,19 +3,12 @@
   "WorkspaceRootPath": "C:\\Institute_Proj\\Institute_Proj\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\iservice\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\views\\student\\studentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\student\\studentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\interfacecalsses\\istudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\iservice\\personrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\interfacecalsses\\iperson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\models\\tableviews\\clsstudenttableview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\controllers\\student\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:controllers\\student\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,66 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "StudentRepository.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\IService\\StudentRepository.cs",
-              "RelativeDocumentMoniker": "..\\DAL\\IService\\StudentRepository.cs",
-              "ToolTip": "C:\\Institute_Proj\\DAL\\IService\\StudentRepository.cs*",
-              "RelativeToolTip": "..\\DAL\\IService\\StudentRepository.cs*",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAywE8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T18:23:56.056Z",
+              "Title": "StudentList.cshtml",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Views\\Student\\StudentList.cshtml",
+              "RelativeDocumentMoniker": "Views\\Student\\StudentList.cshtml",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Views\\Student\\StudentList.cshtml",
+              "RelativeToolTip": "Views\\Student\\StudentList.cshtml",
+              "ViewState": "AgIAAMgAAAAAAAAAAAAAAO0AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-13T20:23:35.854Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IStudent.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\interfaceCalsses\\IStudent.cs",
-              "RelativeDocumentMoniker": "..\\DAL\\interfaceCalsses\\IStudent.cs",
-              "ToolTip": "C:\\Institute_Proj\\DAL\\interfaceCalsses\\IStudent.cs*",
-              "RelativeToolTip": "..\\DAL\\interfaceCalsses\\IStudent.cs*",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAgwBgAAAAXAAAAAAAAAA==",
+              "Title": "StudentController.cs",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Student\\StudentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Student\\StudentController.cs",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Student\\StudentController.cs",
+              "RelativeToolTip": "Controllers\\Student\\StudentController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T18:23:40.526Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IPerson.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\interfaceCalsses\\IPerson.cs",
-              "RelativeDocumentMoniker": "..\\DAL\\interfaceCalsses\\IPerson.cs",
-              "ToolTip": "C:\\Institute_Proj\\DAL\\interfaceCalsses\\IPerson.cs",
-              "RelativeToolTip": "..\\DAL\\interfaceCalsses\\IPerson.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAIA/wBYAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T18:22:58.202Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PersonRepository.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\IService\\PersonRepository.cs",
-              "RelativeDocumentMoniker": "..\\DAL\\IService\\PersonRepository.cs",
-              "ToolTip": "C:\\Institute_Proj\\DAL\\IService\\PersonRepository.cs",
-              "RelativeToolTip": "..\\DAL\\IService\\PersonRepository.cs",
-              "ViewState": "AgIAAIkAAAAAAAAAAIAwwJMAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T18:22:00.48Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "clsStudentTableView.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\Models\\TableViews\\clsStudentTableView.cs",
-              "RelativeDocumentMoniker": "..\\DAL\\Models\\TableViews\\clsStudentTableView.cs",
-              "ToolTip": "C:\\Institute_Proj\\DAL\\Models\\TableViews\\clsStudentTableView.cs",
-              "RelativeToolTip": "..\\DAL\\Models\\TableViews\\clsStudentTableView.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T18:21:45.217Z",
+              "WhenOpened": "2025-06-13T20:21:10.129Z",
               "EditorCaption": ""
             }
           ]

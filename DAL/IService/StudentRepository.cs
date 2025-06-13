@@ -72,26 +72,30 @@ namespace DAL.IService
 
         public string GetSqlStudentTvfQuiery()
         {
-            return @"@StudentID, 
-	@EntryDate ,
-	@ExitDate , 
-	@IsActive ";
+            return @"@StudentID, @EntryDate, @ExitDate, @IsActive";
         }
 
         public object[] GetSqlStudentTvfPrameters(clsStudentFilter Filter)
         {
             object[] prams = {
                 new SqlParameter("@StudentID", Filter.StudentID ?? (object)DBNull.Value),
-                new SqlParameter("@EntryDate", Filter.EntryDate ?? (object)DBNull.Value),
-                new SqlParameter("@ExitDate",Filter.ExitDate ?? (object)DBNull.Value),
-                new SqlParameter("@@IsActive",Filter.IsActive ?? (object)DBNull.Value), 
+                new SqlParameter("@EntryDate", Filter.EntryDate ?? new DateTime(1900, 01, 01)),
+                new SqlParameter("@ExitDate",   Filter.ExitDate ?? new DateTime(DateTime.MaxValue.Ticks)),
+                new SqlParameter("@IsActive",Filter.IsActive ?? (object)DBNull.Value),
             };
             return prams;
         }
         public object[] HandleSqlStudentTvfPrameters(clsStudentFilter filter)
         {
             IPerson person = (IPerson)_serviceProvider.GetService(typeof(IPerson));
-            object[] Prams = { person.GetSqlPersonTvfPrameters(filter), GetSqlStudentTvfPrameters(filter) };
+            object[] Prams = GetSqlStudentTvfPrameters(filter).Concat(person.GetSqlPersonTvfPrameters(filter)).ToArray();
+
+            string s ="";
+            foreach (SqlParameter pram in Prams) 
+            {
+                s += pram.ToString() + "=" + pram.SqlValue ?? "null";
+               //if( pram.va)
+            }
             return Prams;
         }
         public List<clsStudentTableView> GetStudentTableView(clsStudentFilter filter)
@@ -99,7 +103,7 @@ namespace DAL.IService
             
             IPerson person = (IPerson)_serviceProvider.GetService(typeof(IPerson));
             string SqlStudentTVF = @"SELECT * FROM [dbo].[ufn_FilterStudent] ("
-            + person.GetSqlPersonTvfQuiery() + "," + GetSqlStudentTvfQuiery() + ")";
+            + GetSqlStudentTvfQuiery() + "," + person.GetSqlPersonTvfQuiery() + ")";
 
             List<clsStudentTableView> StudentTable = _Context.StudentTableView.
                 FromSqlRaw(SqlStudentTVF, HandleSqlStudentTvfPrameters(filter)).ToList();

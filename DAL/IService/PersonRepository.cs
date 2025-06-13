@@ -121,24 +121,9 @@ namespace DAL.IService
         }
         public string GetSqlPersonTvfQuiery()
         {
-            return @"
-@PersonID, 
-@NationalNumber,
-@FirstName, 
-@FatherName,
-@LastName,
-@FullName, 
-@MotherName, 
-@MotherLastName,
-@PhoneNumber, 
-@MinDate,
-@MaxDate, 
-@Gendor,
-@PersonalStatus,
-@Country, 
-@City, 
-@District, 
-@Neighborhood";
+             return @"@PersonID, @NationalNumber, @FirstName, @FatherName, @LastName,
+             @FullName, @MotherName, @MotherLastName, @PhoneNumber, @MinDate,
+             @MaxDate, @Gendor, @PersonalStatus, @Country, @City, @District, @Neighborhood"; 
         } 
         public List<clsPersonTableView> GetPersonTableView(clsPersonFilter Filter)
         {

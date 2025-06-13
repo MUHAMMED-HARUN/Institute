@@ -55,8 +55,8 @@
             <div class="col-12 col-md-auto d-flex align-items-center">
                 <p class="mb-0 me-3">تصنيف حسب الحالة</p>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" id="None" type="radio" name="IsActive" value="" />
-                    <label class="form-check-label" for="None">لا شيئ</label>
+                    <input class="form-check-input" id="NoneActive" type="radio" name="IsActive" value="" />
+                    <label class="form-check-label" for="NoneActive">لا شيئ</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" id="Active" type="radio" name="IsActive" value="true" />
@@ -120,12 +120,12 @@
     </div>
 
 </div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
         // تغيير اسم وحقل الإدخال حسب اختيار المستخدم
@@ -235,19 +235,19 @@
 
 
         // edit to show student card
-        $(document).on("click", ".showPersonCard", function () {
-            const personID = $(this).data("idInfo");
+        $(document).on("click", ".showStudentCard", function () {
+            const studentID = $(this).data("idInfo");
             const trClass = $(this).data("trClassInfo");
             const trElement = $(`.${trClass}`).first();
 
-            $("#PersonCardPartial").remove();
+            $("#StudentCardPartial").remove();
 
             $.ajax({
-                url: '/People/ShowPersonCard',
+                url: '/Student/ShowStudentCard',
                 type: 'GET',
-                data: { PersonID: personID },
+                data: { StudentID: studentID },
                 success: function (partialHtml) {
-                    const newElement = NewHtmlElement("div", partialHtml, "PersonCardPartial");
+                    const newElement = NewHtmlElement("div", partialHtml, "StudentCardPartial");
                     if (trElement.length) {
                         trElement.after(newElement);
                     } else {
@@ -261,16 +261,16 @@
         });
 
         // edit to Delete student 
-        $(document).on("click", ".DeletePerson", function () {
-            const personID = $(this).data("idInfo");
+        $(document).on("click", ".DeleteStudent", function () {
+            const studentID = $(this).data("idInfo");
             const rowClass = $(this).data("rowClassInfo");
             const trElement = $(`.${rowClass}`).first();
 
-            if (confirm(`هل تريد حذف الشخص ,المعرف الشخصي = ${personID}`)) {
+            if (confirm(`هل تريد حذف الشخص ,المعرف الشخصي = ${studentID}`)) {
                 $.ajax({
-                    url: '/People/DeletePerson',
+                    url: '/Student/DeleteStudent',
                     type: `Get`,
-                    data: { PersonID: personID },
+                    data: { StudentID: studentID },
                     success: function (isDeleted) {
                         if (isDeleted) {
                             alert("تم الحذف");

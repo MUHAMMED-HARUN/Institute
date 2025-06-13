@@ -139,6 +139,38 @@ namespace BAL.Mapper
             return new clsPersonTableView();
 
         }
+        public clsPersonTableView MapPersonCard(clsStudentTableView studentTableView)
+        {
+
+            if (studentTableView != null)
+            {
+                clsPersonTableView person = new clsPersonTableView();
+                clsFile file = new clsFile();
+                person.PersonID= studentTableView.PersonID;
+                person.NationalNumber = studentTableView.NationalNumber;
+                person.FirstName = studentTableView.FirstName;
+                person.FatherName = studentTableView.FatherName;
+                person.GrandFatherName = studentTableView.GrandFatherName;
+                person.LastName = studentTableView.LastName;
+                person.MotherName = studentTableView.MotherName;
+                person.MotherLastName = studentTableView.MotherLastName;
+                person.GendorText = studentTableView.GendorText;
+                person.PhoneNumber = studentTableView.PhoneNumber;
+                person.CountryName = studentTableView.CountryName;
+                person.AddressCityName = studentTableView.AddressCityName;
+                person.DistrictName = studentTableView.DistrictName;
+                person.NeighborhoodName = studentTableView.NeighborhoodName;
+                person.AddressDetails = studentTableView.AddressDetails;
+                person.PlaceOfBirthName = studentTableView.PlaceOfBirthName;
+                person.BirthDate = studentTableView.BirthDate;
+                person.PersonalStatus = studentTableView.PersonalStatus;
+                person.Image = Path.Combine(clsFile.GetFullPathOfPersonImagesDirectory(false), studentTableView.Image);
+                person.NationalIDImage = Path.Combine(clsFile.GetFullPathOfPersonImagesDirectory(false), studentTableView.NationalIDImage);
+                return person;
+            }
+            return new clsPersonTableView();
+
+        }
         public clsAddressPartialView MapAddress(int AddressID)
         {
             clsAddressPartialView AdrsPartialview = new clsAddressPartialView();
@@ -205,6 +237,25 @@ namespace BAL.Mapper
             model.IsActive = student.IsActive;
             model.PersonID = student.PersonID;
             return model;
+        }
+        public clsStudentTableVieweModel MapStudentTable (int studentID)
+        {
+            clsStudentTableVieweModel model = new clsStudentTableVieweModel();
+            clsStudentFilter studentFilter = new clsStudentFilter();
+            studentFilter.StudentID = studentID;
+            clsStudentTableView StudentView = _studentService.GetList(studentFilter).FirstOrDefault();
+            if(StudentView != null)
+            {
+                model.clsPersonViewModel = MapPersonCard(StudentView);
+
+                model.StudentID = StudentView.StudentID;
+                model.EntryDate = StudentView.EntryDate;
+                model.ExitDate = StudentView.ExitDate;
+                model.IsActive = StudentView.IsActive;
+
+                return model;
+            }
+            return new clsStudentTableVieweModel();
         }
 	}
 }

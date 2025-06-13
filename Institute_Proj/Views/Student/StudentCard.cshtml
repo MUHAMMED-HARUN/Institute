@@ -1,0 +1,29 @@
+﻿@model BAL.ViewModel.clsStudentTableVieweModel
+@{
+	string prefix = ViewData.TemplateInfo.HtmlFieldPrefix ?? "";
+	string uniqueId = prefix.Replace(".", "_");
+}
+<div class="student-card" prefix=@prefix>
+	<div class="person-info">
+		@await Html.PartialAsync("~/Views/People/PersonCardPartial.cshtml",Model.clsPersonViewModel,ViewData);
+	</div>
+	<div class="student-info">
+
+		<div class="d-flex align-items-center gap-4">
+			<label asp-for="StudentID" class="fw-bold"></label>
+			<p class="m-0" asp-for="StudentID" data-prefix="@prefix" id="StudentID_@uniqueId" data-unique-id="FirstName_@uniqueId">@Model.StudentID</p>
+		</div>
+		<div class="d-flex align-items-center gap-4">
+			<label asp-for="EntryDate" class="fw-bold"></label>
+			<p class="m-0" asp-for="EntryDate" data-prefix="@prefix" id="EntryDate_@uniqueId" data-unique-id="EntryDate_@uniqueId">@Model.EntryDate</p>
+		</div>
+		<div class="d-flex align-items-center gap-4">
+			<label asp-for="ExitDate" class="fw-bold"></label>
+			<p class="m-0" asp-for="ExitDate" data-prefix="@prefix" id="ExitDate_@uniqueId" data-unique-id="ExitDate_@uniqueId">@Model.ExitDate</p>
+		</div>
+		<div class="d-flex align-items-center gap-4">
+			<label asp-for="IsActive" class="fw-bold"></label>
+			<p class="m-0" asp-for="IsActive" data-prefix="@prefix" id="IsActive_@uniqueId" data-unique-id="IsActive_@uniqueId">@Model.IsActive</p>
+		</div>
+	</div>
+</div>
