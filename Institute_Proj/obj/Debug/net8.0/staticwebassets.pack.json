@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Institute_Proj.bundle.scp.css"
     },
     {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\0ad2ea22-85f1-40ee-a628-108991087f91.png",
+      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\0ad2ea22-85f1-40ee-a628-108991087f91.png"
+    },
+    {
       "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\130d15c8-066e-4dfd-b99b-f0f772643ed3.png",
       "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\130d15c8-066e-4dfd-b99b-f0f772643ed3.png"
     },
@@ -21,8 +25,16 @@
       "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\2cb19303-543e-49a5-abb1-dad3ed129183.png"
     },
     {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\581882f9-fe70-4601-8148-367db8b87593.png",
+      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\581882f9-fe70-4601-8148-367db8b87593.png"
+    },
+    {
       "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\642321a8-8645-477b-a7d5-c5dfad546955.png",
       "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\642321a8-8645-477b-a7d5-c5dfad546955.png"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\6bc5caa3-ca6b-4547-bb05-c30f9645338e.png",
+      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\6bc5caa3-ca6b-4547-bb05-c30f9645338e.png"
     },
     {
       "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\72df7e43-01d2-466d-8e23-b7c631b3ee18.png",
@@ -35,6 +47,10 @@
     {
       "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\cf9486e8-a567-4ead-9530-30d1b68f91ee.png",
       "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\cf9486e8-a567-4ead-9530-30d1b68f91ee.png"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\Models-Details\\Person\\Images\\eff9acc4-01cd-423c-a4f1-9dcb4f95e5e1.png",
+      "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\eff9acc4-01cd-423c-a4f1-9dcb4f95e5e1.png"
     },
     {
       "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\css\\all.css",

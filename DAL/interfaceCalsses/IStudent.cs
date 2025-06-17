@@ -1,6 +1,7 @@
 ﻿using DAL.Models;
 using DAL.Models.TableFilters;
 using DAL.Models.TableViews;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,17 @@ namespace DAL.interfaceCalsses
         public bool IsStudent(int PersonID); // And Declare This Func In IPerson
         public bool IsUniqueStudent(int PersonID, int StudentID);
         public List<clsStudentTableView> GetStudentTableView(clsStudentFilter filter);
-        public object[] HandleSqlStudentTvfPrameters(clsStudentFilter filter);
-        public object[] GetSqlStudentTvfPrameters(clsStudentFilter Filter);
+        public List<SqlParameter> HandleSqlStudentTvfPrameters(clsStudentFilter filter,ref IPerson person );
+
+        public List<SqlParameter> GetSqlStudentTvfPrameters(clsStudentFilter Filter);
+        public List<SqlParameter> GetSqlEnrollmentTvfPrameters(clsEnrollmentStudentInClassFilter Filter);
+        public int EnrollStudentInCourse(int  StudentID,int CourseID);
+        public bool EnrollStudentInCourse(clsEnrolmentStudentInClass EnrolmentStudent);
+        public clsEnrolmentStudentInClass GetEnrolmentStudentInClass(int EnrollmentStudentID);
+        public List<clsEnrolmentStudentInClass> GetActiveEnrollmenstStudent(int studentID);
+        public clsEnrolmentStudentInClass GetActiveEnrollmentStudent(int studentID,int ClassID);
+        public bool HasStudentActiveEnrollment(int studentID, int ClassID);
+        public string GetEnrollmentTabelViewQuery();
+    
     }
 }

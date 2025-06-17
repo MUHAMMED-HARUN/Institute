@@ -21,6 +21,7 @@ namespace DAL.Models
         public virtual clsStudent Student { get; set; }
         public DateTime EnrolmentDate { get; set; }
         public DateTime? EnrollmentEndDate { get; set; }
+        public byte EnrollmentStatus { get; set; }
 
         [ForeignKey("AuditableEntity")]
         public int? AuditableEntityID { get; set; }

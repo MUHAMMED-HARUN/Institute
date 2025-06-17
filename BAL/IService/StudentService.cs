@@ -16,6 +16,7 @@ namespace BAL.IService
     {
         public GlobalVar._SaveMode SaveMode {  get; set; }
         public virtual clsPerson Person {get; set; }
+        public virtual clsEnrolmentStudentInClass EnrolmentStudentInClass { get; set; }
         public virtual clsStudent Student { get; set; }
         IStudent _StudentRepository;
         public StudentService(IStudent studentRepository)
@@ -89,5 +90,53 @@ namespace BAL.IService
         {
             return _StudentRepository.GetStudentTableView(filter);
         }
+        public bool EnrollStudentInClass(clsEnrolmentStudentInClass EnrolmentStudent)
+        {
+            return _StudentRepository.EnrollStudentInCourse(EnrolmentStudent);
+        }
+        public bool HandleEnrollmentStudent()
+        {
+            if (SaveMode == GlobalVar._SaveMode.New)
+            {
+                // New EnrollMent
+                if (!EnrollStudentInClass(EnrolmentStudentInClass))
+                    return false;
+                SaveMode = GlobalVar._SaveMode.Update;
+                return true;
+                
+            }
+            else
+            {
+                // Updete Enrollment
+                return false;
+            }
+        }
+        public clsEnrolmentStudentInClass GetEnrolmentStudentInClass(int EnrollmentStudentID)
+        {
+            return _StudentRepository.GetEnrolmentStudentInClass(EnrollmentStudentID);
+        }
+        public List<clsEnrolmentStudentInClass> GetActiveEnrollmenstStudent(int studentID)
+        {
+           return _StudentRepository.GetActiveEnrollmenstStudent(studentID);
+        }
+        public clsEnrolmentStudentInClass GetActiveEnrollmentStudent(int studentID, int ClassID)
+        {
+            return _StudentRepository.GetActiveEnrollmentStudent(studentID, ClassID);
+        }
+        public Dictionary<string, int> GetEnrollmentStatusList()
+        {
+            
+            Dictionary<string,int> EnrollStatus = new Dictionary<string, int>();
+            EnrollStatus.Add("مكتمل", 1);
+            EnrollStatus.Add("منتهي", 2);
+            EnrollStatus.Add("ليس مكتمل", 3);
+            EnrollStatus.Add("ملغي", 4);
+            return EnrollStatus;
+        }
+        public bool HasActiveEnrollment(int StudentID, int ClassID)
+        {
+            return _StudentRepository.HasStudentActiveEnrollment(StudentID, ClassID);
+        }
+
     }
 }

@@ -105,8 +105,8 @@
                         <td>@student.FullName</td>
                         <td>@student.PhoneNumber</td>
                         <td>@student.GendorText</td>
-                        <td>@student.BirthDate.ToString("yyyy-MM-dd")</td>
-                        <td>@student.EntryDate.ToString("yyyy-MM-dd")</td>
+                        <td>@student.BirthDate?.ToString("yyyy-MM-dd")</td>
+                        <td>@student.EntryDate?.ToString("yyyy-MM-dd")</td>
                         <td>@student.IsActive</td>
 
                         <td><a asp-action="NewOrEdit" asp-controller="Student" asp-route-studentID="@student.StudentID"><i class="fa-solid fa-user-pen"></i></a></td>

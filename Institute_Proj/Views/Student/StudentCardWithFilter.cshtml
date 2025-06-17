@@ -1,0 +1,106 @@
+﻿@model BAL.ViewModel.clsStudentTableVieweModel
+@{
+    string prefix = ViewData.TemplateInfo.HtmlFieldPrefix ?? "";
+    string uniqueId = prefix.Replace(".", "_");
+}
+<div>
+    <div>
+        <div class="col-12 col-md-auto d-flex align-items-center">
+            <label for="searchFieldSelect" class="form-label mb-0 me-2">بحث حسب</label>
+            <select id="searchFieldSelect" class="form-select w-auto">
+                <option selected value="-1">لا شيئ</option>
+                <option data-pattern="^\d{1,10}$" value="StudentID">معرف الطالب</option>
+                <option data-pattern="^\d{11}$" value="NationalNumber">الرقم الوطني</option>
+            </select>
+
+            <input type="text" id="searchInput" name="" class="form-control ms-2" style="min-width: 200px;" disabled placeholder="" />
+        </div>
+        <div>
+            <button type="button" id="btnSearch" class="btn btn-primary">بحث</button>
+        </div>
+    </div>
+    <div id="StudentCard" data-unique-id="@uniqueId" data-prefix="@prefix">
+
+        @await Html.PartialAsync("~/Views/Student/StudentCard.cshtml", Model, ViewData)
+    </div>
+
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#searchFieldSelect").on("change", function () {
+            const selectedValue = $(this).val();
+            const input = $("#searchInput");
+            if (selectedValue === "-1") {
+                input.attr("name", "");
+                input.val("");  // تصحيح: يجب استخدام val() وليس value
+                input.attr("placeholder", "");
+                input.prop("disabled", true);
+            } else {
+                input.attr("name", selectedValue);
+                input.prop("disabled", false);
+                input.attr("placeholder", "أدخل " + $(this).find("option:selected").text());
+            }
+        });
+
+        $("#btnSearch").on("click", function () {
+            let input = $("#searchInput");
+            let fieldName = input.attr("name");
+            let fieldValue = input.val();
+            let uniqueId = $('#StudentCard').data('unique-id');
+            let prefix = $('#StudentCard').data('prefix');
+            if (!CheckIsValid(fieldValue)) {
+                return;
+            }
+
+            if (!fieldName || fieldName === "-1") {
+                return;
+            }
+
+            let DataToSend={};
+            DataToSend[fieldName]=fieldValue;
+    DataToSend["prefix"]=prefix;
+
+            $.ajax({
+                url: '/Student/ShowStudentCardWithFilter',
+                type: 'Post',
+                data: { [fieldName]: fieldValue,prefix },
+                success: function (data) {
+
+                    $('#StudentCard').html(data);
+
+                    let StudentID = $(data).find(`#StudentID_${prefix}`).text();
+                    const event = new CustomEvent("StudentCardUpdated", { detail: StudentID });
+                    document.dispatchEvent(event);
+
+                },
+                error: function (xhr, status, error) {
+                    alert("حدث خطأ أثناء البحث: " + error);
+                }
+            });
+        });
+
+        $("#searchInput").on("input", function () {
+            CheckIsValid($(this).val());
+        });
+
+        function CheckIsValid(fieldValue) {
+            const selectedOption = $("#searchFieldSelect").find("option:selected");
+            const pattern = new RegExp(selectedOption.data("pattern"));
+
+            $("#errorelement").remove();
+
+            if (!pattern.test(fieldValue)) {
+                const newElement = $("<p>", {
+                    text: "القيمة غير صالحة",
+                    class: "text-danger",
+                    id: "errorelement"
+                });
+                $("#searchInput").after(newElement);
+                return false;
+            }
+            return true;
+        }
+    });
+
+</script>

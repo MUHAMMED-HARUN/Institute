@@ -1,6 +1,7 @@
 ﻿using DAL.Models;
 using DAL.Models.TableFilters;
 using DAL.Models.TableViews;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,6 @@ namespace DAL.interfaceCalsses
         public List<clsPersonTableView> GetPersonTableView(clsPersonFilter Filter);
 
         public string GetSqlPersonTvfQuiery();
-        public object[] GetSqlPersonTvfPrameters(clsPersonFilter Filter);
+        public List<SqlParameter> GetSqlPersonTvfPrameters(clsPersonFilter Filter);
     }
 }

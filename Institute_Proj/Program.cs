@@ -24,6 +24,8 @@ namespace Institute_Proj
             builder.Services.AddScoped<IAddressService, AddressService>();
             builder.Services.AddScoped<IStudent, StudentRepository>();
             builder.Services.AddScoped<IStudentService,StudentService>();
+            builder.Services.AddScoped<IClass, ClassRepository>();
+            builder.Services.AddScoped<IClassService, ClassService>();
 
             var app = builder.Build();
 

@@ -14,6 +14,7 @@ namespace BAL.interfaceCalsses
         GlobalVar._SaveMode SaveMode { get; set; }
         public clsPerson Person { get; set; }
         public clsStudent Student {  get; set; }
+        public clsEnrolmentStudentInClass EnrolmentStudentInClass { get; set; }
         public int Add(clsStudent student);
         public bool Update(clsStudent student);
         public bool Save();
@@ -25,5 +26,12 @@ namespace BAL.interfaceCalsses
         public bool IsExist(int StudentID);
         public bool IsStudent(int PersonID); // And Declare This Func In IPerson
         public bool IsUniqueStudent(int PersonID,int StudentID);
+        public bool EnrollStudentInClass(clsEnrolmentStudentInClass EnrolmentStudent);
+        public bool HandleEnrollmentStudent();
+        public clsEnrolmentStudentInClass GetEnrolmentStudentInClass(int EnrollmentStudentID);
+        public List<clsEnrolmentStudentInClass> GetActiveEnrollmenstStudent(int studentID);
+        public clsEnrolmentStudentInClass GetActiveEnrollmentStudent(int studentID, int ClassID);
+        public Dictionary<string, int> GetEnrollmentStatusList();
+        public bool HasActiveEnrollment(int StudentID,int ClassID);
     }
 }

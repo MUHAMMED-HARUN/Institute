@@ -10,5 +10,9 @@
             Widowed = 3,
             Other = 4
         }
+        public enum EnrollmentStatus
+        {
+            Completed=1, Expired, NotCompleted, Cancelled
+        } 
     }
 }

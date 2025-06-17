@@ -14,6 +14,7 @@ namespace BAL.Mapper
         IPersonService _personService;
         IAddressService _addressService;
         IStudentService _studentService;
+        IClassService _classService;
         public Mapper(IPersonService personService, IAddressService addressService,IStudentService studentService)
         {
             _personService = personService;
@@ -30,7 +31,13 @@ namespace BAL.Mapper
 			_personService = personService;
 			_addressService = addressService;
 		}
-		public clsPerson MapPerson(clsPersonViewModel model)
+        public Mapper(IPersonService personService, IStudentService studentService,IClassService classService)
+        {
+            _personService = personService;
+            _studentService = studentService;
+            _classService = classService;
+        }
+        public clsPerson MapPerson(clsPersonViewModel model)
         {
 
             // Convert To IsExist(personID);
@@ -146,7 +153,7 @@ namespace BAL.Mapper
             {
                 clsPersonTableView person = new clsPersonTableView();
                 clsFile file = new clsFile();
-                person.PersonID= studentTableView.PersonID;
+                person.PersonID= studentTableView.PersonID??-1;
                 person.NationalNumber = studentTableView.NationalNumber;
                 person.FirstName = studentTableView.FirstName;
                 person.FatherName = studentTableView.FatherName;
@@ -162,7 +169,7 @@ namespace BAL.Mapper
                 person.NeighborhoodName = studentTableView.NeighborhoodName;
                 person.AddressDetails = studentTableView.AddressDetails;
                 person.PlaceOfBirthName = studentTableView.PlaceOfBirthName;
-                person.BirthDate = studentTableView.BirthDate;
+                person.BirthDate = studentTableView.BirthDate??DateTime.MinValue;
                 person.PersonalStatus = studentTableView.PersonalStatus;
                 person.Image = Path.Combine(clsFile.GetFullPathOfPersonImagesDirectory(false), studentTableView.Image);
                 person.NationalIDImage = Path.Combine(clsFile.GetFullPathOfPersonImagesDirectory(false), studentTableView.NationalIDImage);
@@ -204,11 +211,14 @@ namespace BAL.Mapper
             if (model.StudentID.HasValue)
             {
                 _studentService.Student = _studentService.GetByStudentID(model.StudentID.Value);
+           
             }
             else
                 _studentService.Student = new clsStudent();
-            _studentService.SaveMode = _studentService.Student.ID>0 ?
-                  GlobalVar._SaveMode.Update : GlobalVar._SaveMode.New;
+            _studentService.SaveMode =  GlobalVar._SaveMode.New;
+
+            if (_studentService.Student == null)
+                _studentService.Student = new clsStudent();
 
             _studentService.Student.PersonID = model.PersonID;
             _studentService.Student.EntryDate= model.EntryDate;
@@ -248,15 +258,73 @@ namespace BAL.Mapper
             {
                 model.clsPersonViewModel = MapPersonCard(StudentView);
 
-                model.StudentID = StudentView.StudentID;
-                model.EntryDate = StudentView.EntryDate;
-                model.ExitDate = StudentView.ExitDate;
+                model.StudentID = StudentView.StudentID ?? -1;
+                model.EntryDate = StudentView.EntryDate??DateTime.MinValue;
+                model.ExitDate = StudentView.ExitDate ?? DateTime.MinValue;
                 model.IsActive = StudentView.IsActive;
 
                 return model;
             }
             return new clsStudentTableVieweModel();
         }
-	}
+        public clsStudentTableVieweModel MapStudentTable(clsStudentFilter studentFilter)
+        {
+            clsStudentTableVieweModel model = new clsStudentTableVieweModel();
+            clsStudentTableView StudentView = _studentService.GetList(studentFilter).FirstOrDefault();
+            if (StudentView != null)
+            {
+                model.clsPersonViewModel = MapPersonCard(StudentView);
+
+                model.StudentID = StudentView.StudentID ?? -1;
+                model.EntryDate = StudentView.EntryDate ?? DateTime.MinValue;
+                model.ExitDate = StudentView.ExitDate ?? DateTime.MinValue;
+                model.IsActive = StudentView.IsActive;
+
+                return model;
+            }
+            return new clsStudentTableVieweModel();
+        }
+        public clsEnrolmentStudentInClass MapEnrollmentStudent(clsEnrolmentStudentInClassModel model)
+        {
+            clsEnrolmentStudentInClass EnrollmentStudent=new clsEnrolmentStudentInClass();
+            if (model.EnrollmentID > 0)
+            {
+                EnrollmentStudent = _studentService.GetEnrolmentStudentInClass(model.EnrollmentID);
+                _studentService.SaveMode = GlobalVar._SaveMode.Update;
+            }
+            else if(EnrollmentStudent==null || model.EnrollmentID <= 0)
+            {
+                EnrollmentStudent = new clsEnrolmentStudentInClass();
+                _studentService.SaveMode = GlobalVar._SaveMode.New; 
+            }
+            EnrollmentStudent.ID = model.EnrollmentID;
+            EnrollmentStudent.StudentID = model.StudentID ;
+            EnrollmentStudent.ClassID = model.ClassID;
+            EnrollmentStudent.StudentID = model.StudentID;
+            EnrollmentStudent.EnrolmentDate = model.EnrolmentDate.Value;
+            EnrollmentStudent.EnrollmentEndDate = model.EnrollmentEndDate??DateTime.MinValue;
+            EnrollmentStudent.EnrollmentStatus = model.EnrollmentStatus;
+            // AuditableEntityID
+            return  EnrollmentStudent;
+        }
+        public clsEnrolmentStudentInClassModel MapEnrollmentStudent(int EnrollmentStudentID)
+        {
+            clsEnrolmentStudentInClass EnrollmentInClass= _studentService.GetEnrolmentStudentInClass(EnrollmentStudentID);
+            if(EnrollmentInClass==null)
+                return new clsEnrolmentStudentInClassModel();
+            
+            clsEnrolmentStudentInClassModel model = new clsEnrolmentStudentInClassModel();
+        
+            model.EnrollmentID = EnrollmentInClass.ID;
+            model.ClassID = EnrollmentInClass.ClassID;
+            model.StudentID = EnrollmentInClass.StudentID;
+            model.EnrolmentDate =EnrollmentInClass.EnrolmentDate;
+            model.EnrollmentEndDate = EnrollmentInClass.EnrollmentEndDate;
+            model.EnrollmentStatus = EnrollmentInClass.EnrollmentStatus;
+            model.studentTable = MapStudentTable(model.StudentID);
+            model.ClassList = _classService.GetClassList();
+            return model;
+        }
+    }
 }
 

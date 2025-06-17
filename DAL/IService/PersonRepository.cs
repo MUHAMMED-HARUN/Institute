@@ -98,9 +98,9 @@ namespace DAL.IService
                 return !_Context.People.Any(p => p.NationalNumber == NationalNumber && p.PersonID != PersonID);
         }
 
-        public object[] GetSqlPersonTvfPrameters(clsPersonFilter Filter)
+        public List<SqlParameter> GetSqlPersonTvfPrameters(clsPersonFilter Filter)
         {
-            object[] prams = { new SqlParameter("@PersonID", Filter.PersonID ?? (object)DBNull.Value),
+            List<SqlParameter> prams = new List<SqlParameter> { new SqlParameter("@PersonID", Filter.PersonID ?? (object)DBNull.Value),
                 new SqlParameter("@NationalNumber", Filter.NationalNumber ?? (object)DBNull.Value),
                 new SqlParameter("@FirstName", Filter.FirstName ?? (object)DBNull.Value),
                 new SqlParameter("@FatherName", Filter.FatherName ?? (object)DBNull.Value),
@@ -128,7 +128,7 @@ namespace DAL.IService
         public List<clsPersonTableView> GetPersonTableView(clsPersonFilter Filter)
         {
             string SqlPersonTVF = @"SELECT * FROM [dbo].[ufn_FilterPersons] (" + GetSqlPersonTvfQuiery()+")";
-         List<clsPersonTableView> PersonView=   _Context.PersonTableView.FromSqlRaw(SqlPersonTVF,GetSqlPersonTvfPrameters(Filter)).ToList();
+         List<clsPersonTableView> PersonView=   _Context.PersonTableView.FromSqlRaw(SqlPersonTVF,GetSqlPersonTvfPrameters(Filter).ToArray()).ToList();
             return PersonView;
         }
     }

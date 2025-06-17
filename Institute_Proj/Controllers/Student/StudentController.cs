@@ -11,11 +11,12 @@ namespace Institute_Proj.Controllers.Student
     {
         public readonly IStudentService _studentService;
         public readonly IPersonService _personService;
-
-        public StudentController(IStudentService studentService,IPersonService personService)
+        public readonly IClassService _classService;
+        public StudentController(IStudentService studentService,IPersonService personService ,IClassService classService)
         {                   
             _personService = personService;
             _studentService = studentService;
+            _classService = classService;
         }
         public IActionResult Index()
         {
@@ -61,12 +62,59 @@ namespace Institute_Proj.Controllers.Student
             clsStudentTableVieweModel Model = mapper.MapStudentTable(StudentID);
             return PartialView("StudentCard", Model);
         }
+        [HttpGet]
+        public IActionResult ShowStudentCardWithFilter()
+        {
+            clsStudentTableVieweModel studentTableView = new clsStudentTableVieweModel();
+            return PartialView("StudentCardWithFilter", studentTableView);
+        }
+        [HttpPost]
+        public IActionResult ShowStudentCardWithFilter(clsStudentFilter studentFilter ,string prefix)
+        {
+            ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
+            Mapper mapper = new Mapper(_personService, _studentService);
+            return PartialView("StudentCardWithFilter", mapper.MapStudentTable(studentFilter));
+        }
         public IActionResult DeleteStudent(int StudentID) 
         {
             if (_studentService.IsExist(StudentID))
                 return Json(_studentService.Delete(StudentID));
             else
                 return Json(false);
+        }
+        public IActionResult EnrollInClass()
+        {
+            clsEnrolmentStudentInClassModel model = new clsEnrolmentStudentInClassModel();
+            model.ClassList=_classService.GetClassList();
+            model.EnrollStatus=_studentService.GetEnrollmentStatusList();
+            return View("EnrollmentStudent", model);
+
+        }
+        [HttpPost]
+        public IActionResult EnrollInClass(clsEnrolmentStudentInClassModel model)
+        {
+            List<string> keys = ModelState.Keys.Where(k => k.StartsWith("studentTable.", StringComparison.OrdinalIgnoreCase)).ToList();
+
+            foreach (string k in keys)
+            {
+                ModelState.Remove(k);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                model.ClassList = _classService.GetClassList();
+                model.EnrollStatus = _studentService.GetEnrollmentStatusList();
+                return View("EnrollmentStudent", model);
+            }
+
+
+            Mapper mapper = new Mapper(_personService, _studentService);
+            _studentService.EnrolmentStudentInClass = mapper.MapEnrollmentStudent(model);
+            if (_studentService.HandleEnrollmentStudent())
+                return RedirectToAction();
+           else
+            return View("EnrollmentStudent", model);
+
         }
     }
 }

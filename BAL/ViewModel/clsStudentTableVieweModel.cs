@@ -9,7 +9,7 @@ namespace BAL.ViewModel
 {
  public   class clsStudentTableVieweModel
     {
-		public clsPersonTableView clsPersonViewModel { get; set; }
+		public clsPersonTableView clsPersonViewModel { get; set; } = new clsPersonTableView();
 		public int StudentID { get; set; }
 		public string IsActive { get; set; }
 		public DateTime EntryDate { get; set; }
