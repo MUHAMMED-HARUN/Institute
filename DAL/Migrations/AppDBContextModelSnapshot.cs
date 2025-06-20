@@ -674,7 +674,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("PersonID");
 
-                    b.ToTable("Teachers");
+                    b.ToTable("clsTeacher");
                 });
 
             modelBuilder.Entity("DAL.Models.clsAddress", b =>

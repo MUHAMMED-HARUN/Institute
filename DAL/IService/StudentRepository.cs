@@ -257,7 +257,7 @@ namespace DAL.IService
                             FullName = reader["FullName"] as string,
                             NationalNumber = reader["NationalNumber"] as string,
                             ClassName = reader["ClassName"] as string,
-                            IsActive = reader["IsActive"] as bool?
+                            IsActive = reader["IsActive"] as string
                         };
                         result.Add(enrollment);
                     }

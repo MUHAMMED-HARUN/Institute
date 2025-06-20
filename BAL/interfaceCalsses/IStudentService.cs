@@ -33,5 +33,6 @@ namespace BAL.interfaceCalsses
         public clsEnrolmentStudentInClass GetActiveEnrollmentStudent(int studentID, int ClassID);
         public Dictionary<string, int> GetEnrollmentStatusList();
         public bool HasActiveEnrollment(int StudentID,int ClassID);
+        public List<clsEnrollmentStudentInClassTableView> GetEnrollmentTableView(clsEnrollmentStudentInClassFilter Filter);
     }
 }

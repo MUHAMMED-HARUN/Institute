@@ -137,6 +137,9 @@ namespace BAL.IService
         {
             return _StudentRepository.HasStudentActiveEnrollment(StudentID, ClassID);
         }
-
+        public List<clsEnrollmentStudentInClassTableView> GetEnrollmentTableView(clsEnrollmentStudentInClassFilter Filter)
+        {
+            return _StudentRepository.GetEnrollmentTableView(Filter);
+        }
     }
 }

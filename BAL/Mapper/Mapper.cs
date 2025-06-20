@@ -15,6 +15,7 @@ namespace BAL.Mapper
         IAddressService _addressService;
         IStudentService _studentService;
         IClassService _classService;
+        ITeacherService _teacherService;
         public Mapper(IPersonService personService, IAddressService addressService,IStudentService studentService)
         {
             _personService = personService;
@@ -36,6 +37,10 @@ namespace BAL.Mapper
             _personService = personService;
             _studentService = studentService;
             _classService = classService;
+        }
+        public Mapper(ITeacherService teacherService)
+        {
+            _teacherService = teacherService;
         }
         public clsPerson MapPerson(clsPersonViewModel model)
         {
@@ -325,6 +330,53 @@ namespace BAL.Mapper
             model.ClassList = _classService.GetClassList();
             return model;
         }
+        public clsTeacherViewModel MapTeacher(int teacherID)
+        {
+            if (teacherID <= 0)
+                return new clsTeacherViewModel();
+
+            clsTeacher teacher = _teacherService.GetByID(teacherID);
+
+            if (teacher == null)
+                return new clsTeacherViewModel();
+
+            clsTeacherViewModel model = new clsTeacherViewModel();
+            model.TeacherID = teacher.ID;
+
+            model.PersonTable = MapPersonCard(teacher.PersonID);
+            model.EntryDate = teacher.EntryDate;
+            model.ExitDate = teacher.ExitDate ?? DateTime.MinValue;
+            model.IsActive = teacher.IsActive;
+            model.PersonID = teacher.PersonID;
+
+            return model;
+        }
+        public clsTeacher MapTeacher(clsTeacherViewModel model)
+        {
+            if (model.TeacherID > 0)
+            {
+                _teacherService.Teacher = _teacherService.GetByID(model.TeacherID);
+                if (_teacherService.Teacher != null)
+                    _teacherService.SaveMode = GlobalVar._SaveMode.Update;
+            }
+            else
+            {
+                _teacherService.Teacher = null;
+                _teacherService.SaveMode = GlobalVar._SaveMode.New;
+            }
+
+
+            if (_teacherService.Teacher == null)
+                _teacherService.Teacher = new clsTeacher();
+
+            _teacherService.Teacher.PersonID = model.PersonID;
+            _teacherService.Teacher.EntryDate = model.EntryDate;
+            _teacherService.Teacher.ExitDate = model.ExitDate;
+            _teacherService.Teacher.IsActive = model.IsActive;
+
+            return _teacherService.Teacher;
+        }
+
     }
 }
 

@@ -12,6 +12,6 @@ namespace DAL.Models.TableViews
         public string FullName { get; set; }
         public string NationalNumber { get; set; }
         public string ClassName { get; set; }
-       public bool? IsActive { get; set; }
+       public string IsActive { get; set; }
     }
 }

@@ -116,5 +116,19 @@ namespace Institute_Proj.Controllers.Student
             return View("EnrollmentStudent", model);
 
         }
+        [HttpGet]
+        public IActionResult EnrollmentList()
+        {
+			 clsEnrollmentStudentInClassFilter Filter = new clsEnrollmentStudentInClassFilter();
+            Filter.EnrollmentTable = _studentService.GetEnrollmentTableView(Filter);
+
+            return View("EnrollmentList", Filter);
+        }
+        [HttpPost]
+        public IActionResult EnrollmentList( clsEnrollmentStudentInClassFilter Filter)
+        {
+            
+            return Json(_studentService.GetEnrollmentTableView(Filter));
+        }
     }
 }

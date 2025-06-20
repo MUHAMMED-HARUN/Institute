@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Models.TableViews;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +15,6 @@ namespace DAL.Models.TableFilters
         public int? CalssID { get; set; }
         public string ClassName{ get; set; }
         public bool? IsActive { get; set; }
+        public List<clsEnrollmentStudentInClassTableView> EnrollmentTable { get; set; } = new List<clsEnrollmentStudentInClassTableView>();
     }
 }

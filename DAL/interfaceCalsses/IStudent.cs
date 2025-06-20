@@ -33,6 +33,6 @@ namespace DAL.interfaceCalsses
         public clsEnrolmentStudentInClass GetActiveEnrollmentStudent(int studentID,int ClassID);
         public bool HasStudentActiveEnrollment(int studentID, int ClassID);
         public string GetEnrollmentTabelViewQuery();
-    
+        public List<clsEnrollmentStudentInClassTableView> GetEnrollmentTableView(clsEnrollmentStudentInClassFilter Filter);
     }
 }

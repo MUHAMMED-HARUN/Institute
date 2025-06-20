@@ -1,5 +1,7 @@
+using BAL.Classes;
 using BAL.interfaceCalsses;
 using BAL.IService;
+using DAL.Classes;
 using DAL.EF;
 using DAL.interfaceCalsses;
 using DAL.IService;
@@ -26,6 +28,8 @@ namespace Institute_Proj
             builder.Services.AddScoped<IStudentService,StudentService>();
             builder.Services.AddScoped<IClass, ClassRepository>();
             builder.Services.AddScoped<IClassService, ClassService>();
+            builder.Services.AddScoped<ITeacher, TeacherRepository>();
+            builder.Services.AddScoped<ITeacherService,TeacherService>();
 
             var app = builder.Build();
 

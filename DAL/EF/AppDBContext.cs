@@ -28,7 +28,7 @@ namespace DAL.EF
        public DbSet<clsPayment> Payments { get; set; }
        public DbSet<clsPerson> People { get; set; }
        public DbSet<clsStudent > Students { get; set; }
-       public DbSet<clsTeacher> Teachers { get; set; }
+       public DbSet<clsTeacher> clsTeacher { get; set; }
        public DbSet<clsDistrict> Districts { get; set; }
 
 
