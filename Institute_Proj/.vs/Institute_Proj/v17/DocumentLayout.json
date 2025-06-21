@@ -7,23 +7,29 @@
       "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:controllers\\teacher\\teachercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\ef\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\views\\teacher\\teachercardwithfilter.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\teacher\\teachercardwithfilter.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\iservice\\teacherrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\controllers\\student\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:controllers\\student\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\migrations\\20250620204152_updatetablename.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\models\\tablefilters\\clsteacherfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\migrations\\20250611122623_added-personid-to-student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\views\\teacher\\teachercard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\teacher\\teachercard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\institute_proj\\bal\\viewmodel\\clsteacherviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\institute_proj\\bal\\mapper\\mapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\views\\teacher\\neworedit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\teacher\\neworedit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\institute_proj\\bal\\viewmodel\\clsteachertableviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\views\\teacher\\teacherlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\teacher\\teacherlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,7 +39,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 314,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -41,41 +47,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TeacherRepository.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\IService\\TeacherRepository.cs",
-              "RelativeDocumentMoniker": "..\\DAL\\IService\\TeacherRepository.cs",
-              "ToolTip": "C:\\Institute_Proj\\DAL\\IService\\TeacherRepository.cs",
-              "RelativeToolTip": "..\\DAL\\IService\\TeacherRepository.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAEwBQAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T20:43:41.212Z",
+              "DocumentIndex": 1,
+              "Title": "TeacherCardWithFilter.cshtml",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Views\\Teacher\\TeacherCardWithFilter.cshtml",
+              "RelativeDocumentMoniker": "Views\\Teacher\\TeacherCardWithFilter.cshtml",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Views\\Teacher\\TeacherCardWithFilter.cshtml",
+              "RelativeToolTip": "Views\\Teacher\\TeacherCardWithFilter.cshtml",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAAAD4AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-21T18:59:25.7Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AppDBContext.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\EF\\AppDBContext.cs",
-              "RelativeDocumentMoniker": "..\\DAL\\EF\\AppDBContext.cs",
-              "ToolTip": "C:\\Institute_Proj\\DAL\\EF\\AppDBContext.cs",
-              "RelativeToolTip": "..\\DAL\\EF\\AppDBContext.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAA4wB8AAAApAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "Mapper.cs",
+              "DocumentMoniker": "C:\\Institute_Proj\\BAL\\Mapper\\Mapper.cs",
+              "RelativeDocumentMoniker": "..\\BAL\\Mapper\\Mapper.cs",
+              "ToolTip": "C:\\Institute_Proj\\BAL\\Mapper\\Mapper.cs",
+              "RelativeToolTip": "..\\BAL\\Mapper\\Mapper.cs",
+              "ViewState": "AgIAAFsBAAAAAAAAAAAwwK8BAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T20:44:17.354Z",
+              "WhenOpened": "2025-06-21T18:44:16.465Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StudentController.cs",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Student\\StudentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Student\\StudentController.cs",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Student\\StudentController.cs",
+              "RelativeToolTip": "Controllers\\Student\\StudentController.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAswEsAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-21T18:41:31.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "clsTeacherTableViewModel.cs",
+              "DocumentMoniker": "C:\\Institute_Proj\\BAL\\ViewModel\\clsTeacherTableViewModel.cs",
+              "RelativeDocumentMoniker": "..\\BAL\\ViewModel\\clsTeacherTableViewModel.cs",
+              "ToolTip": "C:\\Institute_Proj\\BAL\\ViewModel\\clsTeacherTableViewModel.cs",
+              "RelativeToolTip": "..\\BAL\\ViewModel\\clsTeacherTableViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-21T18:37:04.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TeacherCard.cshtml",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Views\\Teacher\\TeacherCard.cshtml",
+              "RelativeDocumentMoniker": "Views\\Teacher\\TeacherCard.cshtml",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Views\\Teacher\\TeacherCard.cshtml",
+              "RelativeToolTip": "Views\\Teacher\\TeacherCard.cshtml",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAAAMAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-21T18:36:05.33Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "20250620204152_updatetablename.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\Migrations\\20250620204152_updatetablename.cs",
-              "RelativeDocumentMoniker": "..\\DAL\\Migrations\\20250620204152_updatetablename.cs",
-              "ToolTip": "C:\\Institute_Proj\\DAL\\Migrations\\20250620204152_updatetablename.cs",
-              "RelativeToolTip": "..\\DAL\\Migrations\\20250620204152_updatetablename.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAAEUAAAAJAAAAAAAAAA==",
+              "Title": "clsTeacherFilter.cs",
+              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\Models\\TableFilters\\clsTeacherFilter.cs",
+              "RelativeDocumentMoniker": "..\\DAL\\Models\\TableFilters\\clsTeacherFilter.cs",
+              "ToolTip": "C:\\Institute_Proj\\DAL\\Models\\TableFilters\\clsTeacherFilter.cs",
+              "RelativeToolTip": "..\\DAL\\Models\\TableFilters\\clsTeacherFilter.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwA4AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T20:41:52.749Z",
+              "WhenOpened": "2025-06-21T18:28:21.311Z",
               "EditorCaption": ""
             },
             {
@@ -86,48 +131,22 @@
               "RelativeDocumentMoniker": "Controllers\\Teacher\\TeacherController.cs",
               "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Teacher\\TeacherController.cs",
               "RelativeToolTip": "Controllers\\Teacher\\TeacherController.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAvwCMAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAA7wEsAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T20:00:22.663Z",
+              "WhenOpened": "2025-06-21T18:27:10.125Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "NewOrEdit.cshtml",
-              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Views\\Teacher\\NewOrEdit.cshtml",
-              "RelativeDocumentMoniker": "Views\\Teacher\\NewOrEdit.cshtml",
-              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Views\\Teacher\\NewOrEdit.cshtml",
-              "RelativeToolTip": "Views\\Teacher\\NewOrEdit.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABwAAABQAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "TeacherList.cshtml",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Views\\Teacher\\TeacherList.cshtml",
+              "RelativeDocumentMoniker": "Views\\Teacher\\TeacherList.cshtml",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Views\\Teacher\\TeacherList.cshtml",
+              "RelativeToolTip": "Views\\Teacher\\TeacherList.cshtml",
+              "ViewState": "AgIAAOQAAAAAAAAAAAAAAOYAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-20T19:56:57.436Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "clsTeacherViewModel.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\BAL\\ViewModel\\clsTeacherViewModel.cs",
-              "RelativeDocumentMoniker": "..\\BAL\\ViewModel\\clsTeacherViewModel.cs",
-              "ToolTip": "C:\\Institute_Proj\\BAL\\ViewModel\\clsTeacherViewModel.cs",
-              "RelativeToolTip": "..\\BAL\\ViewModel\\clsTeacherViewModel.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAEwA8AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T19:48:20.644Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "20250611122623_added-personid-to-student.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\Migrations\\20250611122623_added-personid-to-student.cs",
-              "RelativeDocumentMoniker": "..\\DAL\\Migrations\\20250611122623_added-personid-to-student.cs",
-              "ToolTip": "C:\\Institute_Proj\\DAL\\Migrations\\20250611122623_added-personid-to-student.cs",
-              "RelativeToolTip": "..\\DAL\\Migrations\\20250611122623_added-personid-to-student.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T20:35:59.291Z",
+              "WhenOpened": "2025-06-21T18:24:51.58Z",
               "EditorCaption": ""
             }
           ]

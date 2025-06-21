@@ -38,9 +38,10 @@ namespace BAL.Mapper
             _studentService = studentService;
             _classService = classService;
         }
-        public Mapper(ITeacherService teacherService)
+        public Mapper(ITeacherService teacherService,IPersonService personService)
         {
             _teacherService = teacherService;
+            _personService = personService;
         }
         public clsPerson MapPerson(clsPersonViewModel model)
         {
@@ -183,7 +184,39 @@ namespace BAL.Mapper
             return new clsPersonTableView();
 
         }
-        public clsAddressPartialView MapAddress(int AddressID)
+		public clsPersonTableView MapPersonCard(clsTeacherTableView TeacherTableView)
+		{
+
+			if (TeacherTableView != null)
+			{
+				clsPersonTableView person = new clsPersonTableView();
+				clsFile file = new clsFile();
+				person.PersonID = TeacherTableView.PersonID ?? -1;
+				person.NationalNumber = TeacherTableView.NationalNumber;
+				person.FirstName = TeacherTableView.FirstName;
+				person.FatherName = TeacherTableView.FatherName;
+				person.GrandFatherName = TeacherTableView.GrandFatherName;
+				person.LastName = TeacherTableView.LastName;
+				person.MotherName = TeacherTableView.MotherName;
+				person.MotherLastName = TeacherTableView.MotherLastName;
+				person.GendorText = TeacherTableView.GendorText;
+				person.PhoneNumber = TeacherTableView.PhoneNumber;
+				person.CountryName = TeacherTableView.CountryName;
+				person.AddressCityName = TeacherTableView.AddressCityName;
+				person.DistrictName = TeacherTableView.DistrictName;
+				person.NeighborhoodName = TeacherTableView.NeighborhoodName;
+				person.AddressDetails = TeacherTableView.AddressDetails;
+				person.PlaceOfBirthName = TeacherTableView.PlaceOfBirthName;
+				person.BirthDate = TeacherTableView.BirthDate ?? DateTime.MinValue;
+				person.PersonalStatus = TeacherTableView.PersonalStatus;
+				person.Image = Path.Combine(clsFile.GetFullPathOfPersonImagesDirectory(false), TeacherTableView.Image);
+				person.NationalIDImage = Path.Combine(clsFile.GetFullPathOfPersonImagesDirectory(false), TeacherTableView.NationalIDImage);
+				return person;
+			}
+			return new clsPersonTableView();
+
+		}
+		public clsAddressPartialView MapAddress(int AddressID)
         {
             clsAddressPartialView AdrsPartialview = new clsAddressPartialView();
             clsAddress address = _addressService.GetAddressByID(AddressID);
@@ -376,7 +409,43 @@ namespace BAL.Mapper
 
             return _teacherService.Teacher;
         }
+         
+		public clsTeacherTableViewModel MapTeacherTable(int teacherID)
+		{
+			clsTeacherTableViewModel model = new clsTeacherTableViewModel();
+			clsTeacherFilter teacherFilter = new clsTeacherFilter();
+			teacherFilter.TeacherID = teacherID;
+			clsTeacherTableView TeacherView = _teacherService.GetAll(teacherFilter).FirstOrDefault();
+			if (TeacherView != null)
+			{
+				model.clsPersonViewModel = MapPersonCard(TeacherView);
 
+				model.TeacherID = TeacherView.TeacherID ?? -1;
+				model.EntryDate = TeacherView.EntryDate ?? DateTime.MinValue;
+				model.ExitDate = TeacherView.ExitDate ?? DateTime.MinValue;
+				model.IsActive = TeacherView.IsActiveText;
+
+				return model;
+			}
+			return new clsTeacherTableViewModel();
+		}
+        public clsTeacherTableViewModel MapTeacherTable(clsTeacherFilter teacherFilter)
+        {
+            clsTeacherTableViewModel model = new clsTeacherTableViewModel();
+            clsTeacherTableView TeacherTable = _teacherService.GetAll(teacherFilter).FirstOrDefault();
+            if (TeacherTable != null)
+            {
+                model.clsPersonViewModel = MapPersonCard(TeacherTable);
+
+                model.TeacherID = TeacherTable.TeacherID ?? -1;
+                model.EntryDate = TeacherTable.EntryDate ?? DateTime.MinValue;
+                model.ExitDate = TeacherTable.ExitDate ?? DateTime.MinValue;
+                model.IsActive = TeacherTable.IsActiveText;
+
+                return model;
+            }
+            return new clsTeacherTableViewModel();
+        }
     }
 }
 

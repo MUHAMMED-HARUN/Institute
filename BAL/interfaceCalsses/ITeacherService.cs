@@ -15,7 +15,7 @@ namespace BAL.interfaceCalsses
         bool Update();
         clsTeacher GetByID(int TeacherID);
         clsTeacher GetByPersonID(int PersonID);
-        List<clsTeacher> GetAll();
+        public List<clsTeacherTableView> GetAll(clsTeacherFilter filter);
         bool IsExist(int TeacherID);
         bool IsTeacher(int PersonID);
         bool IsUniqueTeacher(int PersonID, int TeacherID);

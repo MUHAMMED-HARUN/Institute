@@ -1,6 +1,7 @@
 ﻿using BAL.interfaceCalsses;
 using BAL.Mapper;
 using BAL.ViewModel;
+using DAL.Models.TableFilters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Institute_Proj.Controllers.Teacher
@@ -8,21 +9,37 @@ namespace Institute_Proj.Controllers.Teacher
     public class TeacherController : Controller
     {
         ITeacherService _TeacherService;
-        public TeacherController(ITeacherService teacherService)
+        IPersonService _personService;
+        public TeacherController(ITeacherService teacherService,IPersonService personService)
         {
             _TeacherService = teacherService;
+            _personService = personService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            clsTeacherFilter filter = new clsTeacherFilter();
+            filter.TeacherTableView = _TeacherService.GetAll(filter);
+            return View("TeacherList",filter);
         }
-        [HttpGet]
+        public IActionResult Search(clsTeacherFilter filter)
+        {
+       
+            return Json(_TeacherService.GetAll(filter));
+        }
+  		[HttpGet]
+        public IActionResult showTeacherCard(int TeacherID)
+        {
+            Mapper mapper = new Mapper(_TeacherService,_personService);
+            clsTeacherTableViewModel model = mapper.MapTeacherTable(TeacherID);
+            return PartialView("TeacherCard", model);
+        }
+		[HttpGet]
         public IActionResult NewOrEdit(int TeacherID)
         {
-            Mapper mapper = new Mapper(_TeacherService);
-           
-             clsTeacherViewModel model = mapper.MapTeacher(TeacherID);
+			Mapper mapper = new Mapper(_TeacherService, _personService);
+
+			clsTeacherViewModel model = mapper.MapTeacher(TeacherID);
             return View(model);
         }
         [HttpPost]
@@ -37,11 +54,28 @@ namespace Institute_Proj.Controllers.Teacher
             {
                 return View(model);
             }
-            Mapper mapper = new Mapper(_TeacherService);
-            _TeacherService.Teacher = mapper.MapTeacher(model);
+			Mapper mapper = new Mapper(_TeacherService, _personService);
+			_TeacherService.Teacher = mapper.MapTeacher(model);
             if(_TeacherService.Save())
                 return RedirectToAction("Index");
             return View(model);
+        }
+        [HttpGet]
+        public IActionResult ShowTeacherCardWithFilter()
+        {
+            clsTeacherTableViewModel model =new clsTeacherTableViewModel();
+            return PartialView("TeacherCardWithFilter", model);
+        }
+        [HttpPost]
+        public IActionResult ShowTeacherCardWithFilter(clsTeacherFilter filter)
+        {
+            Mapper mapper = new Mapper(_TeacherService, _personService);
+            clsTeacherTableViewModel model = mapper.MapTeacherTable(filter);
+            return PartialView("TeacherCardWithFilter", model);
+        }
+        public IActionResult DeleteTeacher(int TeacherID)
+        {
+            return Json(_TeacherService.Delete(TeacherID));
         }
     }
 }

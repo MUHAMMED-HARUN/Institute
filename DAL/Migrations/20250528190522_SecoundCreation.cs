@@ -269,7 +269,7 @@ namespace DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Teachers",
+                name: "TeacherTableView",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -359,7 +359,7 @@ namespace DAL.Migrations
                     table.ForeignKey(
                         name: "FK_EnrolmentTeachers_Teachers_TeacherID",
                         column: x => x.TeacherID,
-                        principalTable: "Teachers",
+                        principalTable: "TeacherTableView",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.NoAction);
                 });
@@ -503,12 +503,12 @@ namespace DAL.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Teachers_AuditableEntityID",
-                table: "Teachers",
+                table: "TeacherTableView",
                 column: "AuditableEntityID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Teachers_PersonID",
-                table: "Teachers",
+                table: "TeacherTableView",
                 column: "PersonID");
         }
 
@@ -522,7 +522,7 @@ namespace DAL.Migrations
                 name: "Payments");
 
             migrationBuilder.DropTable(
-                name: "Teachers");
+                name: "TeacherTableView");
 
             migrationBuilder.DropTable(
                 name: "EnrolmentStudent");

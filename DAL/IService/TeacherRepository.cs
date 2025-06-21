@@ -1,6 +1,10 @@
 ﻿using DAL.EF;
 using DAL.interfaceCalsses;
 using DAL.Models;
+using DAL.Models.TableFilters;
+using DAL.Models.TableViews;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 namespace DAL.Classes
@@ -8,19 +12,21 @@ namespace DAL.Classes
     public class TeacherRepository : ITeacher
     {
         AppDBContext _Context;
-        public TeacherRepository(AppDBContext context)
+        IServiceProvider _serviceProvider;
+        public TeacherRepository(AppDBContext context,IServiceProvider serviceProvider)
         {
-            _Context = context;  
+            _Context = context;
+            _serviceProvider = serviceProvider;
         }
         public bool Add(clsTeacher teacher)
         {
-                _Context.Add(teacher);
+            _Context.Add(teacher);
             return _Context.SaveChanges() > 0;
         }
 
         public bool Update(clsTeacher teacher)
         {
-_Context.Update(teacher);
+            _Context.Update(teacher);
             return _Context.SaveChanges() > 0;
         }
 
@@ -43,17 +49,13 @@ _Context.Update(teacher);
 
         public clsTeacher GetByPersonID(int personID)
         {
-                        clsTeacher teacher = _Context.clsTeacher.FirstOrDefault(t => t.PersonID == personID);
+            clsTeacher teacher = _Context.clsTeacher.FirstOrDefault(t => t.PersonID == personID);
             return teacher;
         }
 
         public List<clsTeacher> GetAll()
         {
-            return new List<clsTeacher>
-            {
-                new clsTeacher { ID = 1, PersonID = 10, EntryDate = DateTime.Now, IsActive = true },
-                new clsTeacher { ID = 2, PersonID = 11, EntryDate = DateTime.Now.AddMonths(-5), IsActive = false }
-            };
+            return null;
         }
 
         public bool IsExist(int id)
@@ -70,7 +72,97 @@ _Context.Update(teacher);
 
         public bool IsTeacher(int personID)
         {
-            return _Context.clsTeacher.Any(t=>t.PersonID == personID);
+            return _Context.clsTeacher.Any(t => t.PersonID == personID);
         }
+        public string GetSqlTeacherTvfQuiery()
+        {
+            return @"@TeacherID, @EntryDate, @ExitDate, @IsActive";
+        }
+        public List<SqlParameter> GetSqlTeacherTvfPrameters(clsTeacherFilter Filter)
+        {
+            List<SqlParameter> prams = new List<SqlParameter>
+                {
+                    new SqlParameter("@TeacherID", Filter.TeacherID ?? (object)DBNull.Value),
+                    new SqlParameter("@EntryDate", Filter.EntryDate == DateTime.MinValue ? new DateTime(1900, 01, 01) : Filter.EntryDate),
+                    new SqlParameter("@ExitDate",   Filter.ExitDate == DateTime.MinValue ? new DateTime(DateTime.MaxValue.Ticks) : Filter.ExitDate),
+                    new SqlParameter("@IsActive", Filter.IsActive ?? (object)DBNull.Value),
+            };
+            return prams;
+        }
+        public List<SqlParameter> HandleSqlTeacherTvfPrameters(clsTeacherFilter filter, ref IPerson person)
+        {
+            if (person == null)
+                return null;
+
+            List<SqlParameter> Prams = GetSqlTeacherTvfPrameters(filter).Concat(person.GetSqlPersonTvfPrameters(filter)).ToList();
+            return Prams;
+        }
+        public List<clsTeacherTableView> GetTeacherTableView(clsTeacherFilter filter)
+        {
+            IPerson person = (IPerson)_serviceProvider.GetService(typeof(IPerson));
+            if (person == null)
+                return null;
+
+            string SqlTeacherTVF = @"SELECT * FROM [dbo].[ufn_FilterTeachet] (" +
+                                    GetSqlTeacherTvfQuiery() + "," +
+                                    person.GetSqlPersonTvfQuiery() + ")";
+
+            using (var connection = _Context.Database.GetDbConnection().CreateCommand())
+            {
+                connection.CommandText = SqlTeacherTVF;
+                connection.CommandType = System.Data.CommandType.Text;
+
+                if (connection.Connection.State != System.Data.ConnectionState.Open)
+                    connection.Connection.Open();
+
+                List<SqlParameter> prameters = HandleSqlTeacherTvfPrameters(filter, ref person);
+                foreach (var prameter in prameters)
+                {
+                    connection.Parameters.Add(prameter);
+                }
+
+                List<clsTeacherTableView> Result = new List<clsTeacherTableView>();
+
+                using (var reader = connection.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        clsTeacherTableView Teacher = new clsTeacherTableView
+                        {
+                            PersonID = reader["PersonID"] as int?,
+                            NationalNumber = reader["NationalNumber"] as string,
+                            FirstName = reader["FirstName"] as string,
+                            FatherName = reader["FatherName"] as string,
+                            GrandFatherName = reader["GrandFatherName"] as string,
+                            LastName = reader["LastName"] as string,
+                            FullName = reader["FullName"] as string,
+                            MotherName = reader["MotherName"] as string,
+                            MotherLastName = reader["MotherLastName"] as string,
+                            MotherFullName = reader["MotherFullName"] as string,
+                            GendorText = reader["GendorText"] as string,
+                            PhoneNumber = reader["PhoneNumber"] as string,
+                            CountryName = reader["CountryName"] as string,
+                            AddressCityName = reader["AddressCityName"] as string,
+                            DistrictName = reader["DistrictName"] as string,
+                            NeighborhoodName = reader["NeighborhoodName"] as string,
+                            AddressDetails = reader["AddressDetails"] as string,
+                            PlaceOfBirthName = reader["PlaceOfBirthName"] as string,
+                            BirthDate = reader["BirthDate"] as DateTime?,
+                            PersonalStatus = reader["PersonalStatus"] as string,
+                            Image = reader["Image"] as string,
+                            NationalIDImage = reader["NationalIDImage"] as string,
+                            TeacherID = reader["TeacherID"] as int?, // نستخدم StudentID لأن الـ TVF يرجع العمود بهذا الاسم في SQL
+                            IsActiveText = reader["IsActive"] as string,
+                            EntryDate = reader["EntryDate"] as DateTime?,
+                            ExitDate = reader["ExitDate"] as DateTime?
+                        };
+                        Result.Add(Teacher);
+                    }
+                }
+
+                return Result;
+            }
+        }
+
     }
 }

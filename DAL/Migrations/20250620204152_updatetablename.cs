@@ -16,18 +16,18 @@ namespace DAL.Migrations
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Teachers_AuditableEntities_AuditableEntityID",
-                table: "Teachers");
+                table: "TeacherTableView");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Teachers_People_PersonID",
-                table: "Teachers");
+                table: "TeacherTableView");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Teachers",
-                table: "Teachers");
+                table: "TeacherTableView");
 
             migrationBuilder.RenameTable(
-                name: "Teachers",
+                name: "TeacherTableView",
                 newName: "clsTeacher");
 
             migrationBuilder.RenameIndex(
@@ -90,41 +90,41 @@ namespace DAL.Migrations
 
             migrationBuilder.RenameTable(
                 name: "clsTeacher",
-                newName: "Teachers");
+                newName: "TeacherTableView");
 
             migrationBuilder.RenameIndex(
                 name: "IX_clsTeacher_PersonID",
-                table: "Teachers",
+                table: "TeacherTableView",
                 newName: "IX_Teachers_PersonID");
 
             migrationBuilder.RenameIndex(
                 name: "IX_clsTeacher_AuditableEntityID",
-                table: "Teachers",
+                table: "TeacherTableView",
                 newName: "IX_Teachers_AuditableEntityID");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Teachers",
-                table: "Teachers",
+                table: "TeacherTableView",
                 column: "ID");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_EnrolmentTeachers_Teachers_TeacherID",
                 table: "EnrolmentTeachers",
                 column: "TeacherID",
-                principalTable: "Teachers",
+                principalTable: "TeacherTableView",
                 principalColumn: "ID",
                 onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Teachers_AuditableEntities_AuditableEntityID",
-                table: "Teachers",
+                table: "TeacherTableView",
                 column: "AuditableEntityID",
                 principalTable: "AuditableEntities",
                 principalColumn: "ID");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Teachers_People_PersonID",
-                table: "Teachers",
+                table: "TeacherTableView",
                 column: "PersonID",
                 principalTable: "People",
                 principalColumn: "PersonID",

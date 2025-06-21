@@ -36,9 +36,9 @@ namespace BAL.Classes
             return _teacherRepo.GetByPersonID(PersonID);
         }
 
-        public List<clsTeacher> GetAll()
+        public List<clsTeacherTableView> GetAll(clsTeacherFilter filter)
         {
-            return _teacherRepo.GetAll();
+            return _teacherRepo.GetTeacherTableView(filter);
         }
 
         public bool IsExist(int TeacherID)

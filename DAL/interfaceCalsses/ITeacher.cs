@@ -1,4 +1,7 @@
 ﻿using DAL.Models;
+using DAL.Models.TableFilters;
+using DAL.Models.TableViews;
+using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
 
 namespace DAL.interfaceCalsses
@@ -14,5 +17,8 @@ namespace DAL.interfaceCalsses
         bool IsExist(int id);
         bool IsUniqueTeacher(int personID, int teacherID);
         bool IsTeacher(int personID);
+        public List<clsTeacherTableView> GetTeacherTableView(clsTeacherFilter filter);
+        public List<SqlParameter> HandleSqlTeacherTvfPrameters(clsTeacherFilter filter, ref IPerson person);
+        public List<SqlParameter> GetSqlTeacherTvfPrameters(clsTeacherFilter Filter);
     }
 }
