@@ -94,6 +94,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxTdHVkZW50TGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Institute_Proj/Institute_Proj/Views/Teacher/EnrollmentTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxFbnJvbGxtZW50VGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Institute_Proj/Institute_Proj/Views/Teacher/EnrollmentTeacherList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxFbnJvbGxtZW50VGVhY2hlckxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Institute_Proj/Institute_Proj/Views/Teacher/NewOrEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxOZXdPckVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

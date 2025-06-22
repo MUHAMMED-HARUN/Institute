@@ -17,8 +17,17 @@ namespace DAL.interfaceCalsses
         bool IsExist(int id);
         bool IsUniqueTeacher(int personID, int teacherID);
         bool IsTeacher(int personID);
+        public bool EnrollTeacherInClass(clsEnrolmentTeacherInClass Enrol);
+
+      
         public List<clsTeacherTableView> GetTeacherTableView(clsTeacherFilter filter);
         public List<SqlParameter> HandleSqlTeacherTvfPrameters(clsTeacherFilter filter, ref IPerson person);
         public List<SqlParameter> GetSqlTeacherTvfPrameters(clsTeacherFilter Filter);
+        public List<clsEnrollmentTeacherInClassTableView> GetEnrollmentTeacherTableView(clsEnrolmentTeacherInClassFilter filter);
+        public string GetEnrollmentTeacherTableViewQuery();
+        public List<SqlParameter> GetSqlEnrollmentTeacherTvfPrameters(clsEnrolmentTeacherInClassFilter filter);
+        public bool HasTeacherActiveEnrollment(int teacherID, int classID);
+        public clsEnrolmentTeacherInClass GetEnrolmentTeacherInClass(int EnrollmentTeacherID);
+
     }
 }

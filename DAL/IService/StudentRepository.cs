@@ -179,14 +179,15 @@ namespace DAL.IService
         {
             return _Context.EnrolmentStudent.FirstOrDefault(e => e.ID == EnrollmentStudentID);
         }
-        public List<clsEnrolmentStudentInClass> GetActiveEnrollmenstStudent(int studentID)
-        {
-            throw null;
-        }
         public clsEnrolmentStudentInClass GetActiveEnrollmentStudent(int studentID, int ClassID)
         {
             throw null;
         }
+        public List<clsEnrolmentStudentInClass> GetActiveEnrollmenstStudent(int studentID)
+        {
+            throw null;
+        }
+
         public bool HasStudentActiveEnrollment(int studentID, int ClassID)
         {
             using (DbCommand command = _Context.Database.GetDbConnection().CreateCommand())

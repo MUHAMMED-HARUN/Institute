@@ -20,7 +20,7 @@ namespace DAL.Models
         public virtual clsTeacher Teacher { get; set; }
         public DateTime EnrolmentDate { get; set; }
         public DateTime? EndEnrolmentDate { get; set; }
-
+        public byte EnrollmentStatus { get; set; }
 
         [ForeignKey("AuditableEntity")]
         public int? AuditableEntityID { get; set; }

@@ -1,0 +1,162 @@
+﻿@using DAL.Models.TableFilters
+@model clsEnrolmentTeacherInClassFilter
+
+<h3>قائمة تسجيل المعلمين</h3>
+
+<div>
+    <div id="filterItem">
+        <div class="col-12 col-md-auto d-flex align-items-center">
+            <label for="searchFieldSelect" class="form-label mb-0 me-2">بحث حسب</label>
+            <select id="searchFieldSelect" class="form-select w-auto">
+                <option selected value="-1">لا شيئ</option>
+                <option data-pattern="^\d{1,10}$" value="TeacherID">معرف المعلم</option>
+                <option data-pattern="^\d{11}$" value="NationalNumber">الرقم الوطني</option>
+                <option data-pattern="^[\u0600-\u06FFa-zA-Z ]{2,50}$" value="TeacherFullName">اسم المعلم</option>
+                <option data-pattern="^\d{1,10}$" value="ClassID">معرف الصف</option>
+                <option data-pattern="^[\u0600-\u06FFa-zA-Z ]{2,50}$" value="ClassName">اسم الصف</option>
+            </select>
+
+            <input type="text" id="searchInput" name="" class="form-control ms-2" style="min-width: 200px;" disabled placeholder="" />
+        </div>
+
+        <div class="col-12 col-md-auto d-flex align-items-center">
+            <p class="mb-0 me-3">تصنيف حسب الحالة</p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="NoneActive" type="radio" name="IsActive" value="" />
+                <label class="form-check-label" for="NoneActive">لا شيئ</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="Active" type="radio" name="IsActive" value="true" />
+                <label class="form-check-label" for="Active">مفعل</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="not-Active" type="radio" name="IsActive" value="false" />
+                <label class="form-check-label" for="not-Active">غير مفعل</label>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-auto d-flex align-items-center">
+            <button type="button" id="btnSearch" class="btn btn-primary">بحث</button>
+            <button type="button" id="btnReset" class="btn btn-primary">ارجاع</button>
+        </div>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>معرف التسجيل</th>
+                <th>اسم المعلم</th>
+                <th>رقم الهوية</th>
+                <th>اسم الصف</th>
+                <th>الحالة</th>
+            </tr>
+        </thead>
+        <tbody id="resultTableBody">
+            @for (int i = 0; i < Model.Enrollments.Count; i++)
+            {
+                <tr>
+                    <td>@Model.Enrollments[i].ID</td>
+                    <td>@Model.Enrollments[i].FullName</td>
+                    <td>@Model.Enrollments[i].NationalNumber</td>
+                    <td>@Model.Enrollments[i].ClassName</td>
+                    <td>@Model.Enrollments[i].IsActive</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<script>
+    $(document).ready(function () {
+        $("#searchFieldSelect").on("change", function () {
+            const selectedValue = $(this).val();
+            const input = $("#searchInput");
+            if (selectedValue === "-1") {
+                input.attr("name", "");
+                input.val("");
+                input.attr("placeholder", "");
+                input.prop("disabled", true);
+            } else {
+                input.attr("name", selectedValue);
+                input.prop("disabled", false);
+                input.attr("placeholder", "أدخل " + $(this).find("option:selected").text());
+            }
+        });
+
+        $("#btnSearch").on("click", function () {
+            let input = $("#searchInput");
+            let fieldName = input.attr("name");
+            let fieldValue = input.val();
+
+            if (!CheckIsValid(fieldValue)) {
+                return;
+            }
+
+            let dataToSend = {
+                IsActive: $('input[name="IsActive"]:checked').val(),
+            };
+
+            if (fieldName && fieldName !== "-1") {
+                dataToSend[fieldName] = fieldValue;
+            }
+
+            $.ajax({
+                url: '/Teacher/EnrollmentList',
+                type: 'POST',
+                data: dataToSend,
+                success: function (data) {
+                    $('#resultTableBody').html('');
+                    data.forEach(function (d) {
+                        const tr = `
+                            <tr>
+                                <td>${d.id}</td>
+                                <td>${d.fullName}</td>
+                                <td>${d.nationalNumber}</td>
+                                <td>${d.className}</td>
+                                <td>${d.isActive}</td>
+                            </tr>`;
+                        $('#resultTableBody').append(tr);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    alert("حدث خطأ أثناء البحث: " + error);
+                }
+            });
+        });
+
+        $("#btnReset").on("click", function () {
+            $("#filterItem").find("input").val("");
+            $("#filterItem").find(`input[type="radio"]`).prop('checked', false);
+            document.getElementById("errorelement")?.remove();
+        });
+
+        $("#searchInput").on("change", function () {
+            CheckIsValid($(this).val())
+        });
+
+        function CheckIsValid(fildValue) {
+            const selectedOption = $("#searchFieldSelect").find("option:selected");
+            const pattern = new RegExp(selectedOption.data("pattern"));
+
+            document.getElementById("errorelement")?.remove();
+
+            if (!pattern.test(fildValue)) {
+                const newElement = document.createElement("p");
+                newElement.innerHTML = 'القيمة غير صالحة';
+                newElement.className = "text-danger";
+                newElement.id = 'errorelement';
+
+                const referenceElement = document.getElementById("searchInput");
+                referenceElement.insertAdjacentElement("afterend", newElement);
+                return false;
+            }
+            return true;
+        }
+    });
+</script>

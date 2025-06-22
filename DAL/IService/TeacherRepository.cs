@@ -6,6 +6,8 @@ using DAL.Models.TableViews;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Data;
 
 namespace DAL.Classes
 {
@@ -164,5 +166,90 @@ namespace DAL.Classes
             }
         }
 
+        public bool EnrollTeacherInClass(clsEnrolmentTeacherInClass Enrol)
+        {
+            _Context.EnrolmentTeachers.Add(Enrol);
+            return _Context.SaveChanges() > 0;
+        }
+        public bool HasTeacherActiveEnrollment(int teacherID, int classID)
+        {
+            using (DbCommand command = _Context.Database.GetDbConnection().CreateCommand())
+            {
+                command.CommandText = "SELECT dbo.ufn_HasTeachertActiveEnrollment(@TeacherID, @ClassID)";
+                command.CommandType = CommandType.Text;
+
+                command.Parameters.Add(new SqlParameter("@TeacherID", teacherID));
+                command.Parameters.Add(new SqlParameter("@ClassID", classID));
+
+                if (command.Connection.State != ConnectionState.Open)
+                    command.Connection.Open();
+
+                var result = command.ExecuteScalar();
+
+                if (result == DBNull.Value || result == null)
+                    return false;
+
+                return Convert.ToBoolean(result);
+            }
+        }
+        public clsEnrolmentTeacherInClass GetEnrolmentTeacherInClass(int EnrollmentTeacherID)
+        {
+            return _Context.EnrolmentTeachers.FirstOrDefault(e => e.ID == EnrollmentTeacherID);
+        }
+        public List<SqlParameter> GetSqlEnrollmentTeacherTvfPrameters(clsEnrolmentTeacherInClassFilter filter)
+        {
+            List<SqlParameter> prams = new List<SqlParameter>()
+    {
+        new SqlParameter("@TeacherID", filter.TeacherID ?? (object)DBNull.Value),
+        new SqlParameter("@NationalNumber", filter.NationalNumber ?? (object)DBNull.Value),
+        new SqlParameter("@TeacherFullName", filter.TeacherFullName ?? (object)DBNull.Value),
+        new SqlParameter("@ClassID", filter.ClassID ?? (object)DBNull.Value),
+        new SqlParameter("@ClassName", filter.ClassName ?? (object)DBNull.Value),
+        new SqlParameter("@IsActive", filter.IsActive ?? (object)DBNull.Value),
+    };
+            return prams;
+        }
+        public string GetEnrollmentTeacherTableViewQuery()
+        {
+            return "SELECT * FROM dbo.ufn_GetEnrollmentTeacherClass(@TeacherID, @NationalNumber, @TeacherFullName, @ClassID, @ClassName, @IsActive)";
+        }
+        public List<clsEnrollmentTeacherInClassTableView> GetEnrollmentTeacherTableView(clsEnrolmentTeacherInClassFilter filter)
+        {
+            using (DbCommand command = _Context.Database.GetDbConnection().CreateCommand())
+            {
+                command.CommandText = GetEnrollmentTeacherTableViewQuery() ;
+                command.CommandType = CommandType.Text;
+
+                List<SqlParameter> prams = GetSqlEnrollmentTeacherTvfPrameters(filter);
+                foreach (var param in prams)
+                {
+                    command.Parameters.Add(param);
+                }
+
+                if (command.Connection.State != ConnectionState.Open)
+                    command.Connection.Open();
+
+                List<clsEnrollmentTeacherInClassTableView> result = new();
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        clsEnrollmentTeacherInClassTableView enrollment = new clsEnrollmentTeacherInClassTableView
+                        {
+                            ID = Convert.ToInt32(reader["ID"]),
+                            FullName = reader["FullName"] as string,
+                            NationalNumber = reader["NationalNumber"] as string,
+                            ClassName = reader["ClassName"] as string,
+                            IsActive = reader["IsActive"] as string
+                        };
+                        result.Add(enrollment);
+                    }
+                }
+
+                return result;
+            }
+        }
+        
     }
 }

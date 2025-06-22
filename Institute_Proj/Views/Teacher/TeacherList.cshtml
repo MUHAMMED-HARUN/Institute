@@ -176,8 +176,8 @@
                                     <td>${d.phoneNumber}</td>
                                     <td>${d.gendorText}</td>
                                     <td>${d.birthDate}</td>
+                                    <td>${d.isActiveText}</td>
                                     <td>${d.entryDate}</td>
-                                    <td>${d.isActive}</td>
                                     <td><a asp-action="NewOrEdit" asp-controller="Teacher" asp-route-personID="${d.teacherID}"><i class="fa-solid fa-user-pen"></i></a></td>
                                     <td data-id-Info="${d.teacherID}" data-tr-class-info="row-info${i}" class="showTeacherCard"><i class="fa-solid fa-address-card"></i></td>
                                     <td class="DeleteTeacher" data-id-Info="${d.teacherID}" data-row-class-info="row-info${i}"><i class="fa-solid fa-user-xmark"></i></td>

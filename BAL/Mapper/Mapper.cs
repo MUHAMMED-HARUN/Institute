@@ -446,6 +446,29 @@ namespace BAL.Mapper
             }
             return new clsTeacherTableViewModel();
         }
+        public clsEnrolmentTeacherInClass MapEnrollmentTeacher(clsEnrolmentTeacherInClassModel model)
+        {
+            clsEnrolmentTeacherInClass EnrollmentTeacher = new clsEnrolmentTeacherInClass();
+            if (model.EnrollmentID > 0)
+            {
+                EnrollmentTeacher = _teacherService.GetEnrolmentTeacherInClass(model.EnrollmentID);
+                _teacherService.SaveMode = GlobalVar._SaveMode.Update;
+            }
+            else if (EnrollmentTeacher == null || model.EnrollmentID <= 0)
+            {
+                EnrollmentTeacher = new clsEnrolmentTeacherInClass();
+                _teacherService.SaveMode = GlobalVar._SaveMode.New;
+            }
+            EnrollmentTeacher.ID = model.EnrollmentID;
+            EnrollmentTeacher.TeacherID = model.TeacherID;
+            EnrollmentTeacher.ClassID = model.ClassID;
+            EnrollmentTeacher.EnrolmentDate = model.EnrolmentDate.Value;
+            EnrollmentTeacher.EndEnrolmentDate = model.EnrollmentEndDate ?? DateTime.MinValue;
+            EnrollmentTeacher.EnrollmentStatus = model.EnrollmentStatus;
+            // AuditableEntityID
+            return EnrollmentTeacher;
+        }
+
     }
 }
 

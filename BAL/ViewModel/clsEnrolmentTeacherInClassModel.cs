@@ -1,0 +1,42 @@
+﻿using BAL.Attribute;
+using DAL.Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BAL.ViewModel
+{
+    public class clsEnrolmentTeacherInClassModel
+    {
+        [Display(Name = "معرف التسجيل")]
+        public int EnrollmentID { get; set; }
+
+        [Display(Name = "معرف الصف")]
+        [Range(1, int.MaxValue, ErrorMessage = "الرجاء اختيار صف صحيح.")]
+        public int ClassID { get; set; }
+
+        [Display(Name = "معرف المعلم")]
+        [Range(1, int.MaxValue, ErrorMessage = "الرجاء اختيار معلم.")]
+        [HasTeacherActiveEnrollment(ErrorMessage = "هذا المعلم لديه قيد نشط في هذا الصف.")]
+        public int TeacherID { get; set; }
+
+        [Display(Name = "تاريخ التسجيل")]
+        public DateTime? EnrolmentDate { get; set; } = DateTime.Now;
+
+        [Display(Name = "تاريخ انتهاء التسجيل")]
+        public DateTime? EnrollmentEndDate { get; set; } = null;
+
+        [Display(Name = "حالة التسجيل")]
+        [Range(1, int.MaxValue, ErrorMessage = "الرجاء اختيار حالة التسجيل.")]
+        public byte EnrollmentStatus { get; set; }
+
+        public clsTeacherTableViewModel TeacherTable { get; set; } = new clsTeacherTableViewModel();
+
+        public List<clsClass> ClassList { get; set; } = new List<clsClass>();
+
+        public Dictionary<string, int> EnrollStatus { get; set; } = new Dictionary<string, int>();
+    }
+}
