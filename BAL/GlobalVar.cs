@@ -14,5 +14,33 @@
         {
             Update,New
         }
+      
+
+        public enum EnrollmentStatus
+        {
+            Completed = 1, Expired, NotCompleted, Cancelled
+        }
+        public enum PerformanceRating
+        {
+            Poor = 1,
+            Acceptable,
+            Good,
+            VeryGood,
+            Excellent
+        }
+        static public Dictionary<string, byte> GetPerformanceRating()
+        {
+            Dictionary<string, byte> Dict = new Dictionary<string, byte>();
+            Dict.Add("ضعيف", 1);
+            Dict.Add("مقبول", 2);
+            Dict.Add("جيد", 3);
+            Dict.Add("جيد جدا", 4);
+            Dict.Add("ممتاز", 5);
+            return Dict;
+        }
+        public enum ReadingType
+        {
+            New = 1, Review
+        }
     }
 }

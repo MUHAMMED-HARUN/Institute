@@ -1,0 +1,91 @@
+﻿@model BAL.ViewModel.clsQuranStudentModel
+@using Microsoft.AspNetCore.Mvc.ViewFeatures
+@using BAL.ViewModel
+
+@{
+    ViewData["Title"] = "تسجيل طالب قرآن";
+    var projectList = new SelectList(Model.ProjectList, "ID", "Name", Model.ProjectID);
+    var performanceList = new SelectList(Model.PerformanceRatings.Select(p => new { Text = p.Key, Value = p.Value }), "Value", "Text", Model.performanceRating);
+    var viewDataForStudentCard = new ViewDataDictionary<clsStudentTableVieweModel>(ViewData, Model.studentTable);
+    viewDataForStudentCard.TemplateInfo.HtmlFieldPrefix = "studentTable";
+    
+
+}
+
+<h4>تسجيل طالب قرآن</h4>
+<hr />
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+    document.addEventListener("StudentCardUpdated", function (event) {
+        const StudentID = event.detail;
+        if (StudentID) {
+            document.getElementById("QuranStudentID").value = StudentID;
+        }
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="NewOrEdit" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-group student-table" id="QuranStudentCard">
+                @await Html.PartialAsync("~/Views/Student/StudentCardWithFilter.cshtml", Model.studentTable, viewDataForStudentCard)
+            </div>
+
+            <div>
+                <span asp-validation-for="StudentID" class="text-danger"></span>
+                <input asp-for="StudentID" id="QuranStudentID" hidden />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ID" class="control-label"></label>
+                <p id="QuranID">@Model.ID</p>
+                <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TotalSavedPages" class="control-label"></label>
+                <input asp-for="TotalSavedPages" class="form-control" />
+                <span asp-validation-for="TotalSavedPages" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TotalInstalledParts" class="control-label"></label>
+                <input asp-for="TotalInstalledParts" class="form-control" />
+                <span asp-validation-for="TotalInstalledParts" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ProjectID" class="control-label"></label>
+                <select asp-for="ProjectID" asp-items="projectList" class="form-select">
+                    <option value="-1">اختر مشروع</option>
+                </select>
+                <span asp-validation-for="ProjectID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="performanceRating" class="control-label"></label>
+                <select asp-for="performanceRating" asp-items="performanceList" class="form-select">
+                    <option value="-1">اختر التقييم</option>
+                </select>
+                <span asp-validation-for="performanceRating" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="حفظ" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Index">العودة إلى القائمة</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -30,7 +30,10 @@ namespace Institute_Proj
             builder.Services.AddScoped<IClassService, ClassService>();
             builder.Services.AddScoped<ITeacher, TeacherRepository>();
             builder.Services.AddScoped<ITeacherService,TeacherService>();
-
+            builder.Services.AddScoped<IProject, ProjectRepository>();
+            builder.Services.AddScoped<IProjectService, ProjectService>();
+            builder.Services.AddScoped<IQuranStudent, QuranStudentRepository>();
+            builder.Services.AddScoped<IQuranStudentService, QuranStudentService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

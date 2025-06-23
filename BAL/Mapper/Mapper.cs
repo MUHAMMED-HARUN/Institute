@@ -16,6 +16,8 @@ namespace BAL.Mapper
         IStudentService _studentService;
         IClassService _classService;
         ITeacherService _teacherService;
+        IProjectService _projectService;
+        IQuranStudentService _quranStudentService;
         public Mapper(IPersonService personService, IAddressService addressService,IStudentService studentService)
         {
             _personService = personService;
@@ -42,6 +44,11 @@ namespace BAL.Mapper
         {
             _teacherService = teacherService;
             _personService = personService;
+        }
+        public Mapper(IQuranStudentService quranStudentService, IProjectService projectService)
+        {
+            _quranStudentService = quranStudentService;
+            _projectService = projectService;
         }
         public clsPerson MapPerson(clsPersonViewModel model)
         {
@@ -468,7 +475,38 @@ namespace BAL.Mapper
             // AuditableEntityID
             return EnrollmentTeacher;
         }
+        public clsQuranStudent MapQuranStudent(clsQuranStudentModel model)
+        {
+            if (model.ID > 0)
+            {
+                _quranStudentService.QuranStudent = _quranStudentService.GetByID(model.ID);
+                if (_quranStudentService.QuranStudent != null)
+                    _quranStudentService.SaveMode = GlobalVar._SaveMode.Update;
+            }
+            else
+            {
+                _quranStudentService.QuranStudent = null;
+                _quranStudentService.SaveMode = GlobalVar._SaveMode.New;
+            }
 
+
+            if (_quranStudentService.QuranStudent == null)
+                _quranStudentService.QuranStudent = new clsQuranStudent();
+
+  
+            _quranStudentService.QuranStudent.StudentID = model.StudentID;
+            _quranStudentService.QuranStudent.TotalSavedPages = model.TotalSavedPages;
+            _quranStudentService.QuranStudent.TotalInstalledParts = model.TotalInstalledParts;
+            _quranStudentService.QuranStudent.performanceRating = model.performanceRating;
+            _quranStudentService.QuranStudent.ProjectID = model.ProjectID;
+
+
+
+            //_quranStudentService.QuranStudent.AuditableEntityID = model.a;
+
+
+            return _quranStudentService.QuranStudent;
+        }
     }
 }
 

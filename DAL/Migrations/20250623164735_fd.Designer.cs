@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20250528204407_updateObjectName")]
-    partial class updateObjectName
+    [Migration("20250623164735_fd")]
+    partial class fd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,6 +57,205 @@ namespace DAL.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("AuditableEntities");
+                });
+
+            modelBuilder.Entity("DAL.Models.TableViews.clsPersonTableView", b =>
+                {
+                    b.Property<string>("AddressCityName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressDetails")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CountryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DistrictName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FatherName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GendorText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GrandFatherName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MotherFullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MotherLastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MotherName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NationalIDImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NationalNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NeighborhoodName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PersonID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PersonalStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlaceOfBirthName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable((string)null);
+
+                    b.ToView(null, (string)null);
+                });
+
+            modelBuilder.Entity("DAL.Models.TableViews.clsStudentTableView", b =>
+                {
+                    b.Property<string>("AddressCityName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressDetails")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CountryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DistrictName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("EntryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ExitDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FatherName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GendorText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GrandFatherName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IsActive")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MotherFullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MotherLastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MotherName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NationalIDImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NationalNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NeighborhoodName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PersonID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PersonalStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlaceOfBirthName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("StudentID")
+                        .HasColumnType("int");
+
+                    b.ToTable((string)null);
+
+                    b.ToView(null, (string)null);
                 });
 
             modelBuilder.Entity("DAL.Models.clsAddress", b =>
@@ -213,7 +412,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("CityID");
 
-                    b.ToTable("Districts");
+                    b.ToTable("District");
                 });
 
             modelBuilder.Entity("DAL.Models.clsEnrolmentStudentInClass", b =>
@@ -232,6 +431,9 @@ namespace DAL.Migrations
 
                     b.Property<DateTime?>("EnrollmentEndDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<byte>("EnrollmentStatus")
+                        .HasColumnType("tinyint");
 
                     b.Property<DateTime>("EnrolmentDate")
                         .HasColumnType("datetime2");
@@ -266,6 +468,9 @@ namespace DAL.Migrations
 
                     b.Property<DateTime?>("EndEnrolmentDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<byte>("EnrollmentStatus")
+                        .HasColumnType("tinyint");
 
                     b.Property<DateTime>("EnrolmentDate")
                         .HasColumnType("datetime2");
@@ -413,6 +618,130 @@ namespace DAL.Migrations
                     b.ToTable("People");
                 });
 
+            modelBuilder.Entity("DAL.Models.clsProject", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int?>("AuditableEntityID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Discription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("AuditableEntityID");
+
+                    b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsQuranStudent", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int?>("AuditableEntityID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProjectID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentID")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("TotalInstalledParts")
+                        .HasColumnType("tinyint");
+
+                    b.Property<short>("TotalSavedPages")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("performanceRating")
+                        .HasColumnType("tinyint");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("AuditableEntityID");
+
+                    b.HasIndex("ProjectID");
+
+                    b.HasIndex("StudentID");
+
+                    b.ToTable("QuranStudents");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsReading", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int?>("AuditableEntityID")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("PerformanceRating")
+                        .HasColumnType("tinyint");
+
+                    b.Property<short>("ReadedPageNum")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("ReadigType")
+                        .HasColumnType("tinyint");
+
+                    b.Property<int>("ReadingDayID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("AuditableEntityID");
+
+                    b.HasIndex("ReadingDayID");
+
+                    b.ToTable("Readings");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsReadingDay", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int?>("AuditableEntityID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuranStudentID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("AuditableEntityID");
+
+                    b.HasIndex("QuranStudentID");
+
+                    b.ToTable("ReadingDay");
+                });
+
             modelBuilder.Entity("DAL.Models.clsStudent", b =>
                 {
                     b.Property<int>("ID")
@@ -475,7 +804,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("PersonID");
 
-                    b.ToTable("TeacherTableView");
+                    b.ToTable("clsTeacher");
                 });
 
             modelBuilder.Entity("DAL.Models.clsAddress", b =>
@@ -659,6 +988,74 @@ namespace DAL.Migrations
                     b.Navigation("AuditableEntity");
 
                     b.Navigation("PlaceOfBirth");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsProject", b =>
+                {
+                    b.HasOne("DAL.Models.AuditableEntity", "AuditableEntity")
+                        .WithMany()
+                        .HasForeignKey("AuditableEntityID");
+
+                    b.Navigation("AuditableEntity");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsQuranStudent", b =>
+                {
+                    b.HasOne("DAL.Models.AuditableEntity", "AuditableEntity")
+                        .WithMany()
+                        .HasForeignKey("AuditableEntityID");
+
+                    b.HasOne("DAL.Models.clsProject", "project")
+                        .WithMany()
+                        .HasForeignKey("ProjectID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DAL.Models.clsStudent", "student")
+                        .WithMany()
+                        .HasForeignKey("StudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AuditableEntity");
+
+                    b.Navigation("project");
+
+                    b.Navigation("student");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsReading", b =>
+                {
+                    b.HasOne("DAL.Models.AuditableEntity", "AuditableEntity")
+                        .WithMany()
+                        .HasForeignKey("AuditableEntityID");
+
+                    b.HasOne("DAL.Models.clsReadingDay", "ReadingDay")
+                        .WithMany()
+                        .HasForeignKey("ReadingDayID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AuditableEntity");
+
+                    b.Navigation("ReadingDay");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsReadingDay", b =>
+                {
+                    b.HasOne("DAL.Models.AuditableEntity", "AuditableEntity")
+                        .WithMany()
+                        .HasForeignKey("AuditableEntityID");
+
+                    b.HasOne("DAL.Models.clsQuranStudent", "QuranStudent")
+                        .WithMany()
+                        .HasForeignKey("QuranStudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AuditableEntity");
+
+                    b.Navigation("QuranStudent");
                 });
 
             modelBuilder.Entity("DAL.Models.clsStudent", b =>

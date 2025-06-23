@@ -615,6 +615,130 @@ namespace DAL.Migrations
                     b.ToTable("People");
                 });
 
+            modelBuilder.Entity("DAL.Models.clsProject", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int?>("AuditableEntityID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Discription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("AuditableEntityID");
+
+                    b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsQuranStudent", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int?>("AuditableEntityID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProjectID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentID")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("TotalInstalledParts")
+                        .HasColumnType("tinyint");
+
+                    b.Property<short>("TotalSavedPages")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("performanceRating")
+                        .HasColumnType("tinyint");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("AuditableEntityID");
+
+                    b.HasIndex("ProjectID");
+
+                    b.HasIndex("StudentID");
+
+                    b.ToTable("QuranStudents");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsReading", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int?>("AuditableEntityID")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("PerformanceRating")
+                        .HasColumnType("tinyint");
+
+                    b.Property<short>("ReadedPageNum")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte>("ReadigType")
+                        .HasColumnType("tinyint");
+
+                    b.Property<int>("ReadingDayID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("AuditableEntityID");
+
+                    b.HasIndex("ReadingDayID");
+
+                    b.ToTable("Readings");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsReadingDay", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int?>("AuditableEntityID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuranStudentID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("AuditableEntityID");
+
+                    b.HasIndex("QuranStudentID");
+
+                    b.ToTable("ReadingDay");
+                });
+
             modelBuilder.Entity("DAL.Models.clsStudent", b =>
                 {
                     b.Property<int>("ID")
@@ -861,6 +985,74 @@ namespace DAL.Migrations
                     b.Navigation("AuditableEntity");
 
                     b.Navigation("PlaceOfBirth");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsProject", b =>
+                {
+                    b.HasOne("DAL.Models.AuditableEntity", "AuditableEntity")
+                        .WithMany()
+                        .HasForeignKey("AuditableEntityID");
+
+                    b.Navigation("AuditableEntity");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsQuranStudent", b =>
+                {
+                    b.HasOne("DAL.Models.AuditableEntity", "AuditableEntity")
+                        .WithMany()
+                        .HasForeignKey("AuditableEntityID");
+
+                    b.HasOne("DAL.Models.clsProject", "project")
+                        .WithMany()
+                        .HasForeignKey("ProjectID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DAL.Models.clsStudent", "student")
+                        .WithMany()
+                        .HasForeignKey("StudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AuditableEntity");
+
+                    b.Navigation("project");
+
+                    b.Navigation("student");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsReading", b =>
+                {
+                    b.HasOne("DAL.Models.AuditableEntity", "AuditableEntity")
+                        .WithMany()
+                        .HasForeignKey("AuditableEntityID");
+
+                    b.HasOne("DAL.Models.clsReadingDay", "ReadingDay")
+                        .WithMany()
+                        .HasForeignKey("ReadingDayID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AuditableEntity");
+
+                    b.Navigation("ReadingDay");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsReadingDay", b =>
+                {
+                    b.HasOne("DAL.Models.AuditableEntity", "AuditableEntity")
+                        .WithMany()
+                        .HasForeignKey("AuditableEntityID");
+
+                    b.HasOne("DAL.Models.clsQuranStudent", "QuranStudent")
+                        .WithMany()
+                        .HasForeignKey("QuranStudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AuditableEntity");
+
+                    b.Navigation("QuranStudent");
                 });
 
             modelBuilder.Entity("DAL.Models.clsStudent", b =>

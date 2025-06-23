@@ -8,33 +8,35 @@ using DAL.Models.TableViews;
 using Microsoft.EntityFrameworkCore;
 namespace DAL.EF
 {
-    public class AppDBContext:DbContext
+    public class AppDBContext : DbContext
     {
-        public AppDBContext():base()
+        public AppDBContext() : base()
         {
         }
         public AppDBContext(DbContextOptions options) : base(options)
         {
         }
-      public  DbSet<clsAddress> Addresses { get; set; }
-       public DbSet<clsCity> Cities { get; set; }
-       public DbSet<AuditableEntity> AuditableEntities { get; set; }
-       public DbSet<clsClass> Classes { get; set; }
-       public DbSet<clsCountriy> Countriys { get; set; }
-       public DbSet<clsDepartment> Departments { get; set; }
-       public DbSet<clsEnrolmentStudentInClass> EnrolmentStudent { get; set; }
-       public DbSet<clsEnrolmentTeacherInClass> EnrolmentTeachers { get;set; } 
-       public DbSet<clsNeighborhood> Neighborhoods { get; set; }
-       public DbSet<clsPayment> Payments { get; set; }
-       public DbSet<clsPerson> People { get; set; }
-       public DbSet<clsStudent > Students { get; set; }
-       public DbSet<clsTeacher> clsTeacher { get; set; }
-       public DbSet<clsDistrict> Districts { get; set; }
+        public DbSet<clsAddress> Addresses { get; set; }
+        public DbSet<clsCity> Cities { get; set; }
+        public DbSet<AuditableEntity> AuditableEntities { get; set; }
+        public DbSet<clsClass> Classes { get; set; }
+        public DbSet<clsCountriy> Countriys { get; set; }
+        public DbSet<clsDepartment> Departments { get; set; }
+        public DbSet<clsEnrolmentStudentInClass> EnrolmentStudent { get; set; }
+        public DbSet<clsEnrolmentTeacherInClass> EnrolmentTeachers { get; set; }
+        public DbSet<clsNeighborhood> Neighborhoods { get; set; }
+        public DbSet<clsPayment> Payments { get; set; }
+        public DbSet<clsPerson> People { get; set; }
+        public DbSet<clsStudent> Students { get; set; }
+        public DbSet<clsTeacher> clsTeacher { get; set; }
+        public DbSet<clsDistrict> Districts { get; set; }
+        public DbSet<clsReading> Readings { get; set; }
+        public DbSet<clsReadingDay> ReadingDay { get; set; }
+        public DbSet<clsQuranStudent> QuranStudents { get; set; }
+        public DbSet<clsProject> Projects { get; set; }
 
-
-
-       public DbSet<clsPersonTableView> PersonTableView { get; set; }
-        public DbSet<clsStudentTableView> StudentTableView  { get; set; }
+        public DbSet<clsPersonTableView> PersonTableView { get; set; }
+        public DbSet<clsStudentTableView> StudentTableView { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -42,7 +44,7 @@ namespace DAL.EF
             modelBuilder.Entity<clsPersonTableView>()
                 .HasNoKey() // لا يوجد مفتاح أساسي لأنه TVF
                 .ToView(null); // لأن هذا ليس View فعلي في قاعدة البيانات
-           
+
             modelBuilder.Entity<clsStudentTableView>()
                 .HasNoKey()
                 .ToView(null);
