@@ -1,0 +1,32 @@
+﻿@model List<DAL.Models.clsReadingDay>
+@{
+    ViewData["Title"] = "إدارة أيام القراءة";
+}
+
+<h2>أيام القراءة</h2>
+
+<p>
+    <a asp-action="NewOrEditReadingDay">إضافة يوم جديد</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>التاريخ</th>
+            <th>الملاحظات</th>
+            <th>الإجراءات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ReadingDate.ToShortDateString()</td>
+                <td>@item.Discription</td>
+                <td>
+                    <a asp-action="ReadingList" asp-route-ReadingDay="@item.ID">عرض سجلات التسميع</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

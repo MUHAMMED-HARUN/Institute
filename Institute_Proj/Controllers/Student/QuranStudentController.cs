@@ -66,5 +66,7 @@ namespace Institute_Proj.Controllers.Student
         {
             return Json(_quranStudentService.GetAll(filter));
         }
+
+
     }
 }

@@ -1,0 +1,54 @@
+﻿@model BAL.ViewModel.clsReadingModel
+@{
+    ViewData["Title"] = Model.ReadingID == 0 ? "إضافة قراءة جديدة" : "تعديل قراءة";
+    SelectList Performance = new SelectList(Model.PerformaceList.Select(p => new { text = p.Key, Value = p.Value }), "value", "text", Model.PerformaceRating);
+    SelectList ReadingType = new SelectList(Model.ReadingTypeList.Select(r => new { text = r.Key, Value = r.Value }), "value", "text", Model.readingType);
+}
+
+<h4>@ViewData["Title"]</h4>
+<hr />
+
+<form asp-action="NewOrEditReading" method="post">
+    <input type="hidden" asp-for="ReadingID" />
+	<p class="form-control">@Model.ReadingID</p>
+
+    <div class="form-group">
+        <label asp-for="ReadedPageNumer"></label>
+        <input asp-for="ReadedPageNumer" class="form-control" /> 
+        <span asp-validation-for="ReadedPageNumer" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PerformaceRating"></label>
+        <select asp-items="Performance" asp-for="PerformaceRating">
+            <option value="0">اختر تقييم</option>
+        </select>
+        <span asp-validation-for="PerformaceRating" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="readingType"></label>
+        <select asp-items="ReadingType" asp-for="PerformaceRating">
+            <option value="0">اختر نوع القرائة</option>
+        </select>
+        <span asp-validation-for="readingType" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ReadingDayID"></label>
+		<p asp-for="ReadingDayID" id="ReadingDayID">@Model.ReadingDayID</p>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ReadingDay"></label>
+        <p asp-for="ReadingDay" id="ReadingDay" >@Model.ReadingDay</p>
+    </div>  
+    <div class="form-group">
+        <label asp-for="QuranStudentName"></label>
+        <p asp-for="QuranStudentName" id="QuranStudentName" >@Model.QuranStudentName</p>
+    </div>
+    <div class="form-group mt-3">
+        <input type="submit" value="حفظ" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">العودة إلى القائمة</a>
+    </div>
+</form>

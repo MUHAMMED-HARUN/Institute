@@ -42,5 +42,12 @@
         {
             New = 1, Review
         }
+        static public Dictionary<string, byte> GetReadingType()
+        {
+            Dictionary<string, byte> Dict = new Dictionary<string, byte>();
+            Dict.Add("جديد", 1);
+            Dict.Add("مراجعة", 2);
+            return Dict;
+        }
     }
 }

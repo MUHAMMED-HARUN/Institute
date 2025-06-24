@@ -19,6 +19,10 @@ namespace DAL.Models
         [ForeignKey("ReadingDay")]
         public int ReadingDayID { get; set; }
         public virtual clsReadingDay ReadingDay { get; set; }
+        [ForeignKey("QuranStudent")]
+        public int QuranStudentID { get; set; }
+        public virtual clsQuranStudent QuranStudent { get; set; }
+
         [ForeignKey("AuditableEntity")]
         public int? AuditableEntityID { get; set; }
         public virtual AuditableEntity AuditableEntity { get; set; }

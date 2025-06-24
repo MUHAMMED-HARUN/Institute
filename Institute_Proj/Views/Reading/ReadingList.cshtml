@@ -1,0 +1,37 @@
+﻿@model List<DAL.Models.clsReading>
+@{
+    ViewData["Title"] = "إدارة القراءات";
+}
+
+<h2>قائمة القراءات</h2>
+
+<p>
+    <a asp-action="NewOrEditReading" asp-route-ReadingDayID="1" asp-route-ID="1">إضافة قراءة جديدة</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>رقم الصفحة</th>
+            <th>تقييم الأداء</th>
+            <th>نوع القراءة</th>
+            <th>تاريخ القراءة</th>
+            <th>إجراءات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ReadedPageNum</td>
+                <td>@item.PerformanceRating</td>
+                <td>@item.ReadigType</td>
+                <td>@item.ReadingDayID</td>
+                <td>
+                    <a asp-action="NewOrEditReading" asp-route-ReadingDay="ReadingDayID" asp-route-id="@item.ID">تعديل</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,28 @@
+﻿@model DAL.Models.clsReadingDay
+@{
+    ViewData["Title"] = Model.ID == 0 ? "إضافة يوم جديد" : "تعديل يوم القراءة";
+}
+
+<h4>@ViewData["Title"]</h4>
+<hr />
+
+<form asp-action="NewOrEditReadingDay" method="post">
+    <input type="hidden" asp-for="ID" />
+
+    <div class="form-group">
+        <label asp-for="ReadingDate"></label>
+        <input asp-for="ReadingDate" class="form-control" />
+        <span asp-validation-for="ReadingDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Discription"></label>
+        <textarea asp-for="Discription" class="form-control"></textarea>
+        <span asp-validation-for="Discription" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mt-3">
+        <input type="submit" value="حفظ" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">العودة إلى القائمة</a>
+    </div>
+</form>

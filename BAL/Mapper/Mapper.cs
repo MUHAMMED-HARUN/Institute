@@ -7,6 +7,7 @@ using System.Buffers.Text;
 using System.Net.NetworkInformation;
 using DAL.Models.TableViews;
 using DAL.Models.TableFilters;
+using DAL.interfaceCalsses;
 namespace BAL.Mapper
 {
     public class Mapper
@@ -19,7 +20,7 @@ namespace BAL.Mapper
         ITeacherService _teacherService;
         IProjectService _projectService;
         IQuranStudentService _quranStudentService;
-
+        IReadingService _readingService;
         public Mapper(IServiceProvider service)
         {
             _service = service;
@@ -586,6 +587,68 @@ namespace BAL.Mapper
             model.performanceRating = quranstudent.performanceRating;
             return model;
         }
+        public clsReading MapReading(clsReadingModel model)
+        {
+            _readingService = (IReadingService)_service.GetService(typeof(IReadingService));
+            if (_readingService == null)
+                return new clsReading();
+
+            if (model.ReadingDayID > 0)
+            {
+                _readingService.SaveMode = GlobalVar._SaveMode.Update;
+                _readingService.Reading = _readingService.GetReadingByID(model.ReadingDayID);
+            }
+            else
+                _readingService.SaveMode = GlobalVar._SaveMode.New;
+            if (_readingService.Reading == null)
+            {
+                _readingService.Reading = new clsReading();
+                _readingService.SaveMode = GlobalVar._SaveMode.New;
+            }
+        
+        _readingService.Reading.ID=model.ReadingID;
+            _readingService.Reading.ReadedPageNum = model.ReadedPageNumer;
+            _readingService.Reading.PerformanceRating = model.PerformaceRating;
+            _readingService.Reading.ReadigType = model.readingType;
+            _readingService.Reading.ReadingDayID = model.ReadingDayID;
+            _readingService.Reading.QuranStudentID= model.QuranStudentID;
+
+            return _readingService.Reading;
+        }
+        public clsReadingModel MapReading(int ReadingID )
+        {
+            _readingService = (IReadingService)_service.GetService(typeof(IReadingService));
+            _studentService = (IStudentService)_service.GetService(typeof(IStudentService));
+            _studentService = (IStudentService)_service.GetService(typeof(IQuranStudent));
+            if (_readingService == null&& _studentService==null)
+                return new clsReadingModel();
+
+            _readingService.Reading=_readingService.GetReadingByID(ReadingID);
+            if (_readingService.Reading != null)
+                _readingService.SaveMode = GlobalVar._SaveMode.Update;
+
+            else
+            {
+                _readingService.SaveMode = GlobalVar._SaveMode.New;
+                return new clsReadingModel();
+            }
+            clsReadingModel model = new clsReadingModel();
+
+            model.ReadingID = _readingService.Reading.ID;
+            model.ReadedPageNumer = _readingService.Reading.ReadedPageNum;
+            model.PerformaceRating = _readingService.Reading.PerformanceRating;
+            model.readingType = _readingService.Reading.ReadigType;
+            model.ReadingDayID = _readingService.Reading.ReadingDayID;
+            model.QuranStudentID = _readingService.Reading.QuranStudentID;
+            model.ReadingDay = _readingService.GetReadingDayByID(model.ReadingDayID).ReadingDate;
+
+            clsStudentFilter filter =new clsStudentFilter();
+            filter.StudentID = _quranStudentService.GetByID(model.QuranStudentID).StudentID;
+            model.QuranStudentName = _studentService.GetList(filter).FirstOrDefault().FullName;
+
+            return model;
+        }
+     
     }
 }
 
