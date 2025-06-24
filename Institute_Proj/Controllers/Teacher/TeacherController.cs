@@ -12,11 +12,13 @@ namespace Institute_Proj.Controllers.Teacher
         ITeacherService _TeacherService;
         IPersonService _personService;
         IClassService _classService;
-        public TeacherController(ITeacherService teacherService, IPersonService personService,IClassService classService)
+        IServiceProvider _service;
+        public TeacherController(ITeacherService teacherService, IPersonService personService,IClassService classService, IServiceProvider service)
         {
             _TeacherService = teacherService;
             _personService = personService;
             _classService = classService;
+            _service = service;
         }
 
         public IActionResult Index()
@@ -33,14 +35,14 @@ namespace Institute_Proj.Controllers.Teacher
         [HttpGet]
         public IActionResult showTeacherCard(int TeacherID)
         {
-            Mapper mapper = new Mapper(_TeacherService, _personService);
+            Mapper mapper = new Mapper(_service);
             clsTeacherTableViewModel model = mapper.MapTeacherTable(TeacherID);
             return PartialView("TeacherCard", model);
         }
         [HttpGet]
         public IActionResult NewOrEdit(int TeacherID)
         {
-            Mapper mapper = new Mapper(_TeacherService, _personService);
+            Mapper mapper = new Mapper(_service);
 
             clsTeacherViewModel model = mapper.MapTeacher(TeacherID);
             return View(model);
@@ -57,7 +59,7 @@ namespace Institute_Proj.Controllers.Teacher
             {
                 return View(model);
             }
-            Mapper mapper = new Mapper(_TeacherService, _personService);
+            Mapper mapper = new Mapper(_service);
             _TeacherService.Teacher = mapper.MapTeacher(model);
             if (_TeacherService.Save())
                 return RedirectToAction("Index");
@@ -73,7 +75,7 @@ namespace Institute_Proj.Controllers.Teacher
         public IActionResult ShowTeacherCardWithFilter(clsTeacherFilter filter, string prefix)
         {
             ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
-            Mapper mapper = new Mapper(_TeacherService, _personService);
+            Mapper mapper = new Mapper(_service);
             clsTeacherTableViewModel model = mapper.MapTeacherTable(filter);
             return PartialView("TeacherCardWithFilter", model);
         }
@@ -120,7 +122,7 @@ namespace Institute_Proj.Controllers.Teacher
             }
 
 
-            Mapper mapper = new Mapper( _TeacherService,_personService);
+            Mapper mapper = new Mapper(_service);
             _TeacherService.EnrolmentTeacher = mapper.MapEnrollmentTeacher(model);
             if (_TeacherService.HandleEnrollmentTeacher())
                 return RedirectToAction();

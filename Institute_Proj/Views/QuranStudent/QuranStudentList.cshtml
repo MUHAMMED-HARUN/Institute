@@ -1,0 +1,191 @@
+﻿@using DAL.Models.TableFilters
+@model clsQuranStudentFilter
+@{
+    var projectSelectList = new SelectList(Model.Projects, "ID", "Name", Model.ProjectID);
+}
+
+<h3>قائمة طلاب القرآن</h3>
+
+<div>
+    <div id="filterItem">
+        <div class="col-12 col-md-auto d-flex align-items-center">
+            <label for="searchFieldSelect" class="form-label mb-0 me-2">بحث حسب</label>
+            <select id="searchFieldSelect" class="form-select w-auto">
+                <option selected value="-1">لا شيء</option>
+                <option data-pattern="^\d{1,10}$" value="StudentID">معرف الطالب</option>
+                <option data-pattern="^\d{11}$" value="NationalNumber">الرقم الوطني</option>
+                <option data-pattern="^[\u0600-\u06FFa-zA-Z ]{2,50}$" value="FullName">الاسم</option>
+            </select>
+
+            <input type="text" id="searchInput" name="" class="form-control ms-2" style="min-width: 200px;" disabled placeholder="" />
+        </div>
+
+        <!-- فلاتر مقدار الحفظ -->
+        <div class="col-12 col-md-auto d-flex align-items-center">
+            <label class="me-2">مقدار الحفظ من</label>
+            <input type="number" name="StartSevdPage" class="form-control me-3" min="0" max="604" />
+            <label class="me-2">إلى</label>
+            <input type="number" name="EndSevdPage" class="form-control" min="0" max="604" />
+        </div>
+
+        <!-- فلاتر مقدار التثبيت -->
+        <div class="col-12 col-md-auto d-flex align-items-center">
+            <label class="me-2">مقدار التثبيت من</label>
+            <input type="number" name="StartInstalledPart" class="form-control me-3" min="0" max="30" />
+            <label class="me-2">إلى</label>
+            <input type="number" name="EndInstalledPart" class="form-control" min="0" max="30" />
+        </div>
+        <!-- فلتر حسب المشروع -->
+        <div class="col-12 col-md-auto d-flex align-items-center">
+            <label class="form-label mb-0 me-2" for="ProjectID">المشروع</label>
+            <select id="ProjectID" name="ProjectID" class="form-select">
+                <option value="">-- اختر مشروعًا --</option>
+                @foreach (var proj in projectSelectList)
+                {
+                    <option value="@proj.Value">@proj.Text</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-12 col-md-auto d-flex align-items-center">
+            <p class="mb-0 me-3">تصنيف حسب الحالة</p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="NoneActive" type="radio" name="IsActive" value="" />
+                <label class="form-check-label" for="NoneActive">لا شيء</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="Active" type="radio" name="IsActive" value="true" />
+                <label class="form-check-label" for="Active">مفعل</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="not-Active" type="radio" name="IsActive" value="false" />
+                <label class="form-check-label" for="not-Active">غير مفعل</label>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-auto d-flex align-items-center">
+            <button type="button" id="btnSearch" class="btn btn-primary">بحث</button>
+            <button type="button" id="btnReset" class="btn btn-secondary">إرجاع</button>
+        </div>
+    </div>
+
+    <table class="table table-hover mt-3">
+        <thead>
+            <tr>
+                <th>معرف طالب القرآن</th>
+                <th>معرف الطالب</th>
+                <th>الاسم الكامل</th>
+                <th>رقم الهوية</th>
+                <th>مقدار الحفظ</th>
+                <th>مقدار التثبيت</th>
+                <th>نوع المشروع</th>
+                <th>تقييم الطالب</th>
+            </tr>
+        </thead>
+        <tbody id="resultTableBody">
+            @foreach(var q in Model.QuranStudentTableView)
+            {
+                <tr>
+                    <td>@q.QuranStudentID</td>
+                    <td>@q.StudentID</td>
+                    <td>@q.FullName</td>
+                    <td>@q.NationalNumber</td>
+                    <td>@q.TotalSavedPages</td>
+                    <td>@q.TotalInstalledParts</td>
+                    <td>@q.ProjectName</td>
+                    <td>@q.PerformanceRatingText</td>
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<script>
+    $(document).ready(function () {
+        $("#searchFieldSelect").on("change", function () {
+            const selectedValue = $(this).val();
+            const input = $("#searchInput");
+            if (selectedValue === "-1") {
+                input.attr("name", "").val("").prop("disabled", true);
+            } else {
+                input.attr("name", selectedValue).prop("disabled", false)
+                    .attr("placeholder", "أدخل " + $(this).find("option:selected").text());
+            }
+        });
+
+        $("#btnSearch").on("click", function () {
+            let input = $("#searchInput");
+            let fieldName = input.attr("name");
+            let fieldValue = input.val();
+            if (!CheckIsValid(fieldValue)) return;
+
+            let dataToSend = {
+                IsActive: $('input[name="IsActive"]:checked').val(),
+                StartSevdPage: $('input[name="StartSevdPage"]').val(),
+                EndSevdPage: $('input[name="EndSevdPage"]').val(),
+                StartInstalledPart: $('input[name="StartInstalledPart"]').val(),
+                EndInstalledPart: $('input[name="EndInstalledPart"]').val(),
+                ProjectID :$('#ProjectID').val()
+            };
+
+
+            if (fieldName && fieldName !== "-1") {
+                dataToSend[fieldName] = fieldValue;
+            }
+
+            $.ajax({
+                url: '/QuranStudent/Search',
+                type: 'POST',
+                data: dataToSend,
+                success: function (data) {
+                    $('#resultTableBody').html('');
+                    data.forEach(function (d) {
+                        const tr = `<tr>
+                                <td>${d.quranStudentID}</td>
+                                <td>${d.studentID}</td>
+                                <td>${d.fullName}</td>
+                                <td>${d.nationalNumber}</td>
+                                <td>${d.totalSavedPages}</td>
+                                <td>${d.totalInstalledParts}</td>
+                                <td>${d.projectName}</td>
+                                <td>${d.performanceRatingText}</td>
+                            </tr>`;
+                        $('#resultTableBody').append(tr);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    alert("حدث خطأ أثناء البحث: " + error);
+                }
+            });
+        });
+
+        $("#btnReset").on("click", function () {
+            $("#filterItem").find("input").val("");
+            $("#filterItem").find("input[type='radio']").prop('checked', false);
+            $("#errorelement").remove();
+        });
+
+        function CheckIsValid(fieldValue) {
+            const selectedOption = $("#searchFieldSelect option:selected");
+            const pattern = new RegExp(selectedOption.data("pattern"));
+            $("#errorelement").remove();
+
+            if (!pattern.test(fieldValue)) {
+                const errorElement = $("<p>", {
+                    text: "القيمة غير صالحة",
+                    class: "text-danger",
+                    id: "errorelement"
+                });
+                $("#searchInput").after(errorElement);
+                return false;
+            }
+            return true;
+        }
+    });
+</script>

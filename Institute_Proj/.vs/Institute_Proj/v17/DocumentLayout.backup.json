@@ -3,21 +3,15 @@
   "WorkspaceRootPath": "C:\\Institute_Proj\\Institute_Proj\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\views\\quranstudent\\quranstudentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\quranstudent\\quranstudentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\models\\tablefilters\\clsquranstudentfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\controllers\\student\\quranstudentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:controllers\\student\\quranstudentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\institute_proj\\bal\\mapper\\mapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\views\\quranstudent\\neworedit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\quranstudent\\neworedit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\institute_proj\\bal\\interfacecalsses\\iquranstudentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\institute_proj\\bal\\iservice\\quranstudentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,76 +21,49 @@
       "DocumentGroups": [
         {
           "DockedHeight": 314,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NewOrEdit.cshtml",
-              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Views\\QuranStudent\\NewOrEdit.cshtml",
-              "RelativeDocumentMoniker": "Views\\QuranStudent\\NewOrEdit.cshtml",
-              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Views\\QuranStudent\\NewOrEdit.cshtml",
-              "RelativeToolTip": "Views\\QuranStudent\\NewOrEdit.cshtml",
-              "ViewState": "AgIAADkAAAAAAAAAAAAIwDwAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-23T18:33:12.641Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "QuranStudentService.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\BAL\\IService\\QuranStudentService.cs",
-              "RelativeDocumentMoniker": "..\\BAL\\IService\\QuranStudentService.cs",
-              "ToolTip": "C:\\Institute_Proj\\BAL\\IService\\QuranStudentService.cs",
-              "RelativeToolTip": "..\\BAL\\IService\\QuranStudentService.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAwwEIAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T19:39:51.454Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IQuranStudentService.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\BAL\\interfaceCalsses\\IQuranStudentService.cs",
-              "RelativeDocumentMoniker": "..\\BAL\\interfaceCalsses\\IQuranStudentService.cs",
-              "ToolTip": "C:\\Institute_Proj\\BAL\\interfaceCalsses\\IQuranStudentService.cs",
-              "RelativeToolTip": "..\\BAL\\interfaceCalsses\\IQuranStudentService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAA3wBUAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T19:38:26.978Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Mapper.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\BAL\\Mapper\\Mapper.cs",
-              "RelativeDocumentMoniker": "..\\BAL\\Mapper\\Mapper.cs",
-              "ToolTip": "C:\\Institute_Proj\\BAL\\Mapper\\Mapper.cs",
-              "RelativeToolTip": "..\\BAL\\Mapper\\Mapper.cs",
-              "ViewState": "AgIAAOYBAAAAAAAAAAAIwPQBAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T19:31:20.37Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "QuranStudentController.cs",
               "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Student\\QuranStudentController.cs",
               "RelativeDocumentMoniker": "Controllers\\Student\\QuranStudentController.cs",
               "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Student\\QuranStudentController.cs",
               "RelativeToolTip": "Controllers\\Student\\QuranStudentController.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAzwB0AAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAvwBUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T18:10:06.927Z",
+              "WhenOpened": "2025-06-24T09:12:07.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "clsQuranStudentFilter.cs",
+              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\Models\\TableFilters\\clsQuranStudentFilter.cs",
+              "RelativeDocumentMoniker": "..\\DAL\\Models\\TableFilters\\clsQuranStudentFilter.cs",
+              "ToolTip": "C:\\Institute_Proj\\DAL\\Models\\TableFilters\\clsQuranStudentFilter.cs",
+              "RelativeToolTip": "..\\DAL\\Models\\TableFilters\\clsQuranStudentFilter.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAIA4wBMAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T09:05:16.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "QuranStudentList.cshtml",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Views\\QuranStudent\\QuranStudentList.cshtml",
+              "RelativeDocumentMoniker": "Views\\QuranStudent\\QuranStudentList.cshtml",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Views\\QuranStudent\\QuranStudentList.cshtml",
+              "RelativeToolTip": "Views\\QuranStudent\\QuranStudentList.cshtml",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAAAIUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-24T09:04:41.751Z",
               "EditorCaption": ""
             }
           ]

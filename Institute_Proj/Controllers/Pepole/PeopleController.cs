@@ -16,15 +16,17 @@ namespace Institute_Proj.Controllers.Pepole
         // List of people
         IPersonService _personService;
         IAddressService _addressService;
+        IServiceProvider _service;
 
         string OldImage;
         string OldIDImage;
         string NewImage;
         string NewIDImage;
-        public PeopleController(IPersonService personService, IAddressService addressService)
+        public PeopleController(IPersonService personService, IAddressService addressService, IServiceProvider service)
         {
             _personService = personService;
             _addressService = addressService;
+            _service = service;
         }
         [HttpGet]
         public IActionResult Index()
@@ -44,7 +46,7 @@ namespace Institute_Proj.Controllers.Pepole
         public IActionResult NewOrEdit(int personID)
         {   
            
-            Mapper mapper = new Mapper(_personService, _addressService);
+            Mapper mapper = new Mapper(_service);
             clsPersonViewModel personViewModel = mapper.MapPerson(personID);
             ViewBag.Relations = new SelectList(_personService.RelationshipStatusArabic().Select(r => new { Text = r.Key, Value = r.Value.ToString() }), "Value", "Text");
             if (personViewModel != null)
@@ -69,7 +71,7 @@ namespace Institute_Proj.Controllers.Pepole
                 return View(personVModel); 
             }
                
-            Mapper mapper = new Mapper(_personService, _addressService);
+            Mapper mapper = new Mapper(_service);
             _personService.Person= mapper.MapPerson(personVModel);
             _personService.Address = mapper.MapAddress(personVModel.addressPartialView);
             // Re Build This Func
@@ -84,7 +86,7 @@ namespace Institute_Proj.Controllers.Pepole
         {
             ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
 
-            Mapper mapper = new Mapper(_personService, _addressService);
+            Mapper mapper = new Mapper(_service);
             clsPersonTableView model = mapper.MapPersonCard(PersonID);
             if (model != null)
                 return PartialView("PersonCardPartial", model);

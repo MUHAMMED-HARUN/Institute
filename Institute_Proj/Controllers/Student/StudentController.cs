@@ -12,11 +12,13 @@ namespace Institute_Proj.Controllers.Student
         public readonly IStudentService _studentService;
         public readonly IPersonService _personService;
         public readonly IClassService _classService;
-        public StudentController(IStudentService studentService,IPersonService personService ,IClassService classService)
+        IServiceProvider _service;
+        public StudentController(IStudentService studentService,IPersonService personService ,IClassService classService,IServiceProvider provider)
         {                   
             _personService = personService;
             _studentService = studentService;
             _classService = classService;
+            _service = provider;
         }
         public IActionResult Index()
         {
@@ -31,7 +33,7 @@ namespace Institute_Proj.Controllers.Student
         [HttpGet]
         public IActionResult NewOrEdit(int? studentID)
         {
-            Mapper mapper = new Mapper(_personService, _studentService);
+            Mapper mapper = new Mapper(_service);
             clsStudentViewModel model = mapper.MapStudent(studentID??-1);
             return View(model);
         }
@@ -47,7 +49,7 @@ namespace Institute_Proj.Controllers.Student
             
             if (!ModelState.IsValid)
                 return View(Model);
-            Mapper mapper = new Mapper(_personService, _studentService);
+            Mapper mapper = new Mapper(_service);
             _studentService.Student = mapper.MapStudent(Model);
            bool IsSaved= _studentService.Save();
             if(IsSaved)
@@ -58,7 +60,7 @@ namespace Institute_Proj.Controllers.Student
         [HttpGet]
         public IActionResult ShowStudentCard(int StudentID)
         {
-            Mapper mapper = new Mapper(_personService, _studentService);
+            Mapper mapper = new Mapper(_service);
             clsStudentTableVieweModel Model = mapper.MapStudentTable(StudentID);
             return PartialView("StudentCard", Model);
         }
@@ -72,7 +74,7 @@ namespace Institute_Proj.Controllers.Student
         public IActionResult ShowStudentCardWithFilter(clsStudentFilter studentFilter ,string prefix)
         {
             ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
-            Mapper mapper = new Mapper(_personService, _studentService);
+            Mapper mapper = new Mapper(_service);
             return PartialView("StudentCardWithFilter", mapper.MapStudentTable(studentFilter));
         }
         public IActionResult DeleteStudent(int StudentID) 
@@ -108,7 +110,7 @@ namespace Institute_Proj.Controllers.Student
             }
 
 
-            Mapper mapper = new Mapper(_personService, _studentService);
+            Mapper mapper = new Mapper(_service);
             _studentService.EnrolmentStudentInClass = mapper.MapEnrollmentStudent(model);
             if (_studentService.HandleEnrollmentStudent())
                 return RedirectToAction();

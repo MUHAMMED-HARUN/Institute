@@ -1,6 +1,8 @@
 ﻿using BAL.interfaceCalsses;
 using DAL.interfaceCalsses;
 using DAL.Models;
+using DAL.Models.TableFilters;
+using DAL.Models.TableViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +34,9 @@ namespace BAL.IService
             return _quranStudentRepo.GetByID(id);
         }
 
-        public List<clsQuranStudent> GetAll()
+        public List<clsQuranStudentTableView> GetAll(clsQuranStudentFilter filter)
         {
-            return _quranStudentRepo.GetAll();
+            return _quranStudentRepo.GetAll(filter);
         }
 
         public bool IsExist(int id)

@@ -11,6 +11,7 @@ namespace BAL.Mapper
 {
     public class Mapper
     {
+        IServiceProvider _service;
         IPersonService _personService;
         IAddressService _addressService;
         IStudentService _studentService;
@@ -18,41 +19,17 @@ namespace BAL.Mapper
         ITeacherService _teacherService;
         IProjectService _projectService;
         IQuranStudentService _quranStudentService;
-        public Mapper(IPersonService personService, IAddressService addressService,IStudentService studentService)
+
+        public Mapper(IServiceProvider service)
         {
-            _personService = personService;
-            _addressService = addressService;
-			_studentService = studentService;
-		}
-		public Mapper(IPersonService personService, IStudentService studentService)
-		{
-			_personService = personService;
-			_studentService = studentService;
-		}
-		public Mapper(IPersonService personService, IAddressService addressService)
-		{
-			_personService = personService;
-			_addressService = addressService;
-		}
-        public Mapper(IPersonService personService, IStudentService studentService,IClassService classService)
-        {
-            _personService = personService;
-            _studentService = studentService;
-            _classService = classService;
+            _service = service;
         }
-        public Mapper(ITeacherService teacherService,IPersonService personService)
-        {
-            _teacherService = teacherService;
-            _personService = personService;
-        }
-        public Mapper(IQuranStudentService quranStudentService, IProjectService projectService)
-        {
-            _quranStudentService = quranStudentService;
-            _projectService = projectService;
-        }
+
         public clsPerson MapPerson(clsPersonViewModel model)
         {
-
+            _personService = (IPersonService)_service.GetService(typeof(IPersonService));
+            if (_personService == null)
+                return new clsPerson();
             // Convert To IsExist(personID);
             _personService.Person = _personService.GetByID(model.PersonID);
             if (_personService.Person == null)
@@ -99,6 +76,9 @@ namespace BAL.Mapper
         }
         public clsAddress MapAddress(clsAddressPartialView addressPartialView)
         {
+            _personService = (IPersonService)_service.GetService(typeof(IPersonService));
+            if (_personService == null)
+                return new clsAddress();
             _personService.Address = new clsAddress();
 
             if (addressPartialView.SelectedNeighborhoodID.HasValue)
@@ -110,6 +90,10 @@ namespace BAL.Mapper
         }
         public clsPersonViewModel MapPerson(int PersonID)
         {
+            _personService = (IPersonService)_service.GetService(typeof(IPersonService));
+            if (_personService == null)
+                return new clsPersonViewModel();
+
             clsPersonViewModel model = new clsPersonViewModel();
             clsPerson person = _personService.GetByID(PersonID);
 
@@ -144,6 +128,10 @@ namespace BAL.Mapper
         }
         public clsPersonTableView MapPersonCard(int personID)
         {
+            _personService = (IPersonService)_service.GetService(typeof(IPersonService));
+            if (_personService == null)
+                return new clsPersonTableView();
+
             clsPersonFilter filter = new clsPersonFilter();
             filter.PersonID = personID;
             clsPersonTableView person = _personService.GetPersonTableView(filter).FirstOrDefault();
@@ -225,6 +213,10 @@ namespace BAL.Mapper
 		}
 		public clsAddressPartialView MapAddress(int AddressID)
         {
+            _addressService = (IAddressService)_service.GetService(typeof(IAddressService));
+            if (_addressService == null)
+                return new clsAddressPartialView();
+
             clsAddressPartialView AdrsPartialview = new clsAddressPartialView();
             clsAddress address = _addressService.GetAddressByID(AddressID);
             if (address == null)
@@ -243,6 +235,10 @@ namespace BAL.Mapper
         }
         public clsCityAndCountryViewModel MapCityAndCountry(int CityID)
         {
+            _addressService = (IAddressService)_service.GetService(typeof(IAddressService));
+            if (_addressService == null)
+                return new clsCityAndCountryViewModel();
+
             clsCityAndCountryViewModel CityAndCountryView = new clsCityAndCountryViewModel();
             CityAndCountryView.PlaceOfBirthID = CityID;
             CityAndCountryView.SelectedCountryID = _addressService.GetCity(CityID).CountryID;
@@ -252,6 +248,10 @@ namespace BAL.Mapper
         }
         public clsStudent MapStudent(clsStudentViewModel model)
         {
+
+            _studentService = (IStudentService)_service.GetService(typeof(IStudentService));
+            if (_studentService == null)
+                return new clsStudent();
 
             if (model.StudentID.HasValue)
             {
@@ -275,6 +275,10 @@ namespace BAL.Mapper
 		}
         public clsStudentViewModel MapStudent(int  studentID)
         {
+            _studentService = (IStudentService)_service.GetService(typeof(IStudentService));
+            if (_studentService == null)
+                return new clsStudentViewModel();
+
             if ( studentID <= 0)
                 return new clsStudentViewModel();
 
@@ -295,6 +299,10 @@ namespace BAL.Mapper
         }
         public clsStudentTableVieweModel MapStudentTable (int studentID)
         {
+            _studentService = (IStudentService)_service.GetService(typeof(IStudentService));
+            if (_studentService == null)
+                return new clsStudentTableVieweModel();
+
             clsStudentTableVieweModel model = new clsStudentTableVieweModel();
             clsStudentFilter studentFilter = new clsStudentFilter();
             studentFilter.StudentID = studentID;
@@ -314,6 +322,11 @@ namespace BAL.Mapper
         }
         public clsStudentTableVieweModel MapStudentTable(clsStudentFilter studentFilter)
         {
+
+            _studentService = (IStudentService)_service.GetService(typeof(IStudentService));
+            if (_studentService == null)
+                return new clsStudentTableVieweModel();
+
             clsStudentTableVieweModel model = new clsStudentTableVieweModel();
             clsStudentTableView StudentView = _studentService.GetList(studentFilter).FirstOrDefault();
             if (StudentView != null)
@@ -331,6 +344,11 @@ namespace BAL.Mapper
         }
         public clsEnrolmentStudentInClass MapEnrollmentStudent(clsEnrolmentStudentInClassModel model)
         {
+
+            _studentService = (IStudentService)_service.GetService(typeof(IStudentService));
+            if (_studentService == null)
+                return new clsEnrolmentStudentInClass();
+
             clsEnrolmentStudentInClass EnrollmentStudent=new clsEnrolmentStudentInClass();
             if (model.EnrollmentID > 0)
             {
@@ -354,6 +372,14 @@ namespace BAL.Mapper
         }
         public clsEnrolmentStudentInClassModel MapEnrollmentStudent(int EnrollmentStudentID)
         {
+            _studentService = (IStudentService)_service.GetService(typeof(IStudentService));
+            if (_studentService == null)
+                return new clsEnrolmentStudentInClassModel();
+
+            _classService = (IClassService)_service.GetService(typeof(IClassService));
+            if (_classService == null)
+                return new clsEnrolmentStudentInClassModel();
+
             clsEnrolmentStudentInClass EnrollmentInClass= _studentService.GetEnrolmentStudentInClass(EnrollmentStudentID);
             if(EnrollmentInClass==null)
                 return new clsEnrolmentStudentInClassModel();
@@ -372,6 +398,10 @@ namespace BAL.Mapper
         }
         public clsTeacherViewModel MapTeacher(int teacherID)
         {
+            _teacherService = (ITeacherService)_service.GetService(typeof(ITeacherService));
+            if (_teacherService == null)
+                return new clsTeacherViewModel();
+
             if (teacherID <= 0)
                 return new clsTeacherViewModel();
 
@@ -393,6 +423,10 @@ namespace BAL.Mapper
         }
         public clsTeacher MapTeacher(clsTeacherViewModel model)
         {
+            _teacherService = (ITeacherService)_service.GetService(typeof(ITeacherService));
+            if (_teacherService == null)
+                return new clsTeacher();
+
             if (model.TeacherID > 0)
             {
                 _teacherService.Teacher = _teacherService.GetByID(model.TeacherID);
@@ -419,7 +453,11 @@ namespace BAL.Mapper
          
 		public clsTeacherTableViewModel MapTeacherTable(int teacherID)
 		{
-			clsTeacherTableViewModel model = new clsTeacherTableViewModel();
+            _teacherService = (ITeacherService)_service.GetService(typeof(ITeacherService));
+            if (_teacherService == null)
+                return new clsTeacherTableViewModel();
+
+            clsTeacherTableViewModel model = new clsTeacherTableViewModel();
 			clsTeacherFilter teacherFilter = new clsTeacherFilter();
 			teacherFilter.TeacherID = teacherID;
 			clsTeacherTableView TeacherView = _teacherService.GetAll(teacherFilter).FirstOrDefault();
@@ -438,6 +476,10 @@ namespace BAL.Mapper
 		}
         public clsTeacherTableViewModel MapTeacherTable(clsTeacherFilter teacherFilter)
         {
+            _teacherService = (ITeacherService)_service.GetService(typeof(ITeacherService));
+            if (_teacherService == null)
+                return new clsTeacherTableViewModel();
+
             clsTeacherTableViewModel model = new clsTeacherTableViewModel();
             clsTeacherTableView TeacherTable = _teacherService.GetAll(teacherFilter).FirstOrDefault();
             if (TeacherTable != null)
@@ -455,6 +497,10 @@ namespace BAL.Mapper
         }
         public clsEnrolmentTeacherInClass MapEnrollmentTeacher(clsEnrolmentTeacherInClassModel model)
         {
+            _teacherService = (ITeacherService)_service.GetService(typeof(ITeacherService));
+            if (_teacherService == null)
+                return new clsEnrolmentTeacherInClass();
+
             clsEnrolmentTeacherInClass EnrollmentTeacher = new clsEnrolmentTeacherInClass();
             if (model.EnrollmentID > 0)
             {
@@ -477,6 +523,10 @@ namespace BAL.Mapper
         }
         public clsQuranStudent MapQuranStudent(clsQuranStudentModel model)
         {
+            _quranStudentService = (IQuranStudentService)_service.GetService(typeof(IQuranStudentService));
+            if (_quranStudentService == null)
+                return new clsQuranStudent();
+
             if (model.ID > 0)
             {
                 _quranStudentService.QuranStudent = _quranStudentService.GetByID(model.ID);
@@ -506,6 +556,35 @@ namespace BAL.Mapper
 
 
             return _quranStudentService.QuranStudent;
+        }
+        public clsQuranStudentModel MapQuranStudent(int QuranstudentID)
+        {
+            _quranStudentService = (IQuranStudentService)_service.GetService(typeof(IQuranStudentService));
+            if (_quranStudentService == null)
+                return new clsQuranStudentModel();
+
+            _quranStudentService.SaveMode = GlobalVar._SaveMode.New;
+
+
+            if (QuranstudentID <= 0)
+                return new clsQuranStudentModel();
+
+            clsQuranStudent quranstudent = _quranStudentService.GetByID(QuranstudentID);
+
+            if (quranstudent == null)
+                return new clsQuranStudentModel();
+
+            _quranStudentService.SaveMode = GlobalVar._SaveMode.Update;
+            clsQuranStudentModel model = new clsQuranStudentModel();
+            model.ID = quranstudent.ID;
+
+            model.studentTable = MapStudentTable(quranstudent.StudentID);
+            model.StudentID = quranstudent.StudentID;
+            model.TotalSavedPages = quranstudent.TotalSavedPages;
+            model.TotalInstalledParts = quranstudent.TotalInstalledParts;
+            model.ProjectID = quranstudent.ProjectID;
+            model.performanceRating = quranstudent.performanceRating;
+            return model;
         }
     }
 }

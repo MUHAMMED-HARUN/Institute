@@ -1,4 +1,6 @@
 ﻿using DAL.Models;
+using DAL.Models.TableFilters;
+using DAL.Models.TableViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,7 @@ namespace BAL.interfaceCalsses
          bool Update(clsQuranStudent entity);
         public bool Delete(int id);
         public clsQuranStudent GetByID(int id);
-        public List<clsQuranStudent> GetAll();
+        public List<clsQuranStudentTableView> GetAll(clsQuranStudentFilter filter);
         public bool IsExist(int id);
         public bool IsQuranStudent(int baseStudentID);
         public bool IsAlreadyInProject(int ProjectID, int BaseStudentID);
