@@ -18,14 +18,14 @@ namespace BAL.ViewModel
         public Dictionary<string, byte> PerformaceList= new Dictionary<string, byte>();
         [DisplayName("نوع القرائة")]
         public byte readingType { get; set; }
-        public Dictionary<string, byte> ReadingTypeList=new Dictionary<string, byte>();
+        public Dictionary<string, byte>? ReadingTypeList=new Dictionary<string, byte>();
       
         [DisplayName("تاريخ القرائة")]
-        public DateTime ReadingDay { get; set; }
+        public DateTime? ReadingDay { get; set; }
         [DisplayName("معرف يوم التسميع")]
         public int ReadingDayID { get; set; }
         [DisplayName("اسم الطالب")]
-        public string QuranStudentName { get; set; }
+        public string? QuranStudentName { get; set; }
         [DisplayName("معرف الطالب")]
         public int QuranStudentID { get; set; }
 

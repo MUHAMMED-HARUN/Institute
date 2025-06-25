@@ -17,6 +17,7 @@ namespace BAL.interfaceCalsses
         int CreateReadingDay(clsReadingDay entity);
         bool UpdateReadingDay(clsReadingDay entity);
         bool DeleteReadingDay(int id);
+        clsReadingDay GetLastReadingDay();
 
         // ----- Readings -----
         List<clsReading> GetReadingsByDayID(int readingDayID);

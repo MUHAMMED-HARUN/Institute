@@ -53,6 +53,10 @@
       "PackagePath": "staticwebassets\\Models-Details\\Person\\Images\\eff9acc4-01cd-423c-a4f1-9dcb4f95e5e1.png"
     },
     {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\MySite.css",
+      "PackagePath": "staticwebassets\\css\\MySite.css"
+    },
+    {
       "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\css\\all.css",
       "PackagePath": "staticwebassets\\css\\css\\all.css"
     },
@@ -115,6 +119,10 @@
     {
       "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\js\\FileFunc.js",
       "PackagePath": "staticwebassets\\js\\FileFunc.js"
+    },
+    {
+      "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\js\\MySite.js",
+      "PackagePath": "staticwebassets\\js\\MySite.js"
     },
     {
       "Id": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\js\\site.js",

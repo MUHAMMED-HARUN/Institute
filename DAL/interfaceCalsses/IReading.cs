@@ -17,7 +17,7 @@ namespace DAL.interfaceCalsses
         bool DeleteReadingDay(int id);
         public List<clsReadingDay> GetReadingDaysByDate(DateTime date);
 
-
+        clsReadingDay GetLastReadingDay();
         // Reading
         List<clsReading> GetReadingsByDayID(int readingDayID);
         clsReading GetReadingByID(int id);

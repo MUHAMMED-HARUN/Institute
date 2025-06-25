@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - معهد القرآن</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Institute_Proj.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/css/all.css">
+    <link rel="stylesheet" href="~/css/MySite.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="text-center py-3">لوحة التحكم</h4>
+        <a href="/Home/Index"><i class="fa fa-home me-2"></i>الرئيسية</a>
+        <a href="/Student/Index"><i class="fa fa-user-graduate me-2"></i>الطلاب</a>
+        <a href="/Teacher/Index"><i class="fa fa-chalkboard-teacher me-2"></i>المعلمون</a>
+        <a href="/QuranStudent/Index"><i class="fa fa-quran me-2"></i>طلاب القرآن</a>
+        <a href="/ReadingDay/Index"><i class="fa fa-calendar-day me-2"></i>أيام القراءة</a>
+    </div>
+
+    <!-- Main content -->
+    <div class="content w-100">
+        <nav class="navbar navbar-expand navbar-custom mb-4 text-white px-3">
+            <div class="container-fluid">
+                <span class="navbar-brand text-white">معهد القرآن الكريم</span>
+                <span class="ms-auto">@DateTime.Now.ToString("dddd dd/MM/yyyy")</span>
+            </div>
+        </nav>
+
+        <main role="main" class="container-fluid">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

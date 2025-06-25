@@ -80,6 +80,7 @@
                 <th>مقدار التثبيت</th>
                 <th>نوع المشروع</th>
                 <th>تقييم الطالب</th>
+                <th>اضافة قرائة</th>
             </tr>
         </thead>
         <tbody id="resultTableBody">
@@ -94,6 +95,7 @@
                     <td>@q.TotalInstalledParts</td>
                     <td>@q.ProjectName</td>
                     <td>@q.PerformanceRatingText</td>
+                    <td><a asp-action="NewOrEditReading" asp-controller="Reading" asp-route-QuranStudentID="@q.QuranStudentID">اضافة قرائة</a></td>
                 </tr>
             }
             
@@ -155,7 +157,8 @@
                                 <td>${d.totalInstalledParts}</td>
                                 <td>${d.projectName}</td>
                                 <td>${d.performanceRatingText}</td>
-                            </tr>`;
+                                <td><a asp-action="NewOrEditReading" asp-controller="Reading" asp-route-QuranStudentID="${d.quranStudentID}">اضافة قرائة</a></td>
+                             </tr>`;
                         $('#resultTableBody').append(tr);
                     });
                 },

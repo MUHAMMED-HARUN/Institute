@@ -64,6 +64,11 @@ namespace DAL.IService
             throw new NotImplementedException();
         }
 
+        public clsReadingDay GetLastReadingDay()
+        {
+            return _context.ReadingDay.OrderByDescending(r => r.ID).FirstOrDefault();
+        }
+
         // ---------------- Reading ----------------
         public List<clsReading> GetReadingsByDayID(int readingDayID)
         {

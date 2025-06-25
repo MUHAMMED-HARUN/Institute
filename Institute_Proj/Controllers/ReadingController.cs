@@ -4,6 +4,7 @@ using BAL.Mapper;
 using BAL.ViewModel;
 using DAL.Models;
 using DAL.Models.TableFilters;
+using DAL.Models.TableViews;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Institute_Proj.Controllers
@@ -63,33 +64,39 @@ namespace Institute_Proj.Controllers
         //    return View(reading);
         //}
         [HttpGet]
-        public IActionResult NewOrEditReading(int QuranStudentID,int ReadingDayID)
+        public IActionResult NewOrEditReading(int QuranStudentID)
         {
+            
             _QuranstudentService = (IQuranStudentService)_service.GetService(typeof(IQuranStudentService));
 
             clsReadingModel model = new clsReadingModel();
             clsQuranStudentFilter filter = new clsQuranStudentFilter();
 
             filter.QuranStudentID = QuranStudentID;
-            model.QuranStudentName= _QuranstudentService.GetAll(filter).FirstOrDefault().FullName;
+            
+            model.QuranStudentName = _QuranstudentService.GetAll(filter).FirstOrDefault()?.FullName;
             model.QuranStudentID = QuranStudentID;
 
-            model.ReadingDay = _readingService.GetReadingDayByID(ReadingDayID).ReadingDate;
-            model.ReadingDayID = ReadingDayID;
+            clsReadingDay readingDay = _readingService.GetLastReadingDay();
+
+            model.ReadingDay = readingDay.ReadingDate;
+            model.ReadingDayID = readingDay.ID;
+
 
             model.PerformaceList = GlobalVar.GetPerformanceRating();
             model.ReadingTypeList = GlobalVar.GetReadingType();
             return View(model);
         }
-        public IActionResult NewOrEditReading(clsReading model)  
+        public IActionResult NewOrEditReading(clsReadingModel model)  
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-
-            if (_readingService.CreateReading(model) > 0)
-                return RedirectToAction("ReadingList");
+            Mapper mapper = new Mapper(_service);
+             clsReading reading= mapper.MapReading(model);
+            if (_readingService.CreateReading(reading) > 0)
+                return RedirectToAction("Index", "QuranStudent");
             else
                 return NotFound("خطا في الاضافة");
         }

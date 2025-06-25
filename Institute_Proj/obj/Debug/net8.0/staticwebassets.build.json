@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kvC1/xtzP/JjAZ+hO2zSH4tMINmT9VtTBgl8K4n1ouc=",
+  "Hash": "pMuOSxhe4mEiqgovfgvRM7gerEyvB+LRnnZEBMiFnE4=",
   "Source": "Institute_Proj",
   "BasePath": "_content/Institute_Proj",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\css\\second-pr.css"
+    },
+    {
+      "Identity": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\MySite.css",
+      "SourceId": "Institute_Proj",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\",
+      "BasePath": "_content/Institute_Proj",
+      "RelativePath": "css/MySite.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\MySite.css"
     },
     {
       "Identity": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\site.css",
@@ -357,6 +376,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\FileFunc.js"
+    },
+    {
+      "Identity": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\js\\MySite.js",
+      "SourceId": "Institute_Proj",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\",
+      "BasePath": "_content/Institute_Proj",
+      "RelativePath": "js/MySite.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\MySite.js"
     },
     {
       "Identity": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\js\\site.js",

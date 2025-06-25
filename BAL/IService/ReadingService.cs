@@ -12,9 +12,9 @@ namespace BAL.IService
     public class ReadingService : IReadingService
     {
         IReading _readingRepo;
-        
-       public GlobalVar._SaveMode SaveMode { get; set; }
-        public virtual clsReading Reading {  get; set; }
+
+        public GlobalVar._SaveMode SaveMode { get; set; }
+        public virtual clsReading Reading { get; set; }
         public virtual clsReadingDay ReadingDay { get; set; }
         public ReadingService(IReading reading)
         {
@@ -49,6 +49,10 @@ namespace BAL.IService
         public bool DeleteReadingDay(int id)
         {
             return _readingRepo.DeleteReadingDay(id);
+        }
+        public clsReadingDay GetLastReadingDay()
+        {
+            return  _readingRepo.GetLastReadingDay();
         }
 
         // ---------------- Readings ----------------
