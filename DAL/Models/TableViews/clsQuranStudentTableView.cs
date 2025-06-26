@@ -8,9 +8,9 @@ namespace DAL.Models.TableViews
 {
     public class clsQuranStudentTableView
     {
-        public int QuranStudentID { get; set; }
-        public short TotalSavedPages { get; set; }
-        public byte TotalInstalledParts { get; set; }
+        public int? QuranStudentID { get; set; }
+        public short? TotalSavedPages { get; set; }
+        public byte? TotalInstalledParts { get; set; }
         public string ProjectName { get; set; }
         public string PerformanceRatingText { get; set; }
 

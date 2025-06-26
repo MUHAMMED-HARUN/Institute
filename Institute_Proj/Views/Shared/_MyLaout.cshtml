@@ -13,16 +13,40 @@
 </head>
 <body>
     <!-- Sidebar -->
+    <div class="sideBarContiner">
+        <i class="fa-solid fa-bars menu-icon"></i>
+
     <div class="sidebar">
         <h4 class="text-center py-3">لوحة التحكم</h4>
         <a href="/Home/Index"><i class="fa fa-home me-2"></i>الرئيسية</a>
+        <hr />
         <a href="/People/Index"><i class="fa fa-users me-2"></i>الاشخاص</a>
-        <a href="/Student/Index"><i class="fa fa-user-graduate me-2"></i>الطلاب</a>
+        <hr />
+
+       <div class="studentSidebar">
+            <a href="/Student/Index"><i class="fa fa-user-graduate me-2"></i>الطلاب</a>
+            <div class="studentPages">
+                <a asp-action="EnrollInClass" asp-controller="Student">تسجيل طالب</a>
+                <a asp-action="EnrollmentList" asp-controller="Student">لائحة التسجيلات</a>
+            </div>
+       </div>
+        <hr />
+
+        <div class="teacherSidebar">
         <a href="/Teacher/Index"><i class="fa fa-chalkboard-teacher me-2"></i>المعلمون</a>
+            <div class="teacherPages">
+                <a asp-action="EnrollInClass" asp-controller="Teacher">تسجيل معلم</a>
+                <a asp-action="EnrollmentList" asp-controller="Teacher">لائحة التسجيلات</a>
+            </div>
+        </div>
+        <hr />
+
         <a href="/QuranStudent/Index"><i class="fa fa-quran me-2"></i>طلاب القرآن</a>
+        <hr />
+
         <a href="/ReadingDay/Index"><i class="fa fa-calendar-day me-2"></i>أيام القراءة</a>
     </div>
-
+    </div>
     <!-- Main content -->
     <div class="content w-100">
         <nav class="navbar navbar-expand navbar-custom mb-4 text-white px-3">

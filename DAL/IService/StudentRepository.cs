@@ -173,7 +173,15 @@ namespace DAL.IService
         public bool EnrollStudentInCourse(clsEnrolmentStudentInClass EnrolmentStudent)
         {
             _Context.EnrolmentStudent.Add(EnrolmentStudent);
-            return _Context.SaveChanges() > 0;
+            if (_Context.SaveChanges() > 0)
+            {
+                clsQuranStudent quranStudent = new clsQuranStudent();
+                quranStudent.StudentID = EnrolmentStudent.StudentID;
+                quranStudent.ClassID= EnrolmentStudent.ClassID;
+                _Context.QuranStudents.Add(quranStudent);
+                return _Context.SaveChanges() > 0;
+            } 
+            return false;
         }
         public clsEnrolmentStudentInClass GetEnrolmentStudentInClass(int EnrollmentStudentID)
         {
@@ -252,6 +260,7 @@ namespace DAL.IService
                 {
                     while (reader.Read()) 
                     {
+                        string s = reader["IsActive"] as string;
                         clsEnrollmentStudentInClassTableView enrollment = new clsEnrollmentStudentInClassTableView
                         {
                             ID = reader["ID"] as int?,

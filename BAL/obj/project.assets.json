@@ -2831,11 +2831,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\‏‏Institute_Proj - نسخة\\BAL\\BAL.csproj",
+      "projectUniqueName": "C:\\Institute_Proj\\BAL\\BAL.csproj",
       "projectName": "BAL",
-      "projectPath": "C:\\‏‏Institute_Proj - نسخة\\BAL\\BAL.csproj",
+      "projectPath": "C:\\Institute_Proj\\BAL\\BAL.csproj",
       "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-      "outputPath": "C:\\‏‏Institute_Proj - نسخة\\BAL\\obj\\",
+      "outputPath": "C:\\Institute_Proj\\BAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2853,11 +2853,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\‏‏Institute_Proj - نسخة\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\‏‏Institute_Proj - نسخة\\DAL\\DAL.csproj"
+            "C:\\Institute_Proj\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Institute_Proj\\DAL\\DAL.csproj"
             },
-            "C:\\‏‏Institute_Proj - نسخة\\ViewModel\\ViewModel.csproj": {
-              "projectPath": "C:\\‏‏Institute_Proj - نسخة\\ViewModel\\ViewModel.csproj"
+            "C:\\Institute_Proj\\ViewModel\\ViewModel.csproj": {
+              "projectPath": "C:\\Institute_Proj\\ViewModel\\ViewModel.csproj"
             }
           }
         }

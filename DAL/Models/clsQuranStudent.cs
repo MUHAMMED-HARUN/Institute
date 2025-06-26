@@ -18,11 +18,14 @@ namespace DAL.Models
         [Range(0, 604)]
         public short TotalSavedPages { get; set; }
         [Range(0, 30)]
-        public byte TotalInstalledParts { get; set; }
+        public byte? TotalInstalledParts { get; set; }
         [ForeignKey("project")]
-        public int ProjectID { get; set; }
+        public int? ProjectID { get; set; }
         public virtual clsProject project { get; set; }
-        public byte performanceRating {  get; set; }
+        [ForeignKey("Class")]
+        public int ClassID { get; set; }
+        public virtual clsClass Class { get; set; }
+        public byte? performanceRating {  get; set; }
 
 
         [ForeignKey("AuditableEntity")]

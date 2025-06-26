@@ -17,147 +17,147 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Institute_Proj
 build_property.RootNamespace = Institute_Proj
-build_property.ProjectDir = C:\‏‏Institute_Proj - نسخة\Institute_Proj\
+build_property.ProjectDir = C:\Institute_Proj\Institute_Proj\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\‏‏Institute_Proj - نسخة\Institute_Proj
+build_property.MSBuildProjectDirectory = C:\Institute_Proj\Institute_Proj
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Home/Index.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Home/Privacy.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/People/NewOrEdit.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/People/NewOrEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXE5ld09yRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/People/PersonCardPartial.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/People/PersonCardPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXFBlcnNvbkNhcmRQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/People/PersonCardWithFilterPartila.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/People/PersonCardWithFilterPartila.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXFBlcnNvbkNhcmRXaXRoRmlsdGVyUGFydGlsYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/People/PersonList.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/People/PersonList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXFBlcnNvbkxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/QuranStudent/NewOrEdit.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/QuranStudent/NewOrEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVyYW5TdHVkZW50XE5ld09yRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/QuranStudent/QuranStudentList.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/QuranStudent/QuranStudentList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVyYW5TdHVkZW50XFF1cmFuU3R1ZGVudExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Reading/NewOrEditReading.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Reading/NewOrEditReading.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVhZGluZ1xOZXdPckVkaXRSZWFkaW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Reading/NewOrEditReadingDay.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Reading/NewOrEditReadingDay.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVhZGluZ1xOZXdPckVkaXRSZWFkaW5nRGF5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Reading/ReadingDayList.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Reading/ReadingDayList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVhZGluZ1xSZWFkaW5nRGF5TGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Reading/ReadingList.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Reading/ReadingList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVhZGluZ1xSZWFkaW5nTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Shared/ADDRESS/AddressPartialView.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Shared/ADDRESS/AddressPartialView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEFERFJFU1NcQWRkcmVzc1BhcnRpYWxWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Shared/ADDRESS/_CityAndCountry.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Shared/ADDRESS/_CityAndCountry.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEFERFJFU1NcX0NpdHlBbmRDb3VudHJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Shared/Error.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Shared/GenercFilter.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Shared/GenercFilter.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEdlbmVyY0ZpbHRlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Shared/_MyLaout.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Shared/_MyLaout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NeUxhb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Student/EnrollmentList.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Student/EnrollmentList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxFbnJvbGxtZW50TGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Student/EnrollmentStudent.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Student/EnrollmentStudent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxFbnJvbGxtZW50U3R1ZGVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Student/NewOrEdit.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Student/NewOrEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxOZXdPckVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Student/StudentCard.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Student/StudentCard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxTdHVkZW50Q2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Student/StudentCardWithFilter.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Student/StudentCardWithFilter.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxTdHVkZW50Q2FyZFdpdGhGaWx0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Student/StudentList.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Student/StudentList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxTdHVkZW50TGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Teacher/EnrollmentTeacher.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Teacher/EnrollmentTeacher.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxFbnJvbGxtZW50VGVhY2hlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Teacher/EnrollmentTeacherList.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Teacher/EnrollmentTeacherList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxFbnJvbGxtZW50VGVhY2hlckxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Teacher/NewOrEdit.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Teacher/NewOrEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxOZXdPckVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Teacher/TeacherCard.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Teacher/TeacherCard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxUZWFjaGVyQ2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Teacher/TeacherCardWithFilter.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Teacher/TeacherCardWithFilter.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxUZWFjaGVyQ2FyZFdpdGhGaWx0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Teacher/TeacherList.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Teacher/TeacherList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxUZWFjaGVyTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/test/_CityAndCountry.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/test/_CityAndCountry.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdGVzdFxfQ2l0eUFuZENvdW50cnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/_ViewImports.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/_ViewStart.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/‏‏Institute_Proj - نسخة/Institute_Proj/Views/Shared/_Layout.cshtml]
+[C:/Institute_Proj/Institute_Proj/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-zpqno40ayz

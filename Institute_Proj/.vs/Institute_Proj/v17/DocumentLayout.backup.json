@@ -1,31 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\Institute_Proj\\",
+  "WorkspaceRootPath": "C:\\Institute_Proj\\Institute_Proj\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\\u200F\u200Finstitute_proj - \u0646\u0633\u062E\u0629\\institute_proj\\views\\quranstudent\\neworedit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\quranstudent\\neworedit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\wwwroot\\css\\mysite.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:wwwroot\\css\\mysite.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\\u200F\u200Finstitute_proj - \u0646\u0633\u062E\u0629\\bal\\viewmodel\\clsquranstudentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\\u200F\u200Finstitute_proj - \u0646\u0633\u062E\u0629\\bal\\mapper\\mapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\\u200F\u200Finstitute_proj - \u0646\u0633\u062E\u0629\\bal\\interfacecalsses\\iclassservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\\u200F\u200Finstitute_proj - \u0646\u0633\u062E\u0629\\dal\\iservice\\classrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\\u200F\u200Finstitute_proj - \u0646\u0633\u062E\u0629\\dal\\interfacecalsses\\iclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\\u200F\u200Finstitute_proj - \u0646\u0633\u062E\u0629\\bal\\iservice\\classservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\\u200F\u200Finstitute_proj - \u0646\u0633\u062E\u0629\\bal\\attribute\\hasactiveenrollmentforquranstudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\views\\shared\\_mylaout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\shared\\_mylaout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,114 +18,36 @@
       "DocumentGroups": [
         {
           "DockedHeight": 314,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "NewOrEdit.cshtml",
-              "DocumentMoniker": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\Institute_Proj\\Views\\QuranStudent\\NewOrEdit.cshtml",
-              "RelativeDocumentMoniker": "Views\\QuranStudent\\NewOrEdit.cshtml",
-              "ToolTip": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\Institute_Proj\\Views\\QuranStudent\\NewOrEdit.cshtml*",
-              "RelativeToolTip": "Views\\QuranStudent\\NewOrEdit.cshtml*",
-              "ViewState": "AgIAADQAAAAAAAAAAAAUwD0AAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-26T10:28:59.522Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ClassRepository.cs",
-              "DocumentMoniker": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\DAL\\IService\\ClassRepository.cs",
-              "RelativeDocumentMoniker": "..\\DAL\\IService\\ClassRepository.cs",
-              "ToolTip": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\DAL\\IService\\ClassRepository.cs",
-              "RelativeToolTip": "..\\DAL\\IService\\ClassRepository.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAABUAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T09:59:26.476Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IClass.cs",
-              "DocumentMoniker": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\DAL\\interfaceCalsses\\IClass.cs",
-              "RelativeDocumentMoniker": "..\\DAL\\interfaceCalsses\\IClass.cs",
-              "ToolTip": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\DAL\\interfaceCalsses\\IClass.cs",
-              "RelativeToolTip": "..\\DAL\\interfaceCalsses\\IClass.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T09:59:01.286Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ClassService.cs",
-              "DocumentMoniker": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\BAL\\IService\\ClassService.cs",
-              "RelativeDocumentMoniker": "..\\BAL\\IService\\ClassService.cs",
-              "ToolTip": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\BAL\\IService\\ClassService.cs",
-              "RelativeToolTip": "..\\BAL\\IService\\ClassService.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T09:58:44.72Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IClassService.cs",
-              "DocumentMoniker": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\BAL\\interfaceCalsses\\IClassService.cs",
-              "RelativeDocumentMoniker": "..\\BAL\\interfaceCalsses\\IClassService.cs",
-              "ToolTip": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\BAL\\interfaceCalsses\\IClassService.cs",
-              "RelativeToolTip": "..\\BAL\\interfaceCalsses\\IClassService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T09:57:04.735Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Mapper.cs",
-              "DocumentMoniker": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\BAL\\Mapper\\Mapper.cs",
-              "RelativeDocumentMoniker": "..\\BAL\\Mapper\\Mapper.cs",
-              "ToolTip": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\BAL\\Mapper\\Mapper.cs",
-              "RelativeToolTip": "..\\BAL\\Mapper\\Mapper.cs",
-              "ViewState": "AgIAAN0BAABAzczMzMwawDACAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T09:48:15.379Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "clsQuranStudentViewModel.cs",
-              "DocumentMoniker": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\BAL\\ViewModel\\clsQuranStudentViewModel.cs",
-              "RelativeDocumentMoniker": "..\\BAL\\ViewModel\\clsQuranStudentViewModel.cs",
-              "ToolTip": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\BAL\\ViewModel\\clsQuranStudentViewModel.cs",
-              "RelativeToolTip": "..\\BAL\\ViewModel\\clsQuranStudentViewModel.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAzwBMAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T09:47:39.275Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "HasActiveEnrollmentForQuranStudent.cs",
-              "DocumentMoniker": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\BAL\\Attribute\\HasActiveEnrollmentForQuranStudent.cs",
-              "RelativeDocumentMoniker": "..\\BAL\\Attribute\\HasActiveEnrollmentForQuranStudent.cs",
-              "ToolTip": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\BAL\\Attribute\\HasActiveEnrollmentForQuranStudent.cs",
-              "RelativeToolTip": "..\\BAL\\Attribute\\HasActiveEnrollmentForQuranStudent.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T09:47:29.166Z",
+              "DocumentIndex": 0,
+              "Title": "MySite.css",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\MySite.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\MySite.css",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\MySite.css",
+              "RelativeToolTip": "wwwroot\\css\\MySite.css",
+              "ViewState": "AgIAADIAAAAAAAAAAAAqwDMAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-26T13:05:52.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_MyLaout.cshtml",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Views\\Shared\\_MyLaout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_MyLaout.cshtml",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Views\\Shared\\_MyLaout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_MyLaout.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAUwBcAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-26T13:04:44.264Z",
               "EditorCaption": ""
             }
           ]

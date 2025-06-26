@@ -581,9 +581,9 @@ namespace BAL.Mapper
             model.studentTable = MapStudentTable(quranstudent.StudentID);
             model.StudentID = quranstudent.StudentID;
             model.TotalSavedPages = quranstudent.TotalSavedPages;
-            model.TotalInstalledParts = quranstudent.TotalInstalledParts;
-            model.ProjectID = quranstudent.ProjectID;
-            model.performanceRating = quranstudent.performanceRating;
+            model.TotalInstalledParts = quranstudent.TotalInstalledParts??0;
+            model.ProjectID = quranstudent.ProjectID ?? 0;
+            model.performanceRating = quranstudent.performanceRating ?? 0;
             return model;
         }
         public clsReading MapReading(clsReadingModel model)

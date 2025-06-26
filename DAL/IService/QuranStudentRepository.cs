@@ -136,9 +136,9 @@ namespace DAL.IService
                     {
                         clsQuranStudentTableView item = new clsQuranStudentTableView
                         {
-                            QuranStudentID = Convert.ToInt32(reader["QuranStudentID"]),
-                            TotalSavedPages = Convert.ToInt16(reader["TotalSavedPages"]),
-                            TotalInstalledParts = Convert.ToByte(reader["TotalInstalledParts"]),
+                            QuranStudentID = reader["QuranStudentID"] as int?,
+                            TotalSavedPages = reader["TotalSavedPages"] as short?,
+                            TotalInstalledParts = reader["TotalInstalledParts"]as byte?,
                             ProjectName = reader["ProjectName"] as string,
                             PerformanceRatingText = reader["PerformanceRatingText"] as string,
                             StudentID = reader["StudentID"] as int?,

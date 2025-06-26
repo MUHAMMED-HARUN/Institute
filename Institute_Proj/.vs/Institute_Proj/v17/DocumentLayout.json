@@ -1,7 +1,16 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\Institute_Proj\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Institute_Proj\\Institute_Proj\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\wwwroot\\css\\mysite.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:wwwroot\\css\\mysite.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\views\\shared\\_mylaout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\shared\\_mylaout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,11 +18,37 @@
       "DocumentGroups": [
         {
           "DockedHeight": 314,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MySite.css",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\MySite.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\MySite.css",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\wwwroot\\css\\MySite.css",
+              "RelativeToolTip": "wwwroot\\css\\MySite.css",
+              "ViewState": "AgIAADIAAAAAAAAAAAAqwDMAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-26T13:05:52.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_MyLaout.cshtml",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Views\\Shared\\_MyLaout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_MyLaout.cshtml",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Views\\Shared\\_MyLaout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_MyLaout.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAUwBcAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-26T13:04:44.264Z",
+              "EditorCaption": ""
             }
           ]
         }

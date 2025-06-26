@@ -84,6 +84,7 @@ namespace Institute_Proj.Controllers.Student
             else
                 return Json(false);
         }
+        [HttpGet]
         public IActionResult EnrollInClass()
         {
             clsEnrolmentStudentInClassModel model = new clsEnrolmentStudentInClassModel();
