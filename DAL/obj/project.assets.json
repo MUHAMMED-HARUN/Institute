@@ -4027,11 +4027,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Institute_Proj\\DAL\\DAL.csproj",
+      "projectUniqueName": "C:\\‏‏Institute_Proj - نسخة\\DAL\\DAL.csproj",
       "projectName": "DAL",
-      "projectPath": "C:\\Institute_Proj\\DAL\\DAL.csproj",
+      "projectPath": "C:\\‏‏Institute_Proj - نسخة\\DAL\\DAL.csproj",
       "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-      "outputPath": "C:\\Institute_Proj\\DAL\\obj\\",
+      "outputPath": "C:\\‏‏Institute_Proj - نسخة\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4049,8 +4049,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Institute_Proj\\ViewModel\\ViewModel.csproj": {
-              "projectPath": "C:\\Institute_Proj\\ViewModel\\ViewModel.csproj"
+            "C:\\‏‏Institute_Proj - نسخة\\ViewModel\\ViewModel.csproj": {
+              "projectPath": "C:\\‏‏Institute_Proj - نسخة\\ViewModel\\ViewModel.csproj"
             }
           }
         }

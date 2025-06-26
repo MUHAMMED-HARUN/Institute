@@ -1,29 +1,49 @@
 ﻿@model BAL.ViewModel.clsTeacherTableViewModel
 @{
-	string prefix = ViewData.TemplateInfo.HtmlFieldPrefix ?? "";
-	string uniqueId = prefix.Replace(".", "_");
+    string prefix = ViewData.TemplateInfo.HtmlFieldPrefix ?? "";
+    string uniqueId = prefix.Replace(".", "_");
 }
-<div class="student-card" prefix=@prefix>
-	<div class="person-info">
-		@await Html.PartialAsync("~/Views/People/PersonCardPartial.cshtml", Model.clsPersonViewModel, ViewData);
-	</div>
-	<div class="student-info">
 
-		<div class="d-flex align-items-center gap-4">
-			<label asp-for="TeacherID" class="fw-bold"></label>
-			<p class="m-0" asp-for="TeacherID" data-prefix="@prefix" id="TeacherID@uniqueId" data-unique-id="TeacherID_@uniqueId">@Model.TeacherID</p>
-		</div>
-		<div class="d-flex align-items-center gap-4">
-			<label asp-for="EntryDate" class="fw-bold"></label>
-			<p class="m-0" asp-for="EntryDate" data-prefix="@prefix" id="EntryDate_@uniqueId" data-unique-id="EntryDate_@uniqueId">@Model.EntryDate</p>
-		</div>
-		<div class="d-flex align-items-center gap-4">
-			<label asp-for="ExitDate" class="fw-bold"></label>
-			<p class="m-0" asp-for="ExitDate" data-prefix="@prefix" id="ExitDate_@uniqueId" data-unique-id="ExitDate_@uniqueId">@Model.ExitDate</p>
-		</div>
-		<div class="d-flex align-items-center gap-4">
-			<label asp-for="IsActive" class="fw-bold"></label>
-			<p class="m-0" asp-for="IsActive" data-prefix="@prefix" id="IsActive_@uniqueId" data-unique-id="IsActive_@uniqueId">@Model.IsActive</p>
-		</div>
-	</div>
+<div class="teacher-card mb-4" data-prefix="@prefix">
+    <!-- معلومات الشخص -->
+    <div class="person-info mb-4">
+        @await Html.PartialAsync("~/Views/People/PersonCardPartial.cshtml", Model.clsPersonViewModel, ViewData)
+    </div>
+
+    <!-- معلومات المعلم -->
+    <div class="teacher-info bg-light p-3 rounded shadow-sm">
+        <div class="row row-cols-1 row-cols-md-2 g-3">
+
+            <!-- معرف المعلم -->
+            <div class="col d-flex align-items-center gap-4">
+                <label asp-for="TeacherID" class="fw-bold w-100 text-end">معرف المعلم</label>
+                <p class="m-0 w-100 bg-white p-2 rounded border" id="TeacherID_@uniqueId">@Model.TeacherID</p>
+            </div>
+
+            <!-- تاريخ الدخول -->
+            <div class="col d-flex align-items-center gap-4">
+                <label asp-for="EntryDate" class="fw-bold w-100 text-end">تاريخ الدخول</label>
+                <p class="m-0 w-100 bg-white p-2 rounded border" id="EntryDate_@uniqueId">
+                    @(Model.EntryDate.ToString("yyyy-MM-dd"))
+                </p>
+            </div>
+
+            <!-- تاريخ الخروج -->
+            <div class="col d-flex align-items-center gap-4">
+                <label asp-for="ExitDate" class="fw-bold w-100 text-end">نهاية التسجيل</label>
+                <p class="m-0 w-100 bg-white p-2 rounded border" id="ExitDate_@uniqueId">
+                    @(Model.ExitDate.ToString("yyyy-MM-dd"))
+                </p>
+            </div>
+
+            <!-- حالة التفعيل -->
+            <div class="col d-flex align-items-center gap-4">
+                <label asp-for="IsActive" class="fw-bold w-100 text-end">الحالة</label>
+                <p class="m-0 w-100 bg-white p-2 rounded border" id="IsActive_@uniqueId">
+                    @(Model.IsActive)
+                </p>
+            </div>
+
+        </div>
+    </div>
 </div>

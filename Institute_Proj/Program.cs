@@ -18,7 +18,7 @@ namespace Institute_Proj
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AppDBContext>(option =>
-                option.UseSqlServer(builder.Configuration.GetConnectionString("cs")));
+                option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddScoped<IPerson, PersonRepository>();
             builder.Services.AddScoped<IPersonService, PersonService>();

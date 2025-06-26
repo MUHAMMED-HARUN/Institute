@@ -1,5 +1,6 @@
 ﻿@model BAL.ViewModel.clsEnrolmentTeacherInClassModel
 @using BAL.ViewModel
+
 @{
     SelectList ClassList = new SelectList(Model.ClassList, "ID", "ClassName", Model.ClassID <= 0 ? -1 : Model.ClassID);
     SelectList EnrollStatusList = new SelectList(Model.EnrollStatus.Select(e => new { Text = e.Key, Value = e.Value }), "Value", "Text", Model.EnrollmentStatus);
@@ -7,80 +8,68 @@
     viewDataForTeacherCardWithPrefix.TemplateInfo.HtmlFieldPrefix = "TeacherTable";
 }
 
-<h4>تسجيل المعلم في الصف</h4>
+<h4 class="mb-4">تسجيل المعلم في الصف</h4>
 <hr />
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
 
-<script>
-    document.addEventListener("TeacherCardUpdated", function (event) {
-        const TeacherID = event.detail;
-        if (TeacherID) {
-            document.getElementById("EnrollTeacherID").value = TeacherID;
-        }
-    });
-</script>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="EnrollInClass" method="post">
+                <div asp-validation-summary="All" class="alert alert-danger d-none" role="alert"></div>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="EnrollInClass" method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
+                <!-- عرض بطاقة المعلم -->
+                <div class="form-group mb-4 teacher-table" id="enrollTeacherCard">
+                    @await Html.PartialAsync("~/Views/Teacher/TeacherCardWithFilter.cshtml", Model.TeacherTable, viewDataForTeacherCardWithPrefix)
+                </div>
 
-            <div class="form-group teacher-table" id="enrollTeacherCard">
-                @await Html.PartialAsync("~/Views/Teacher/TeacherCardWithFilter.cshtml", Model.TeacherTable, viewDataForTeacherCardWithPrefix)
-            </div>
-
-            <div>
-                <span asp-validation-for="TeacherID" class="text-danger"></span>
+                <!-- Hidden Field -->
                 <input asp-for="TeacherID" id="EnrollTeacherID" hidden />
-            </div>
 
-            <div class="form-group">
-                <label asp-for="EnrollmentID" class="control-label"></label>
-                <p id="EnrollmentID">@Model.EnrollmentID</p>
-                <span asp-validation-for="EnrollmentID" class="text-danger"></span>
-            </div>
+                <!-- معرف التسجيل -->
+                <div class="form-group mb-3">
+                    <label asp-for="EnrollmentID" class="form-label"></label>
+                    <p id="EnrollmentID" class="form-control bg-light" readonly>@Model.EnrollmentID</p>
+                    <span asp-validation-for="EnrollmentID" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="ClassID" class="control-label"></label>
-                <select asp-for="ClassID" asp-items="ClassList">
-                    <option value="-1">اختر صف</option>
-                </select>
-                <span asp-validation-for="ClassID" class="text-danger"></span>
-            </div>
+                <!-- اختيار الصف -->
+                <div class="form-group mb-3">
+                    <label asp-for="ClassID" class="form-label"></label>
+                    <select asp-for="ClassID" asp-items="ClassList" class="form-select">
+                        <option value="-1">اختر صفًا</option>
+                    </select>
+                    <span asp-validation-for="ClassID" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="EnrolmentDate" class="control-label"></label>
-                <input asp-for="EnrolmentDate" class="form-control" />
-                <span asp-validation-for="EnrolmentDate" class="text-danger"></span>
-            </div>
+                <!-- تاريخ التسجيل -->
+                <div class="form-group mb-3">
+                    <label asp-for="EnrolmentDate" class="form-label"></label>
+                    <input asp-for="EnrolmentDate" class="form-control" />
+                    <span asp-validation-for="EnrolmentDate" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="EnrollmentEndDate" class="control-label"></label>
-                <input asp-for="EnrollmentEndDate" class="form-control" />
-                <span asp-validation-for="EnrollmentEndDate" class="text-danger"></span>
-            </div>
+                <!-- نهاية التسجيل -->
+                <div class="form-group mb-3">
+                    <label asp-for="EnrollmentEndDate" class="form-label"></label>
+                    <input asp-for="EnrollmentEndDate" class="form-control" />
+                    <span asp-validation-for="EnrollmentEndDate" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="EnrollmentStatus" class="control-label"></label>
-                <select asp-for="EnrollmentStatus" asp-items="EnrollStatusList">
-                    <option value="-1">اختر حالة</option>
-                </select>
-                <span asp-validation-for="EnrollmentStatus" class="text-danger"></span>
-            </div>
+                <!-- حالة التسجيل -->
+                <div class="form-group mb-3">
+                    <label asp-for="EnrollmentStatus" class="form-label"></label>
+                    <select asp-for="EnrollmentStatus" asp-items="EnrollStatusList" class="form-select">
+                        <option value="-1">اختر حالة</option>
+                    </select>
+                    <span asp-validation-for="EnrollmentStatus" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <input type="submit" value="تسجيل" class="btn btn-primary" />
-            </div>
-        </form>
+                <!-- زر الإرسال -->
+                <div class="form-group mt-4 d-grid gap-2 d-md-flex justify-content-md-between">
+                    <button type="submit" class="btn btn-primary btn-lg px-4">تسجيل</button>
+                    <a asp-action="Index" class="btn btn-secondary btn-lg px-4">العودة إلى القائمة</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">العودة إلى القائمة</a>
-</div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

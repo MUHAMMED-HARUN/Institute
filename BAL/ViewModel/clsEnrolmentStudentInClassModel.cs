@@ -19,7 +19,7 @@ namespace BAL.ViewModel
         [Display(Name = "معرف الطالب")]
         //[HasActiveEnrolment]
         [Range(1, int.MaxValue, ErrorMessage = "الرجاء طالب.")]
-        [HasActiveEnrollment(ErrorMessage ="هذا الطالب لديه قيد نشط في هذا الصف")]
+        [HasActiveEnrollmentForBaseStudent(ErrorMessage ="هذا الطالب لديه قيد نشط في هذا الصف")]
         public int StudentID { get; set; }
         [Display(Name = "تاريخ التسجيل")]
         public DateTime? EnrolmentDate { get; set; }= DateTime.Now;

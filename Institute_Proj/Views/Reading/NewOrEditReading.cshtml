@@ -1,56 +1,66 @@
 ﻿@model BAL.ViewModel.clsReadingModel
 @{
     ViewData["Title"] = Model.ReadingID == 0 ? "إضافة قراءة جديدة" : "تعديل قراءة";
-    SelectList Performance = new SelectList(Model.PerformaceList.Select(p => new { text = p.Key, Value = p.Value }), "Value", "text", Model.PerformaceRating);
-    SelectList ReadingType = new SelectList(Model.ReadingTypeList.Select(r => new { text = r.Key, Value = r.Value }), "Value", "text", Model.readingType);
+    var Performance = new SelectList(Model.PerformaceList.Select(p => new { text = p.Key, Value = p.Value }), "Value", "text", Model.PerformaceRating);
+    var ReadingType = new SelectList(Model.ReadingTypeList.Select(r => new { text = r.Key, Value = r.Value }), "Value", "text", Model.readingType);
 }
 
-<h4>@ViewData["Title"]</h4>
+<h4 class="mb-4">@ViewData["Title"]</h4>
 <hr />
 
 <form asp-action="NewOrEditReading" method="post">
+    <!-- Hidden Field -->
     <input type="hidden" asp-for="ReadingID" />
-	<p class="form-control">@Model.ReadingID</p>
+    <p class="form-control bg-light" readonly>@Model.ReadingID</p>
 
-    <div class="form-group">
-        <label asp-for="ReadedPageNumer"></label>
-        <input asp-for="ReadedPageNumer" class="form-control" /> 
+    <!-- رقم الصفحة المقرؤة -->
+    <div class="form-group mb-3">
+        <label asp-for="ReadedPageNumer" class="form-label"></label>
+        <input asp-for="ReadedPageNumer" class="form-control" />
         <span asp-validation-for="ReadedPageNumer" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="PerformaceRating"></label>
-        <select asp-items="Performance" asp-for="PerformaceRating">
-            <option value="0">اختر تقييم</option>
+    <!-- تقييم الأداء -->
+    <div class="form-group mb-3">
+        <label asp-for="PerformaceRating" class="form-label"></label>
+        <select asp-items="Performance" asp-for="PerformaceRating" class="form-select">
+            <option value="">اختر تقييم</option>
         </select>
         <span asp-validation-for="PerformaceRating" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="readingType"></label>
-        <select asp-items="ReadingType" asp-for="PerformaceRating">
-            <option value="0">اختر نوع القرائة</option>
+    <!-- نوع القراءة -->
+    <div class="form-group mb-3">
+        <label asp-for="readingType" class="form-label"></label>
+        <select asp-items="ReadingType" asp-for="readingType" class="form-select">
+            <option value="">اختر نوع القراءة</option>
         </select>
         <span asp-validation-for="readingType" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="ReadingDayID"></label>
+    <!-- معرف اليوم -->
+    <div class="form-group mb-3">
+        <label asp-for="ReadingDayID" class="form-label"></label>
         <input asp-for="ReadingDayID" hidden />
-		<p asp-for="ReadingDayID" id="ReadingDayID">@Model.ReadingDayID</p>
+        <p id="ReadingDayID" class="form-control bg-light" readonly>@Model.ReadingDayID</p>
     </div>
 
-    <div class="form-group">
-        <label asp-for="ReadingDay"></label>
-        <p asp-for="ReadingDay" id="ReadingDay" >@Model.ReadingDay</p>
-    </div>  
-    <div class="form-group">
-        <label asp-for="QuranStudentName"></label>   
-        <input asp-for="QuranStudentID" hidden/>
-        <p asp-for="QuranStudentName" id="QuranStudentName" >@Model.QuranStudentName</p>
+    <!-- تاريخ اليوم -->
+    <div class="form-group mb-3">
+        <label asp-for="ReadingDay" class="form-label"></label>
+        <p id="ReadingDay" class="form-control bg-light" readonly>@Model.ReadingDay</p>
     </div>
-    <div class="form-group mt-3">
-        <input type="submit" value="حفظ" class="btn btn-primary" />
-        <a asp-action="Index" class="btn btn-secondary">العودة إلى القائمة</a>
+
+    <!-- اسم الطالب -->
+    <div class="form-group mb-3">
+        <label asp-for="QuranStudentName" class="form-label"></label>
+        <input asp-for="QuranStudentID" hidden />
+        <p id="QuranStudentName" class="form-control bg-light" readonly>@Model.QuranStudentName</p>
+    </div>
+
+    <!-- زر الإرسال -->
+    <div class="form-group mt-4 d-grid gap-2 d-md-flex justify-content-md-between">
+        <button type="submit" class="btn btn-primary btn-lg px-4">حفظ</button>
+        <a asp-action="Index" class="btn btn-secondary btn-lg px-4">العودة إلى القائمة</a>
     </div>
 </form>

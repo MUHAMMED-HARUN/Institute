@@ -2,30 +2,33 @@
 @{
     int i = 1;
 }
-<h4 class="mb-3">فلترة المعلمين</h4>
-<hr />
-<div class="container">
 
-    <div class="mb-4 collection" id="filterItem">
+<h4 class="mb-3">قائمة المعلمين</h4>
+<hr />
+
+<div class="container-fluid">
+    <div id="filterItem" class="mb-4 p-3 bg-light rounded shadow-sm">
         <div class="row g-3 align-items-center">
+
+            <!-- خيار البحث -->
             <div class="col-12 col-md-auto d-flex align-items-center">
                 <label for="searchFieldSelect" class="form-label mb-0 me-2">بحث حسب</label>
                 <select id="searchFieldSelect" class="form-select w-auto">
                     <option selected value="-1">لا شيئ</option>
                     <option data-pattern="^\d{1,10}$" value="PersonID">المعرف الشخصي</option>
                     <option data-pattern="^\d{11}$" value="NationalNumber">الرقم الوطني</option>
-                    <option data-pattern="^[\u0600-\u06FFa-zA-Z ]{2,50}$" value="FirstName">الاسم الاول</option>
+                    <option data-pattern="^[\u0600-\u06FFa-zA-Z ]{2,50}$" value="FirstName">الاسم الأول</option>
                     <option data-pattern="^\d{1,10}$" value="TeacherID">معرف المعلم</option>
                 </select>
-
                 <input type="text" id="searchInput" name="" class="form-control ms-2" style="min-width: 200px;" disabled placeholder="" />
             </div>
 
+            <!-- تصنيف حسب الجنس -->
             <div class="col-12 col-md-auto d-flex align-items-center">
                 <p class="mb-0 me-3">تصنيف حسب الجنس</p>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" id="None" type="radio" name="Gendor" value="" />
-                    <label class="form-check-label" for="None">لا شيئ</label>
+                    <label class="form-check-label" for="None">لا شيء</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" id="male" type="radio" name="Gendor" value="true" />
@@ -33,23 +36,24 @@
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" id="fmale" type="radio" name="Gendor" value="false" />
-                    <label class="form-check-label" for="fmale">انثى</label>
+                    <label class="form-check-label" for="fmale">أنثى</label>
                 </div>
             </div>
 
+            <!-- من وإلى تاريخ -->
             <div class="col-12 col-md-auto d-flex align-items-center">
                 <label for="minDate" class="col-form-label mb-0 me-2">من تاريخ</label>
                 <input id="minDate" type="date" name="MinDate" class="form-control me-3" />
-
                 <label for="maxDate" class="col-form-label mb-0 me-2">إلى تاريخ</label>
                 <input id="maxDate" type="date" name="MaxDate" class="form-control" />
             </div>
 
+            <!-- تصنيف حسب الحالة -->
             <div class="col-12 col-md-auto d-flex align-items-center">
                 <p class="mb-0 me-3">تصنيف حسب الحالة</p>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" id="NoneActive" type="radio" name="IsActive" value="" />
-                    <label class="form-check-label" for="NoneActive">لا شيئ</label>
+                    <label class="form-check-label" for="NoneActive">لا شيء</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" id="Active" type="radio" name="IsActive" value="true" />
@@ -61,99 +65,122 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-auto d-flex align-items-center">
+            <!-- أزرار البحث وإعادة التعيين -->
+            <div class="col-12 col-md-auto d-flex align-items-center gap-2">
                 <button type="button" id="btnSearch" class="btn btn-primary">بحث</button>
-                <button type="button" id="btnReset" class="btn btn-primary">ارجاع</button>
+                <button type="button" id="btnReset" class="btn btn-secondary">إرجاع</button>
             </div>
         </div>
     </div>
 
-    <div>
-        <a asp-action="NewOrEdit" asp-controller="Teacher"><i class="fa-solid fa-user-plus"></i></a>
+    <!-- رابط الإضافة -->
+    <div class="mb-3">
+        <a asp-action="NewOrEdit" asp-controller="Teacher" class="btn btn-success">
+            <i class="fas fa-user-plus me-1"></i> إضافة معلم جديد
+        </a>
     </div>
 
-    <div>
-        <table class="table table-hover table-striped table-bordered">
+    <!-- جدول العرض -->
+    <div class="table-responsive">
+        <table class="table table-hover table-striped table-bordered mt-3">
             <thead class="table-dark">
                 <tr>
-                    <th>معرف المعلم</th>
-                    <th>المعرف الشخصي</th>
-                    <th>الرقم الوطني</th>
-                    <th>الاسم الكامل</th>
-                    <th>رقم التواصل</th>
-                    <th>الجنس</th>
-                    <th>تاريخ الولادة</th>
-                    <th>الحالة</th>
-                    <th>تاريخ التسجيل</th>
+                    <th scope="col">معرف المعلم</th>
+                    <th scope="col">المعرف الشخصي</th>
+                    <th scope="col">الرقم الوطني</th>
+                    <th scope="col">الاسم الكامل</th>
+                    <th scope="col">رقم التواصل</th>
+                    <th scope="col">الجنس</th>
+                    <th scope="col">تاريخ الولادة</th>
+                    <th scope="col">الحالة</th>
+                    <th scope="col">تاريخ التسجيل</th>
+                    <th scope="col">الإجراءات</th>
                 </tr>
             </thead>
             <tbody id="resultTableBody">
-                @foreach (var teacher in Model.TeacherTableView)
+                @if (Model.TeacherTableView != null && Model.TeacherTableView.Any())
                 {
-                    <tr class="@($"row-info{i}")">
-                        <td>@teacher.TeacherID</td>
-                        <td>@teacher.PersonID</td>
-                        <td>@teacher.NationalNumber</td>
-                        <td>@teacher.FullName</td>
-                        <td>@teacher.PhoneNumber</td>
-                        <td>@teacher.GendorText</td>
-                        <td>@teacher.BirthDate?.ToString("yyyy-MM-dd")</td>
-                        <td>@teacher.IsActiveText</td>
-                        <td>@teacher.EntryDate?.ToString("yyyy-MM-dd")</td>
-
-                        <td><a asp-action="NewOrEdit" asp-controller="Teacher" asp-route-TeacherID="@teacher.TeacherID"><i class="fa-solid fa-user-pen"></i></a></td>
-                        <td data-id-Info="@teacher.TeacherID" data-tr-class-info="@($"row-info{i}")" class="showTeacherCard"><i class="fa-solid fa-address-card"></i></td>
-                        <td class="DeleteTeacher" data-id-Info="@teacher.TeacherID" data-row-class-info="@($"row-info{i}")"><i class="fa-solid fa-user-xmark"></i></td>
+                    foreach (var teacher in Model.TeacherTableView)
+                    {
+                        <tr class="@($"row-info{i}")">
+                            <td>@teacher.TeacherID</td>
+                            <td>@teacher.PersonID</td>
+                            <td>@teacher.NationalNumber</td>
+                            <td>@teacher.FullName</td>
+                            <td>@teacher.PhoneNumber</td>
+                            <td>@teacher.GendorText</td>
+                            <td>@(teacher.BirthDate?.ToString("yyyy-MM-dd"))</td>
+                            <td>@teacher.IsActiveText</td>
+                            <td>@(teacher.EntryDate?.ToString("yyyy-MM-dd"))</td>
+                            <td class="text-nowrap">
+                                <a asp-action="NewOrEdit" 
+                                   asp-controller="Teacher" 
+                                   asp-route-TeacherID="@teacher.TeacherID" 
+                                   class="btn btn-sm btn-warning me-1">
+                                    <i class="fas fa-user-pen me-1"></i> تعديل
+                                </a>
+                                <button class="btn btn-sm btn-info showTeacherCard" 
+                                        data-id-info="@teacher.TeacherID" 
+                                        data-tr-class-info="@($"row-info{i}")">
+                                    <i class="fas fa-address-card me-1"></i> عرض الكارت
+                                </button>
+                                <button class="btn btn-sm btn-danger DeleteTeacher" 
+                                        data-id-info="@teacher.TeacherID" 
+                                        data-row-class-info="@($"row-info{i}")">
+                                    <i class="fas fa-user-xmark me-1"></i> حذف
+                                </button>
+                            </td>
+                        </tr>
+                        i++;
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="9" class="text-muted text-center">لا توجد معلمين مسجلين حتى الآن.</td>
                     </tr>
-                    i++;
                 }
             </tbody>
         </table>
     </div>
 </div>
 
+<!-- سكريبت jQuery -->
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
 
+<!-- سكريبت AJAX -->
 <script>
     $(document).ready(function () {
-        // تغيير اسم وحقل الإدخال حسب اختيار المستخدم
         $("#searchFieldSelect").on("change", function () {
             const selectedValue = $(this).val();
             const input = $("#searchInput");
+
             if (selectedValue === "-1") {
-                input.attr("name", "");
-                input.value = "";
-                input.attr("placeholder", "");
-                input.prop("disabled", true);
+                input.attr("name", "").val("").prop("disabled", true);
             } else {
-                input.attr("name", selectedValue);
-                input.prop("disabled", false);
-                input.attr("placeholder", "أدخل " + $(this).find("option:selected").text());
+                input.attr("name", selectedValue).prop("disabled", false)
+                     .attr("placeholder", "أدخل " + $(this).find("option:selected").text());
             }
         });
 
-        // عند الضغط على زر البحث
         $("#btnSearch").on("click", function () {
             let input = $("#searchInput");
             let fieldName = input.attr("name");
             let fieldValue = input.val();
 
-            if (!CheckIsValid(fieldValue)) {
-                return;
-            }
-
+            if (!CheckIsValid(fieldValue)) return;
 
             let dataToSend = {
-                gendor: $('input[name="Gendor"]:checked').val(),
-                minDate: $('input[name="MinDate"]').val(),
-                maxDate: $('input[name="MaxDate"]').val(),
-                IsActive: $('input[name="IsActive"]').val(),
-
+                Gendor: $('input[name="Gendor"]:checked').val(),
+                MinDate: $('input[name="MinDate"]').val(),
+                MaxDate: $('input[name="MaxDate"]').val(),
+                IsActive: $('input[name="IsActive"]:checked').val()
             };
 
             if (fieldName && fieldName !== "-1") {
@@ -166,22 +193,29 @@
                 data: dataToSend,
                 success: function (data) {
                     $('#resultTableBody').html('');
-                    const i = 0;
                     data.forEach(function (d) {
                         const tr = `<tr>
-                                    <td>${d.teacherID}</td>
-                                    <td>${d.personID}</td>
-                                    <td>${d.nationalNumber}</td>
-                                    <td>${d.fullName}</td>
-                                    <td>${d.phoneNumber}</td>
-                                    <td>${d.gendorText}</td>
-                                    <td>${d.birthDate}</td>
-                                    <td>${d.isActiveText}</td>
-                                    <td>${d.entryDate}</td>
-                                    <td><a asp-action="NewOrEdit" asp-controller="Teacher" asp-route-personID="${d.teacherID}"><i class="fa-solid fa-user-pen"></i></a></td>
-                                    <td data-id-Info="${d.teacherID}" data-tr-class-info="row-info${i}" class="showTeacherCard"><i class="fa-solid fa-address-card"></i></td>
-                                    <td class="DeleteTeacher" data-id-Info="${d.teacherID}" data-row-class-info="row-info${i}"><i class="fa-solid fa-user-xmark"></i></td>
-                                </tr>`;
+                                <td>${d.teacherID}</td>
+                                <td>${d.personID}</td>
+                                <td>${d.nationalNumber}</td>
+                                <td>${d.fullName}</td>
+                                <td>${d.phoneNumber}</td>
+                                <td>${d.gendorText}</td>
+                                <td>${d.birthDate}</td>
+                                <td>${d.isActiveText}</td>
+                                <td>${d.entryDate}</td>
+                                <td class="text-nowrap">
+                                    <a href="/Teacher/NewOrEdit?TeacherID=${d.teacherID}" class="btn btn-sm btn-warning me-1">
+                                        <i class="fas fa-user-pen me-1"></i> تعديل
+                                    </a>
+                                    <button class="btn btn-sm btn-info me-1 showTeacherCard" data-id-info="${d.teacherID}">
+                                        <i class="fas fa-address-card me-1"></i> عرض الكارت
+                                    </button>
+                                    <button class="btn btn-sm btn-danger me-1 DeleteTeacher" data-id-info="${d.teacherID}">
+                                        <i class="fas fa-user-xmark me-1"></i> حذف
+                                    </button>
+                                </td>
+                            </tr>`;
                         $('#resultTableBody').append(tr);
                     });
                 },
@@ -189,50 +223,40 @@
                     alert("حدث خطأ أثناء البحث: " + error);
                 }
             });
-
         });
+
         $("#btnReset").on("click", function () {
             $("#filterItem").find("input").val("");
             $("#filterItem").find(`input[type="radio"]`).prop('checked', false);
-            document.getElementById("errorelement")?.remove();
+            $("#errorelement").remove();
         });
 
-        $("#searchInput").on("change", function () {
-            const selectedOption = $("#searchFieldSelect").find("option:selected");
-            const pattern = new RegExp(selectedOption.data("pattern"));
-
-            CheckIsValid($(this).val())
+        $("#searchInput").on("input", function () {
+            CheckIsValid($(this).val());
         });
 
         function CheckIsValid(fildValue) {
-
-            const selectedOption = $("#searchFieldSelect").find("option:selected");
+            const selectedOption = $("#searchFieldSelect option:selected");
             const pattern = new RegExp(selectedOption.data("pattern"));
-
-            document.getElementById("errorelement")?.remove();
+            $("#errorelement").remove();
 
             if (!pattern.test(fildValue)) {
-
-                const newElement = document.createElement("p");
-                newElement.innerHTML = 'القيمة غير صالحة';
-                newElement.className = "text-danger";
-                newElement.id = 'errorelement';
-
-                // لاحظ أن getElementById لا يحتاج علامة #
-                const referenceElement = document.getElementById("searchInput");
-                referenceElement.insertAdjacentElement("afterend", newElement);
+                const newElement = $("<p>", {
+                    text: "القيمة غير صالحة",
+                    class: "text-danger",
+                    id: "errorelement"
+                });
+                $("#searchInput").after(newElement);
                 return false;
             }
             return true;
         }
 
-
-        // edit to show student card
+        // عرض كارت المعلم
         $(document).on("click", ".showTeacherCard", function () {
             const teacherID = $(this).data("idInfo");
-            const trClass = $(this).data("trClassInfo");
+            const trClass = $(this).closest("tr").attr("class");
             const trElement = $(`.${trClass}`).first();
-
             $("#TeacherCardPartial").remove();
 
             $.ajax({
@@ -241,11 +265,7 @@
                 data: { TeacherID: teacherID },
                 success: function (partialHtml) {
                     const newElement = NewHtmlElement("div", partialHtml, "TeacherCardPartial");
-                    if (trElement.length) {
-                        trElement.after(newElement);
-                    } else {
-                        console.warn("trElement not found for trClass:", trClass);
-                    }
+                    trElement.after(newElement);
                 },
                 error: function (xhr, status, error) {
                     console.error("AJAX error:", error);
@@ -253,36 +273,35 @@
             });
         });
 
-        // edit to Delete student
+        // حذف المعلم
         $(document).on("click", ".DeleteTeacher", function () {
             const teacherID = $(this).data("idInfo");
-            const rowClass = $(this).data("rowClassInfo");
+            const rowClass = $(this).data("row-class-info");
             const trElement = $(`.${rowClass}`).first();
 
-            if (confirm(`هل تريد حذف الشخص ,المعرف الشخصي = ${teacherID}`)) {
+            if (confirm(`هل تريد حذف المعلم برقم الهوية ${teacherID}?`)) {
                 $.ajax({
                     url: '/Teacher/DeleteTeacher',
-                    type: `Get`,
+                    type: 'GET',
                     data: { TeacherID: teacherID },
                     success: function (isDeleted) {
                         if (isDeleted) {
-                            alert("تم الحذف");
+                            alert("تم الحذف بنجاح");
                             trElement.remove();
-                        }
-                        else {
+                        } else {
                             alert("فشل الحذف");
                         }
                     },
                     error: function () {
-                        alert("فشل الحذف");
+                        alert("فشل الاتصال بالخادم");
                     }
                 });
             }
-
         });
 
+        // إنشاء عنصر HTML جديد
         function NewHtmlElement(ElementTag, ElementInnerHtml, Elementid) {
-            Element = document.createElement("div");
+            const Element = document.createElement(ElementTag);
             Element.innerHTML = ElementInnerHtml;
             Element.id = Elementid;
             return Element;

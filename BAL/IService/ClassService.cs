@@ -16,6 +16,12 @@ namespace BAL.IService
         {
             _ClassRepo = ClassRepo;
         }
+
+        public clsClass GetByID(int ClassID)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<clsClass> GetClassList()
         {
           return  _ClassRepo.GetClassList();

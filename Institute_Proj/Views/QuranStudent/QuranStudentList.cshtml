@@ -4,73 +4,82 @@
     var projectSelectList = new SelectList(Model.Projects, "ID", "Name", Model.ProjectID);
 }
 
-<h3>قائمة طلاب القرآن</h3>
+<h3 class="mb-4">قائمة طلاب القرآن</h3>
 
-<div>
-    <div id="filterItem">
-        <div class="col-12 col-md-auto d-flex align-items-center">
-            <label for="searchFieldSelect" class="form-label mb-0 me-2">بحث حسب</label>
-            <select id="searchFieldSelect" class="form-select w-auto">
-                <option selected value="-1">لا شيء</option>
-                <option data-pattern="^\d{1,10}$" value="StudentID">معرف الطالب</option>
-                <option data-pattern="^\d{11}$" value="NationalNumber">الرقم الوطني</option>
-                <option data-pattern="^[\u0600-\u06FFa-zA-Z ]{2,50}$" value="FullName">الاسم</option>
-            </select>
+<div class="container-fluid">
+    <div id="filterItem" class="mb-4 p-3 bg-light rounded shadow-sm">
+        <div class="row g-3 align-items-center">
 
-            <input type="text" id="searchInput" name="" class="form-control ms-2" style="min-width: 200px;" disabled placeholder="" />
-        </div>
-
-        <!-- فلاتر مقدار الحفظ -->
-        <div class="col-12 col-md-auto d-flex align-items-center">
-            <label class="me-2">مقدار الحفظ من</label>
-            <input type="number" name="StartSevdPage" class="form-control me-3" min="0" max="604" />
-            <label class="me-2">إلى</label>
-            <input type="number" name="EndSevdPage" class="form-control" min="0" max="604" />
-        </div>
-
-        <!-- فلاتر مقدار التثبيت -->
-        <div class="col-12 col-md-auto d-flex align-items-center">
-            <label class="me-2">مقدار التثبيت من</label>
-            <input type="number" name="StartInstalledPart" class="form-control me-3" min="0" max="30" />
-            <label class="me-2">إلى</label>
-            <input type="number" name="EndInstalledPart" class="form-control" min="0" max="30" />
-        </div>
-        <!-- فلتر حسب المشروع -->
-        <div class="col-12 col-md-auto d-flex align-items-center">
-            <label class="form-label mb-0 me-2" for="ProjectID">المشروع</label>
-            <select id="ProjectID" name="ProjectID" class="form-select">
-                <option value="">-- اختر مشروعًا --</option>
-                @foreach (var proj in projectSelectList)
-                {
-                    <option value="@proj.Value">@proj.Text</option>
-                }
-            </select>
-        </div>
-
-        <div class="col-12 col-md-auto d-flex align-items-center">
-            <p class="mb-0 me-3">تصنيف حسب الحالة</p>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" id="NoneActive" type="radio" name="IsActive" value="" />
-                <label class="form-check-label" for="NoneActive">لا شيء</label>
+            <!-- بحث حسب -->
+            <div class="col-12 col-md-auto d-flex align-items-center">
+                <label for="searchFieldSelect" class="form-label mb-0 me-2">بحث حسب</label>
+                <select id="searchFieldSelect" class="form-select w-auto">
+                    <option selected value="-1">لا شيء</option>
+                    <option data-pattern="^\d{1,10}$" value="StudentID">معرف الطالب</option>
+                    <option data-pattern="^\d{11}$" value="NationalNumber">الرقم الوطني</option>
+                    <option data-pattern="^[\u0600-\u06FFa-zA-Z ]{2,50}$" value="FullName">الاسم</option>
+                </select>
+                <input type="text" id="searchInput" name="" class="form-control ms-2" style="min-width: 200px;" disabled placeholder="" />
             </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" id="Active" type="radio" name="IsActive" value="true" />
-                <label class="form-check-label" for="Active">مفعل</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" id="not-Active" type="radio" name="IsActive" value="false" />
-                <label class="form-check-label" for="not-Active">غير مفعل</label>
-            </div>
-        </div>
 
-        <div class="col-12 col-md-auto d-flex align-items-center">
-            <button type="button" id="btnSearch" class="btn btn-primary">بحث</button>
-            <button type="button" id="btnReset" class="btn btn-secondary">إرجاع</button>
+            <!-- فلاتر مقدار الحفظ -->
+            <div class="col-12 col-md-auto d-flex align-items-center">
+                <label class="me-2">مقدار الحفظ من</label>
+                <input type="number" name="StartSevdPage" class="form-control me-3" min="0" max="604" />
+                <label class="me-2">إلى</label>
+                <input type="number" name="EndSevdPage" class="form-control" min="0" max="604" />
+            </div>
+
+            <!-- فلاتر مقدار التثبيت -->
+            <div class="col-12 col-md-auto d-flex align-items-center">
+                <label class="me-2">مقدار التثبيت من</label>
+                <input type="number" name="StartInstalledPart" class="form-control me-3" min="0" max="30" />
+                <label class="me-2">إلى</label>
+                <input type="number" name="EndInstalledPart" class="form-control" min="0" max="30" />
+            </div>
+
+            <!-- فلتر حسب المشروع -->
+            <div class="col-12 col-md-auto d-flex align-items-center">
+                <label class="form-label mb-0 me-2" for="ProjectID">المشروع</label>
+                <select id="ProjectID" name="ProjectID" class="form-select">
+                    <option value="">-- اختر مشروعًا --</option>
+                    @foreach (var proj in projectSelectList)
+                    {
+                        <option value="@proj.Value">@proj.Text</option>
+                    }
+                </select>
+            </div>
+
+            <!-- تصنيف حسب الحالة -->
+            <div class="col-12 col-md-auto d-flex align-items-center">
+                <p class="mb-0 me-3">تصنيف حسب الحالة</p>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="NoneActive" type="radio" name="IsActive" value="" />
+                    <label class="form-check-label" for="NoneActive">لا شيء</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="Active" type="radio" name="IsActive" value="true" />
+                    <label class="form-check-label" for="Active">مفعل</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="not-Active" type="radio" name="IsActive" value="false" />
+                    <label class="form-check-label" for="not-Active">غير مفعل</label>
+                </div>
+            </div>
+
+            <!-- أزرار البحث وإعادة التعيين -->
+            <div class="col-12 col-md-auto d-flex align-items-center gap-2">
+                <button type="button" id="btnSearch" class="btn btn-primary">بحث</button>
+                <button type="button" id="btnReset" class="btn btn-secondary">إرجاع</button>
+            </div>
         </div>
     </div>
-
-    <table class="table table-hover mt-3">
-        <thead>
+    <div>
+        <a asp-action="NewOrEdit" asp-controller="QuranStudent"><i class="fa-solid fa-user-plus"></i></a>
+    </div>
+    <!-- جدول العرض -->
+    <table class="table table-hover table-striped table-bordered mt-3">
+        <thead class="table-dark">
             <tr>
                 <th>معرف طالب القرآن</th>
                 <th>معرف الطالب</th>
@@ -80,11 +89,11 @@
                 <th>مقدار التثبيت</th>
                 <th>نوع المشروع</th>
                 <th>تقييم الطالب</th>
-                <th>اضافة قرائة</th>
+                <th>إضافة قراءة</th>
             </tr>
         </thead>
         <tbody id="resultTableBody">
-            @foreach(var q in Model.QuranStudentTableView)
+            @foreach (var q in Model.QuranStudentTableView)
             {
                 <tr>
                     <td>@q.QuranStudentID</td>
@@ -95,13 +104,21 @@
                     <td>@q.TotalInstalledParts</td>
                     <td>@q.ProjectName</td>
                     <td>@q.PerformanceRatingText</td>
-                    <td><a asp-action="NewOrEditReading" asp-controller="Reading" asp-route-QuranStudentID="@q.QuranStudentID">اضافة قرائة</a></td>
+                    <td>
+                        <a asp-action="NewOrEditReading"
+                           asp-controller="Reading"
+                           asp-route-QuranStudentID="@q.QuranStudentID"
+                           class="btn btn-sm btn-outline-success">
+                            <i class="fa-solid fa-book-open me-1"></i> إضافة قراءة
+                        </a>
+                    </td>
                 </tr>
             }
-            
         </tbody>
     </table>
 </div>
+
+<!-- سكريبتات jQuery الداخلية -->
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 @section Scripts {
     @{
@@ -133,9 +150,8 @@
                 EndSevdPage: $('input[name="EndSevdPage"]').val(),
                 StartInstalledPart: $('input[name="StartInstalledPart"]').val(),
                 EndInstalledPart: $('input[name="EndInstalledPart"]').val(),
-                ProjectID :$('#ProjectID').val()
+                ProjectID: $('#ProjectID').val()
             };
-
 
             if (fieldName && fieldName !== "-1") {
                 dataToSend[fieldName] = fieldValue;
@@ -149,16 +165,21 @@
                     $('#resultTableBody').html('');
                     data.forEach(function (d) {
                         const tr = `<tr>
-                                <td>${d.quranStudentID}</td>
-                                <td>${d.studentID}</td>
-                                <td>${d.fullName}</td>
-                                <td>${d.nationalNumber}</td>
-                                <td>${d.totalSavedPages}</td>
-                                <td>${d.totalInstalledParts}</td>
-                                <td>${d.projectName}</td>
-                                <td>${d.performanceRatingText}</td>
-                                <td><a asp-action="NewOrEditReading" asp-controller="Reading" asp-route-QuranStudentID="${d.quranStudentID}">اضافة قرائة</a></td>
-                             </tr>`;
+                                    <td>${d.quranStudentID}</td>
+                                    <td>${d.studentID}</td>
+                                    <td>${d.fullName}</td>
+                                    <td>${d.nationalNumber}</td>
+                                    <td>${d.totalSavedPages}</td>
+                                    <td>${d.totalInstalledParts}</td>
+                                    <td>${d.projectName}</td>
+                                    <td>${d.performanceRatingText}</td>
+                                    <td>
+                                        <a href="/Reading/NewOrEditReading?QuranStudentID=${d.quranStudentID}"
+                                           class="btn btn-sm btn-outline-success">
+                                            <i class="fa-solid fa-book-open me-1"></i> إضافة قراءة
+                                        </a>
+                                    </td>
+                                 </tr>`;
                         $('#resultTableBody').append(tr);
                     });
                 },

@@ -578,7 +578,6 @@ namespace BAL.Mapper
             _quranStudentService.SaveMode = GlobalVar._SaveMode.Update;
             clsQuranStudentModel model = new clsQuranStudentModel();
             model.ID = quranstudent.ID;
-
             model.studentTable = MapStudentTable(quranstudent.StudentID);
             model.StudentID = quranstudent.StudentID;
             model.TotalSavedPages = quranstudent.TotalSavedPages;

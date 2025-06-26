@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Institute_Proj\\Institute_Proj\\Institute_Proj.csproj": {}
+    "C:\\‏‏Institute_Proj - نسخة\\Institute_Proj\\Institute_Proj.csproj": {}
   },
   "projects": {
-    "C:\\Institute_Proj\\BAL\\BAL.csproj": {
+    "C:\\‏‏Institute_Proj - نسخة\\BAL\\BAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Institute_Proj\\BAL\\BAL.csproj",
+        "projectUniqueName": "C:\\‏‏Institute_Proj - نسخة\\BAL\\BAL.csproj",
         "projectName": "BAL",
-        "projectPath": "C:\\Institute_Proj\\BAL\\BAL.csproj",
+        "projectPath": "C:\\‏‏Institute_Proj - نسخة\\BAL\\BAL.csproj",
         "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-        "outputPath": "C:\\Institute_Proj\\BAL\\obj\\",
+        "outputPath": "C:\\‏‏Institute_Proj - نسخة\\BAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,11 +29,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Institute_Proj\\DAL\\DAL.csproj": {
-                "projectPath": "C:\\Institute_Proj\\DAL\\DAL.csproj"
+              "C:\\‏‏Institute_Proj - نسخة\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\‏‏Institute_Proj - نسخة\\DAL\\DAL.csproj"
               },
-              "C:\\Institute_Proj\\ViewModel\\ViewModel.csproj": {
-                "projectPath": "C:\\Institute_Proj\\ViewModel\\ViewModel.csproj"
+              "C:\\‏‏Institute_Proj - نسخة\\ViewModel\\ViewModel.csproj": {
+                "projectPath": "C:\\‏‏Institute_Proj - نسخة\\ViewModel\\ViewModel.csproj"
               }
             }
           }
@@ -78,14 +78,14 @@
         }
       }
     },
-    "C:\\Institute_Proj\\DAL\\DAL.csproj": {
+    "C:\\‏‏Institute_Proj - نسخة\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Institute_Proj\\DAL\\DAL.csproj",
+        "projectUniqueName": "C:\\‏‏Institute_Proj - نسخة\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "C:\\Institute_Proj\\DAL\\DAL.csproj",
+        "projectPath": "C:\\‏‏Institute_Proj - نسخة\\DAL\\DAL.csproj",
         "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-        "outputPath": "C:\\Institute_Proj\\DAL\\obj\\",
+        "outputPath": "C:\\‏‏Institute_Proj - نسخة\\DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -103,8 +103,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Institute_Proj\\ViewModel\\ViewModel.csproj": {
-                "projectPath": "C:\\Institute_Proj\\ViewModel\\ViewModel.csproj"
+              "C:\\‏‏Institute_Proj - نسخة\\ViewModel\\ViewModel.csproj": {
+                "projectPath": "C:\\‏‏Institute_Proj - نسخة\\ViewModel\\ViewModel.csproj"
               }
             }
           }
@@ -159,14 +159,14 @@
         }
       }
     },
-    "C:\\Institute_Proj\\Institute_Proj\\Institute_Proj.csproj": {
+    "C:\\‏‏Institute_Proj - نسخة\\Institute_Proj\\Institute_Proj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Institute_Proj\\Institute_Proj\\Institute_Proj.csproj",
+        "projectUniqueName": "C:\\‏‏Institute_Proj - نسخة\\Institute_Proj\\Institute_Proj.csproj",
         "projectName": "Institute_Proj",
-        "projectPath": "C:\\Institute_Proj\\Institute_Proj\\Institute_Proj.csproj",
+        "projectPath": "C:\\‏‏Institute_Proj - نسخة\\Institute_Proj\\Institute_Proj.csproj",
         "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-        "outputPath": "C:\\Institute_Proj\\Institute_Proj\\obj\\",
+        "outputPath": "C:\\‏‏Institute_Proj - نسخة\\Institute_Proj\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -184,14 +184,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Institute_Proj\\BAL\\BAL.csproj": {
-                "projectPath": "C:\\Institute_Proj\\BAL\\BAL.csproj"
+              "C:\\‏‏Institute_Proj - نسخة\\BAL\\BAL.csproj": {
+                "projectPath": "C:\\‏‏Institute_Proj - نسخة\\BAL\\BAL.csproj"
               },
-              "C:\\Institute_Proj\\DAL\\DAL.csproj": {
-                "projectPath": "C:\\Institute_Proj\\DAL\\DAL.csproj"
+              "C:\\‏‏Institute_Proj - نسخة\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\‏‏Institute_Proj - نسخة\\DAL\\DAL.csproj"
               },
-              "C:\\Institute_Proj\\ViewModel\\ViewModel.csproj": {
-                "projectPath": "C:\\Institute_Proj\\ViewModel\\ViewModel.csproj"
+              "C:\\‏‏Institute_Proj - نسخة\\ViewModel\\ViewModel.csproj": {
+                "projectPath": "C:\\‏‏Institute_Proj - نسخة\\ViewModel\\ViewModel.csproj"
               }
             }
           }
@@ -253,14 +253,14 @@
         }
       }
     },
-    "C:\\Institute_Proj\\ViewModel\\ViewModel.csproj": {
+    "C:\\‏‏Institute_Proj - نسخة\\ViewModel\\ViewModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Institute_Proj\\ViewModel\\ViewModel.csproj",
+        "projectUniqueName": "C:\\‏‏Institute_Proj - نسخة\\ViewModel\\ViewModel.csproj",
         "projectName": "ViewModel",
-        "projectPath": "C:\\Institute_Proj\\ViewModel\\ViewModel.csproj",
+        "projectPath": "C:\\‏‏Institute_Proj - نسخة\\ViewModel\\ViewModel.csproj",
         "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-        "outputPath": "C:\\Institute_Proj\\ViewModel\\obj\\",
+        "outputPath": "C:\\‏‏Institute_Proj - نسخة\\ViewModel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",

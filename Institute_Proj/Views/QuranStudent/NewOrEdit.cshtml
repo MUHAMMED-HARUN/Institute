@@ -8,84 +8,78 @@
     var performanceList = new SelectList(Model.PerformanceRatings.Select(p => new { Text = p.Key, Value = p.Value }), "Value", "Text", Model.performanceRating);
     var viewDataForStudentCard = new ViewDataDictionary<clsStudentTableVieweModel>(ViewData, Model.studentTable);
     viewDataForStudentCard.TemplateInfo.HtmlFieldPrefix = "studentTable";
-    
-
 }
 
-<h4>تسجيل طالب قرآن</h4>
+<!-- Bootstrap RTL -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+
+<h4 class="mb-4">تسجيل طالب قرآن</h4>
 <hr />
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
 
-<script>
-    document.addEventListener("StudentCardUpdated", function (event) {
-        const StudentID = event.detail;
-        if (StudentID) {
-            document.getElementById("QuranStudentID").value = StudentID;
-        }
-    });
-</script>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="NewOrEdit" method="post">
+                <div asp-validation-summary="All" class="alert alert-danger d-none" role="alert"></div>
 
-<div class="row">
-    <div class="col-md-5">
-        <form asp-action="NewOrEdit" method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
+                <!-- Student Card Section -->
+                <div class="form-group mb-4 student-table" id="QuranStudentCard">
+                    @await Html.PartialAsync("~/Views/Student/StudentCardWithFilter.cshtml", Model.studentTable, viewDataForStudentCard)
+                </div>
 
-            <div class="form-group student-table" id="QuranStudentCard">
-                @await Html.PartialAsync("~/Views/Student/StudentCardWithFilter.cshtml", Model.studentTable, viewDataForStudentCard)
-            </div>
-
-            <div>
-                <span asp-validation-for="StudentID" class="text-danger"></span>
+                <!-- Hidden Field -->
                 <input asp-for="StudentID" id="QuranStudentID" hidden />
-            </div>
 
-            <div class="form-group">
-                <label asp-for="ID" class="control-label"></label>
-                <p id="QuranID">@Model.ID</p>
-                <span asp-validation-for="ID" class="text-danger"></span>
-            </div>
+                <!-- ID Display -->
+                <div class="form-group mb-3">
+                    <label asp-for="ID" class="form-label"></label>
+                    <p id="QuranID" class="form-control-plaintext">@Model.ID</p>
+                    <span asp-validation-for="ID" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="TotalSavedPages" class="control-label"></label>
-                <input asp-for="TotalSavedPages" class="form-control" />
-                <span asp-validation-for="TotalSavedPages" class="text-danger"></span>
-            </div>
+                <!-- Total Saved Pages -->
+                <div class="form-group mb-3">
+                    <label asp-for="TotalSavedPages" class="form-label"></label>
+                    <input asp-for="TotalSavedPages" class="form-control" />
+                    <span asp-validation-for="TotalSavedPages" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="TotalInstalledParts" class="control-label"></label>
-                <input asp-for="TotalInstalledParts" class="form-control" />
-                <span asp-validation-for="TotalInstalledParts" class="text-danger"></span>
-            </div>
+                <!-- Total Installed Parts -->
+                <div class="form-group mb-3">
+                    <label asp-for="TotalInstalledParts" class="form-label"></label>
+                    <input asp-for="TotalInstalledParts" class="form-control" />
+                    <span asp-validation-for="TotalInstalledParts" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="ProjectID" class="control-label"></label>
-                <select asp-for="ProjectID" asp-items="projectList" class="form-select">
-                    <option value="-1">اختر مشروع</option>
-                </select>
-                <span asp-validation-for="ProjectID" class="text-danger"></span>
-            </div>
+                <!-- Project Dropdown -->
+                <div class="form-group mb-3">
+                    <label asp-for="ProjectID" class="form-label"></label>
+                    <select asp-for="ProjectID" asp-items="projectList" class="form-select">
+                        <option value="-1">اختر مشروع</option>
+                    </select>
+                    <span asp-validation-for="ProjectID" class="text-danger"></span>
+                </div>
+               
 
-            <div class="form-group">
-                <label asp-for="performanceRating" class="control-label"></label>
-                <select asp-for="performanceRating" asp-items="performanceList" class="form-select">
-                    <option value="-1">اختر التقييم</option>
-                </select>
-                <span asp-validation-for="performanceRating" class="text-danger"></span>
-            </div>
+                <!-- Performance Rating Dropdown -->
+                <div class="form-group mb-3">
+                    <label asp-for="performanceRating" class="form-label"></label>
+                    <select asp-for="performanceRating" asp-items="performanceList" class="form-select">
+                        <option value="-1">اختر التقييم</option>
+                    </select>
+                    <span asp-validation-for="performanceRating" class="text-danger"></span>
+                </div>
 
-            <div class="form-group mt-3">
-                <input type="submit" value="حفظ" class="btn btn-primary" />
+                <!-- Submit Button -->
+                <div class="form-group mt-4 d-grid">
+                    <input type="submit" value="حفظ" class="btn btn-primary btn-lg" />
+                </div>
+            </form>
+
+            <!-- Back to List -->
+            <div class="mt-4 text-center">
+                <a asp-action="Index" class="btn btn-outline-secondary">العودة إلى القائمة</a>
             </div>
-        </form>
+        </div>
     </div>
 </div>
-
-<div class="mt-3">
-    <a asp-action="Index">العودة إلى القائمة</a>
-</div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

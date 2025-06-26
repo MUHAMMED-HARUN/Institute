@@ -4,6 +4,7 @@ using DAL.Models.TableViews;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BAL.ViewModel
 {
@@ -15,6 +16,7 @@ namespace BAL.ViewModel
         [Display(Name = "معرف الطالب")]
         [Range(1, int.MaxValue, ErrorMessage = "الرجاء اختيار طالب.")]
         [IsQuranStudentHasBaseStudent(ErrorMessage ="لا يمكن ربط هذه البيانات بهذا الطالب لانه مربوط بالفعل")]
+        [HasActiveEnrollmentForQuranStudent(ClassIDFildName:"ClassID",ErrorMessage ="هذا الطالب ليس له سجل نشط")]
         public int StudentID { get; set; }
 
         [Display(Name = "عدد الصفحات المحفوظة")]

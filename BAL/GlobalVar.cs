@@ -49,5 +49,9 @@
             Dict.Add("مراجعة", 2);
             return Dict;
         }
+        public enum Departments
+        {
+            QuranDept= 1,
+        }
     }
 }

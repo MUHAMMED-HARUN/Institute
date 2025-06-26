@@ -14,15 +14,18 @@ namespace BAL.IService
     public class QuranStudentService : IQuranStudentService
     {
         private readonly IQuranStudent _quranStudentRepo;
+        private readonly IStudentService _studentService;
+
         public GlobalVar._SaveMode SaveMode { get; set; }
         public virtual clsQuranStudent QuranStudent { get; set; }
 
-        public QuranStudentService(IQuranStudent quranStudentRepo)
+        public QuranStudentService(IQuranStudent quranStudentRepo, IStudentService studentService)
         {
             _quranStudentRepo = quranStudentRepo;
+            _studentService = studentService;
         }
 
-    
+
 
         public bool Delete(int id)
         {
@@ -51,6 +54,7 @@ namespace BAL.IService
 
         public bool Add(clsQuranStudent entity)
         {
+            if (_studentService.HasActiveEnrollment(entity.StudentID, ((int)GlobalVar.Departments.QuranDept))) ;
            return _quranStudentRepo.Add(entity);
         }
 

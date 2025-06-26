@@ -11,5 +11,6 @@ namespace DAL.interfaceCalsses
     {
         // evlement crud in there
         public List<clsClass> GetClassList();
+        public clsClass GetByID(int ClassID);
     }
 }

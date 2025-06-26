@@ -1,6 +1,7 @@
 ﻿using DAL.EF;
 using DAL.interfaceCalsses;
 using DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,10 @@ namespace DAL.IService
         public ClassRepository(AppDBContext dBContext)
         {
             _Context = dBContext;
+        }
+        public clsClass GetByID(int ClassID)
+        {
+            return _Context.Classes.AsNoTracking().Where(C => C.ID == ClassID).FirstOrDefault(); 
         }
         public List<clsClass> GetClassList()
         {

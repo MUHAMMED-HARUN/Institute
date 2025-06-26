@@ -10,5 +10,6 @@ namespace BAL.interfaceCalsses
     public interface IClassService
     {
         public List<clsClass> GetClassList();
+        public clsClass GetByID(int ClassID );
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BAL.Attribute
 {
-    public class HasActiveEnrollmentAttribute : ValidationAttribute
+    public class HasActiveEnrollmentForBaseStudentAttribute : ValidationAttribute
     {
         IStudentService _student;
 

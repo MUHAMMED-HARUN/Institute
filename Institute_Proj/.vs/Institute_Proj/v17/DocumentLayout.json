@@ -1,12 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Institute_Proj\\Institute_Proj\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\controllers\\student\\quranstudentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:controllers\\student\\quranstudentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\\u200F\u200FInstitute_Proj - \u0646\u0633\u062E\u0629\\Institute_Proj\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -14,24 +9,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 314,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "QuranStudentController.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Student\\QuranStudentController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Student\\QuranStudentController.cs",
-              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Student\\QuranStudentController.cs",
-              "RelativeToolTip": "Controllers\\Student\\QuranStudentController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T09:49:59.863Z",
-              "EditorCaption": ""
             }
           ]
         }

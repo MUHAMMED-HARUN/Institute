@@ -3,26 +3,30 @@
     ViewData["Title"] = Model.ID == 0 ? "إضافة يوم جديد" : "تعديل يوم القراءة";
 }
 
-<h4>@ViewData["Title"]</h4>
+<h4 class="mb-4">@ViewData["Title"]</h4>
 <hr />
 
 <form asp-action="NewOrEditReadingDay" method="post">
+    <!-- Hidden Field -->
     <input type="hidden" asp-for="ID" />
 
-    <div class="form-group">
-        <label asp-for="ReadingDate"></label>
+    <!-- تاريخ اليوم -->
+    <div class="form-group mb-3">
+        <label asp-for="ReadingDate" class="form-label"></label>
         <input asp-for="ReadingDate" class="form-control" />
         <span asp-validation-for="ReadingDate" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Discription"></label>
-        <textarea asp-for="Discription" class="form-control"></textarea>
+    <!-- وصف اليوم -->
+    <div class="form-group mb-3">
+        <label asp-for="Discription" class="form-label"></label>
+        <textarea asp-for="Discription" class="form-control" rows="4"></textarea>
         <span asp-validation-for="Discription" class="text-danger"></span>
     </div>
 
-    <div class="form-group mt-3">
-        <input type="submit" value="حفظ" class="btn btn-primary" />
-        <a asp-action="Index" class="btn btn-secondary">العودة إلى القائمة</a>
+    <!-- زر الإرسال -->
+    <div class="form-group mt-4 d-grid gap-2 d-md-flex justify-content-md-between">
+        <button type="submit" class="btn btn-primary btn-lg px-4">حفظ</button>
+        <a asp-action="Index" class="btn btn-secondary btn-lg px-4">العودة إلى القائمة</a>
     </div>
 </form>
