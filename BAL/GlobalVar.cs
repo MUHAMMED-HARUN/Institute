@@ -38,6 +38,25 @@
             Dict.Add("ممتاز", 5);
             return Dict;
         }
+        static public string  GetPerformanceRating(byte PerformanceR)
+        {
+
+            switch (PerformanceR)
+            {
+                case 1:
+                    return "ضعيف";
+                case 2:
+                    return "مقبول";
+                case 3:
+                    return "جيد";
+                case 4:
+                    return "جيد جدا";
+                case 5:
+                    return "ممتاز";
+            }
+            return "ضعيف";
+        }
+
         public enum ReadingType
         {
             New = 1, Review
@@ -47,7 +66,20 @@
             Dictionary<string, byte> Dict = new Dictionary<string, byte>();
             Dict.Add("جديد", 1);
             Dict.Add("مراجعة", 2);
+         
             return Dict;
+        }
+        static public string GetReadingType(byte ReadingType)
+        {
+            switch (ReadingType)
+            {
+                case (int)GlobalVar.ReadingType.New:
+                    return "جديد";
+                case (int)GlobalVar.ReadingType.Review:
+                    return "مراجعة";
+              
+            }
+            return "جديد";
         }
         public enum Departments
         {

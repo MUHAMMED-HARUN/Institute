@@ -11,12 +11,13 @@
 <form asp-action="NewOrEditReading" method="post">
     <!-- Hidden Field -->
     <input type="hidden" asp-for="ReadingID" />
+    <label asp-for="ReadingID"></label>
     <p class="form-control bg-light" readonly>@Model.ReadingID</p>
 
     <!-- رقم الصفحة المقرؤة -->
     <div class="form-group mb-3">
         <label asp-for="ReadedPageNumer" class="form-label"></label>
-        <input asp-for="ReadedPageNumer" class="form-control" />
+		<p id="ReadedPageNumer">@Model.ReadedPageNumer</p>
         <span asp-validation-for="ReadedPageNumer" class="text-danger"></span>
     </div>
 

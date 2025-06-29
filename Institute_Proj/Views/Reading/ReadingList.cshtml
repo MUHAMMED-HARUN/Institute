@@ -1,4 +1,5 @@
 ﻿@model List<DAL.Models.clsReading>
+@using BAL;
 @{
     ViewData["Title"] = "إدارة القراءات";
 }
@@ -15,6 +16,7 @@
     <table class="table table-hover table-striped align-middle text-center">
         <thead class="table-dark">
             <tr>
+                <th scope="col">اسم الطالب</th>
                 <th scope="col">رقم الصفحة</th>
                 <th scope="col">تقييم الأداء</th>
                 <th scope="col">نوع القراءة</th>
@@ -28,14 +30,15 @@
                 foreach (var item in Model)
                 {
                     <tr>
+                        <td>@(item.QuranStudent.student.Person.FirstName + ' ' + item.QuranStudent.student.Person.FatherName + ' ' + item.QuranStudent.student.Person.LastName)</td>
                         <td>@item.ReadedPageNum</td>
-                        <td>@item.PerformanceRating</td>
-                        <td>@item.ReadigType</td>
-                        <td>@item.ReadingDayID</td>
+                        <td>@GlobalVar.GetPerformanceRating(item.PerformanceRating)</td>
+                        <td>@GlobalVar.GetReadingType(item.ReadigType)</td>
+                        <td>@item.ReadingDay.ReadingDate</td>
                         <td>
                             <a asp-action="NewOrEditReading"
-                               asp-route-ReadingDayID="@item.ReadingDayID"
-                               asp-route-id="@item.ID"
+                               asp-route-QuranStudentID="@item.QuranStudentID"
+                               asp-route-ReadingID="@item.ID"
                                class="btn btn-sm btn-outline-primary me-1">
                                 <i class="fas fa-edit me-1"></i> تعديل
                             </a>

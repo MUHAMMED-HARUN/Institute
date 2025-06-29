@@ -64,41 +64,37 @@ namespace Institute_Proj.Controllers
         //    return View(reading);
         //}
         [HttpGet]
-        public IActionResult NewOrEditReading(int QuranStudentID)
+        public IActionResult NewOrEditReading(int QuranStudentID, int? ReadingID)
         {
-            
-            _QuranstudentService = (IQuranStudentService)_service.GetService(typeof(IQuranStudentService));
 
+            Mapper mapper = new Mapper(_service);
             clsReadingModel model = new clsReadingModel();
-            clsQuranStudentFilter filter = new clsQuranStudentFilter();
-
-            filter.QuranStudentID = QuranStudentID;
-            
-            model.QuranStudentName = _QuranstudentService.GetAll(filter).FirstOrDefault()?.FullName;
-            model.QuranStudentID = QuranStudentID;
-
-            clsReadingDay readingDay = _readingService.GetLastReadingDay();
-
-            model.ReadingDay = readingDay.ReadingDate;
-            model.ReadingDayID = readingDay.ID;
-
+            if (ReadingID != null)
+                model = mapper.MapReading(ReadingID.Value);
+            else
+                model = mapper.MapReadingBuQuranStudentID(QuranStudentID);
 
             model.PerformaceList = GlobalVar.GetPerformanceRating();
             model.ReadingTypeList = GlobalVar.GetReadingType();
+
             return View(model);
         }
+
+        [HttpPost]
         public IActionResult NewOrEditReading(clsReadingModel model)  
         {
             if (!ModelState.IsValid)
             {
+                model.PerformaceList = GlobalVar.GetPerformanceRating();
+                model.ReadingTypeList = GlobalVar.GetReadingType();
                 return View(model);
             }
             Mapper mapper = new Mapper(_service);
-             clsReading reading= mapper.MapReading(model);
-            if (_readingService.CreateReading(reading) > 0)
-                return RedirectToAction("Index", "QuranStudent");
+             _readingService.Reading = mapper.MapReading(model);
+            if (_readingService.SaveReading() )
+                return RedirectToAction("");
             else
-                return NotFound("خطا في الاضافة");
+                return NotFound("خطا في الحفظ");
         }
     }
 }

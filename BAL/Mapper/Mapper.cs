@@ -257,11 +257,14 @@ namespace BAL.Mapper
             if (model.StudentID.HasValue)
             {
                 _studentService.Student = _studentService.GetByStudentID(model.StudentID.Value);
-           
+                _studentService.SaveMode = GlobalVar._SaveMode.Update;
             }
             else
+            {
                 _studentService.Student = new clsStudent();
             _studentService.SaveMode =  GlobalVar._SaveMode.New;
+
+            }
 
             if (_studentService.Student == null)
                 _studentService.Student = new clsStudent();
@@ -592,21 +595,28 @@ namespace BAL.Mapper
             if (_readingService == null)
                 return new clsReading();
 
-            if (model.ReadingDayID > 0)
+            if (model.ReadingID > 0)
             {
                 _readingService.SaveMode = GlobalVar._SaveMode.Update;
-                _readingService.Reading = _readingService.GetReadingByID(model.ReadingDayID);
-            }
+                _readingService.Reading = _readingService.GetReadingByID(model.ReadingID);
+				_readingService.Reading.ReadedPageNum = model.ReadedPageNumer;
+				if (_readingService.Reading == null)
+				{
+					_readingService.Reading = new clsReading();
+					_readingService.SaveMode = GlobalVar._SaveMode.New;
+				}
+			}
             else
-                _readingService.SaveMode = GlobalVar._SaveMode.New;
-            if (_readingService.Reading == null)
             {
                 _readingService.Reading = new clsReading();
-                _readingService.SaveMode = GlobalVar._SaveMode.New;
-            }
+
+				_readingService.SaveMode = GlobalVar._SaveMode.New;
+                _readingService.Reading.ReadedPageNum = (short)(_readingService.GetLastReadedPageNum(model.QuranStudentID)-1);
+			}
+
         
-        _readingService.Reading.ID=model.ReadingID;
-            _readingService.Reading.ReadedPageNum = model.ReadedPageNumer;
+        //_readingService.Reading.ID=model.ReadingID;
+
             _readingService.Reading.PerformanceRating = model.PerformaceRating;
             _readingService.Reading.ReadigType = model.readingType;
             _readingService.Reading.ReadingDayID = model.ReadingDayID;
@@ -617,8 +627,8 @@ namespace BAL.Mapper
         public clsReadingModel MapReading(int ReadingID )
         {
             _readingService = (IReadingService)_service.GetService(typeof(IReadingService));
+            _quranStudentService = (IQuranStudentService)_service.GetService(typeof(IQuranStudentService));
             _studentService = (IStudentService)_service.GetService(typeof(IStudentService));
-            _studentService = (IStudentService)_service.GetService(typeof(IQuranStudent));
             if (_readingService == null&& _studentService==null)
                 return new clsReadingModel();
 
@@ -641,13 +651,33 @@ namespace BAL.Mapper
             model.QuranStudentID = _readingService.Reading.QuranStudentID;
             model.ReadingDay = _readingService.GetReadingDayByID(model.ReadingDayID).ReadingDate;
 
-            clsStudentFilter filter =new clsStudentFilter();
-            filter.StudentID = _quranStudentService.GetByID(model.QuranStudentID).StudentID;
-            model.QuranStudentName = _studentService.GetList(filter).FirstOrDefault().FullName;
+            clsQuranStudentFilter filter =new clsQuranStudentFilter();
+            filter.QuranStudentID = model.QuranStudentID;
+            model.QuranStudentName = _quranStudentService.GetAll(filter).FirstOrDefault().FullName;
 
             return model;
         }
-     
+      public clsReadingModel MapReadingBuQuranStudentID(int QuranStudentID)
+        {
+            _quranStudentService = (IQuranStudentService)_service.GetService(typeof(IQuranStudentService));
+            _readingService = (IReadingService)_service.GetService(typeof(IReadingService));
+
+            clsReadingModel model = new clsReadingModel();
+            clsQuranStudentFilter filter = new clsQuranStudentFilter();
+
+            filter.QuranStudentID = QuranStudentID;
+
+            model.QuranStudentName = _quranStudentService.GetAll(filter).FirstOrDefault()?.FullName;
+            model.QuranStudentID = QuranStudentID;
+
+
+            clsReadingDay readingDay = new clsReadingDay();
+                readingDay = _readingService.GetLastReadingDay();
+            model.ReadedPageNumer= _readingService.GetLastForReadingPageNum(QuranStudentID);
+            model.ReadingDay = readingDay.ReadingDate;
+            model.ReadingDayID = readingDay.ID;
+            return (model);
+        }
     }
 }
 

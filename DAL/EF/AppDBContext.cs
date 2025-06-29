@@ -48,6 +48,7 @@ namespace DAL.EF
             modelBuilder.Entity<clsStudentTableView>()
                 .HasNoKey()
                 .ToView(null);
+            modelBuilder.Entity<clsReading>().ToTable(rt => rt.HasTrigger("terInsertReading"));
         }
     }
 }

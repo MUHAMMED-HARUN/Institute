@@ -25,6 +25,7 @@ namespace DAL.interfaceCalsses
         bool UpdateReading(clsReading entity);
         bool DeleteReading(int id);
         public List<clsReading> GetReadingsByQuranStudentID(int quranStudentID);
+        public short GetLastReadedPageNum(int QuranStudent);
 
     }
 }

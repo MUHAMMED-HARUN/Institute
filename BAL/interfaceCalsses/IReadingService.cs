@@ -26,5 +26,8 @@ namespace BAL.interfaceCalsses
         int CreateReading(clsReading entity);
         bool UpdateReading(clsReading entity);
         bool DeleteReading(int id);
-    }
+        bool SaveReading();
+        public short GetLastForReadingPageNum(int QuranStudent);
+		public short GetLastReadedPageNum(int QuranStudent);
+	}
 }

@@ -52,7 +52,7 @@ namespace BAL.IService
         }
         public clsReadingDay GetLastReadingDay()
         {
-            return  _readingRepo.GetLastReadingDay();
+            return _readingRepo.GetLastReadingDay();
         }
 
         // ---------------- Readings ----------------
@@ -85,5 +85,51 @@ namespace BAL.IService
         {
             return _readingRepo.DeleteReading(id);
         }
-    }
+        public bool SaveReading()
+        {
+            if (SaveMode == GlobalVar._SaveMode.New)
+            {
+                if (CreateReading(Reading) > 0)
+                {
+                    SaveMode = GlobalVar._SaveMode.Update;
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                return UpdateReading(Reading);
+            }
+        }
+        public short GetLastForReadingPageNum(int QuranStudent)
+        {
+            short LastReadedPageNumber= _readingRepo.GetLastReadedPageNum(QuranStudent);
+            short ToReadPage = 0;
+
+			if (LastReadedPageNumber > 582)
+			{
+				return (short)(LastReadedPageNumber - 1);
+			}
+			else if (LastReadedPageNumber == 582)
+				return 562; //return
+
+			else if (LastReadedPageNumber < 581)
+			{
+				return (short)(LastReadedPageNumber + 1);
+			}
+			else if (LastReadedPageNumber == 581)
+			{
+				return 1; // return;
+			}
+			else
+				return (short)(LastReadedPageNumber + 1);
+		}
+
+        public short GetLastReadedPageNum(int QuranStudent)
+        {
+            short lastPagerReaded = _readingRepo.GetLastReadedPageNum(QuranStudent);
+
+            return lastPagerReaded;
+        }
+	}
 }
