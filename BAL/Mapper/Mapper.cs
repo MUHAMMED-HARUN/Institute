@@ -2,12 +2,12 @@
 using BAL.IService;
 using BAL.ViewModel;
 using DAL.Models;
+using ViewModel;
 using static System.Net.Mime.MediaTypeNames;
 using System.Buffers.Text;
 using System.Net.NetworkInformation;
 using DAL.Models.TableViews;
 using DAL.Models.TableFilters;
-using DAL.interfaceCalsses;
 namespace BAL.Mapper
 {
     public class Mapper
@@ -21,6 +21,7 @@ namespace BAL.Mapper
         IProjectService _projectService;
         IQuranStudentService _quranStudentService;
         IReadingService _readingService;
+        ITestService _testService;
         public Mapper(IServiceProvider service)
         {
             _service = service;
@@ -677,6 +678,73 @@ namespace BAL.Mapper
             model.ReadingDay = readingDay.ReadingDate;
             model.ReadingDayID = readingDay.ID;
             return (model);
+        }
+        public clsNominationTableView MapNomination(int QuranStudentID)
+        {
+            _testService = (ITestService)_service.GetService(typeof(ITestService));
+            _quranStudentService = (IQuranStudentService)_service.GetService(typeof(IQuranStudentService));
+            if(_testService == null||_quranStudentService==null)
+                return new clsNominationTableView();
+
+            clsNominationTableView Model = new clsNominationTableView();
+            Model.QuranStudentID =QuranStudentID;
+            clsQuranStudentFilter filter = new clsQuranStudentFilter();
+            filter.QuranStudentID = QuranStudentID;
+            Model.QuranStudentFullName = _quranStudentService.GetAll(filter).FirstOrDefault()?.FullName;
+            _testService.SaveMode = GlobalVar._SaveMode.New;
+            return Model;
+        }
+        public clsNomination MapNomination(clsNominationTableView model)
+        {
+            _testService = (ITestService)_service.GetService(typeof(ITestService));
+            if (_testService == null)
+                return new clsNomination();
+            clsNomination nomination = new clsNomination();
+            if (model.NominationID > 0)
+            {
+               nomination= _testService.GetNomination(model.NominationID.Value);
+                nomination.ID = model.NominationID.Value;
+                if (nomination == null)
+                {
+                    nomination = new clsNomination();
+                    _testService.SaveMode = GlobalVar._SaveMode.New;
+                }
+                _testService.SaveMode = GlobalVar._SaveMode.Update;
+            }
+            else
+            {
+                nomination = new clsNomination();
+                _testService.SaveMode = GlobalVar._SaveMode.New;
+            }
+
+
+            nomination.BasicTestID = model.BasicTestID.Value;
+            nomination.QuranStudentID= model.QuranStudentID.Value;
+            if (_testService.SaveMode == GlobalVar._SaveMode.New)
+                nomination.NominationDate = DateTime.Now;
+            
+            nomination.TestDate = model.TestDate.Value;
+            nomination.TestStatus = 1;// Edit This
+            return nomination;
+        }
+        public clsQuranTestViewModel MapQuranTest(int NominationID)
+        {
+            _testService = (ITestService)_service.GetService(typeof(ITestService));
+            _quranStudentService = (IQuranStudentService)_service.GetService(typeof(IQuranStudentService));
+            
+            if (_testService == null || _quranStudentService == null)
+                return new clsQuranTestViewModel();
+
+            clsQuranTestViewModel Model = new clsQuranTestViewModel();
+
+            clsNomination nomination = _testService.GetNomination(NominationID);
+            if (nomination == null)
+                return new clsQuranTestViewModel();
+
+            Model.NominationID = nomination.ID;
+            Model.QSName = _quranStudentService.GetAll(new clsQuranStudentFilter()).FirstOrDefault()?.FullName;
+            Model.QSID = nomination.QuranStudentID;
+            return Model;
         }
     }
 }

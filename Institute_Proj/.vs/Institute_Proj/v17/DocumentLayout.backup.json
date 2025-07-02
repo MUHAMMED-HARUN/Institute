@@ -3,17 +3,20 @@
   "WorkspaceRootPath": "C:\\Institute_Proj\\Institute_Proj\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\controllers\\readingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:controllers\\readingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\controllers\\test\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:controllers\\test\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\institute_proj\\bal\\mapper\\mapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\views\\test\\testlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\test\\testlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23C9125F-BC9A-4DDF-97F6-D5A6DFE8E5C4}|..\\BAL\\BAL.csproj|c:\\institute_proj\\bal\\iservice\\readingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69725F67-8D93-4D20-81F0-987920F97BF8}|..\\DAL\\DAL.csproj|c:\\institute_proj\\dal\\iservice\\readingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|c:\\institute_proj\\institute_proj\\views\\nomination\\nominationlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{97686017-A02A-4723-BECE-ACE3FCE95A50}|Institute_Proj.csproj|solutionrelative:views\\nomination\\nominationlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,54 +34,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ReadingRepository.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\DAL\\IService\\ReadingRepository.cs",
-              "RelativeDocumentMoniker": "..\\DAL\\IService\\ReadingRepository.cs",
-              "ToolTip": "C:\\Institute_Proj\\DAL\\IService\\ReadingRepository.cs",
-              "RelativeToolTip": "..\\DAL\\IService\\ReadingRepository.cs",
-              "ViewState": "AgIAAIsAAAAAAAAAAAAuwJgAAAAcAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAQwCkAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T14:14:49.494Z",
+              "WhenOpened": "2025-07-02T19:33:11.646Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ReadingService.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\BAL\\IService\\ReadingService.cs",
-              "RelativeDocumentMoniker": "..\\BAL\\IService\\ReadingService.cs",
-              "ToolTip": "C:\\Institute_Proj\\BAL\\IService\\ReadingService.cs",
-              "RelativeToolTip": "..\\BAL\\IService\\ReadingService.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAywIMAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T13:07:58.315Z",
+              "DocumentIndex": 3,
+              "Title": "NominationList.cshtml",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Views\\Nomination\\NominationList.cshtml",
+              "RelativeDocumentMoniker": "Views\\Nomination\\NominationList.cshtml",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Views\\Nomination\\NominationList.cshtml",
+              "RelativeToolTip": "Views\\Nomination\\NominationList.cshtml",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAYwIwAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-02T19:29:43.276Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ReadingController.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\ReadingController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ReadingController.cs",
-              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\ReadingController.cs",
-              "RelativeToolTip": "Controllers\\ReadingController.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAADgv0oAAAAQAAAAAAAAAA==",
+              "Title": "TestController.cs",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Test\\TestController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Test\\TestController.cs",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Controllers\\Test\\TestController.cs",
+              "RelativeToolTip": "Controllers\\Test\\TestController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwBoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T14:03:33.869Z",
+              "WhenOpened": "2025-07-02T19:27:35.105Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Mapper.cs",
-              "DocumentMoniker": "C:\\Institute_Proj\\BAL\\Mapper\\Mapper.cs",
-              "RelativeDocumentMoniker": "..\\BAL\\Mapper\\Mapper.cs",
-              "ToolTip": "C:\\Institute_Proj\\BAL\\Mapper\\Mapper.cs",
-              "RelativeToolTip": "..\\BAL\\Mapper\\Mapper.cs",
-              "ViewState": "AgIAAF8CAAAAAAAAAAAIwGsCAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T13:08:45.905Z",
+              "Title": "TestList.cshtml",
+              "DocumentMoniker": "C:\\Institute_Proj\\Institute_Proj\\Views\\test\\TestList.cshtml",
+              "RelativeDocumentMoniker": "Views\\test\\TestList.cshtml",
+              "ToolTip": "C:\\Institute_Proj\\Institute_Proj\\Views\\test\\TestList.cshtml",
+              "RelativeToolTip": "Views\\test\\TestList.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-02T19:23:56.734Z",
               "EditorCaption": ""
             }
           ]

@@ -149,7 +149,7 @@ namespace DAL.IService
 
 		public short GetLastReadedPageNum(int QuranStudent)
         {
-            clsReading reading = _context.Readings.Where(r => r.QuranStudentID == QuranStudent&&(r.PerformanceRating!=1 && r.ReadigType!=2) ).OrderByDescending(r => r.ReadingDayID).FirstOrDefault();
+            clsReading reading = _context.Readings.Where(r => r.QuranStudentID == QuranStudent&&(r.PerformanceRating!=1 && r.ReadigType!=2) ).OrderByDescending(r => r.ID).FirstOrDefault();
             if (reading == null)
                 return 604 +1;
 

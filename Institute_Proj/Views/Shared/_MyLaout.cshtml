@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@ViewData["Title"] - معهد القرآن</title>
+    <title>@ViewData["Title"] - منصة علمني الافتراضية </title>
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -45,13 +45,21 @@
         <hr />
 
             <a href="/Reading/Index"><i class="fa fa-calendar-day me-2"></i>أيام القراءة</a>
+        <hr />
+            <div class="TestSidebar">
+                <a href="/Nomination/Index"><i class="fa fa-chalkboard-teacher me-2"></i>لائحة الاختبار</a>
+                <div class="teacherPages">
+                   @*  <a asp-action="EnrollInClass" asp-controller="Teacher">تسجيل معلم</a>
+                    <a asp-action="EnrollmentList" asp-controller="Teacher">لائحة التسجيلات</a> *@
+                </div>
+            </div>
     </div>
     </div>
     <!-- Main content -->
     <div class="content w-100">
         <nav class="navbar navbar-expand navbar-custom mb-4 text-white px-3">
             <div class="container-fluid">
-                <span class="navbar-brand text-white">معهد القرآن الكريم</span>
+                <span class="navbar-brand text-white">منصة علمني الافتراضية</span>
                 <span class="ms-auto">@DateTime.Now.ToString("dddd dd/MM/yyyy")</span>
             </div>
         </nav>

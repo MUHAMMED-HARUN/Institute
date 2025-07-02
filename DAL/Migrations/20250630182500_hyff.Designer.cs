@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20250623164735_fd")]
-    partial class fd
+    [Migration("20250630182500_hyff")]
+    partial class hyff
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -661,24 +661,29 @@ namespace DAL.Migrations
                     b.Property<int?>("AuditableEntityID")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProjectID")
+                    b.Property<int>("ClassID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProjectID")
                         .HasColumnType("int");
 
                     b.Property<int>("StudentID")
                         .HasColumnType("int");
 
-                    b.Property<byte>("TotalInstalledParts")
+                    b.Property<byte?>("TotalInstalledParts")
                         .HasColumnType("tinyint");
 
                     b.Property<short>("TotalSavedPages")
                         .HasColumnType("smallint");
 
-                    b.Property<byte>("performanceRating")
+                    b.Property<byte?>("performanceRating")
                         .HasColumnType("tinyint");
 
                     b.HasKey("ID");
 
                     b.HasIndex("AuditableEntityID");
+
+                    b.HasIndex("ClassID");
 
                     b.HasIndex("ProjectID");
 
@@ -701,6 +706,9 @@ namespace DAL.Migrations
                     b.Property<byte>("PerformanceRating")
                         .HasColumnType("tinyint");
 
+                    b.Property<int>("QuranStudentID")
+                        .HasColumnType("int");
+
                     b.Property<short>("ReadedPageNum")
                         .HasColumnType("smallint");
 
@@ -714,9 +722,16 @@ namespace DAL.Migrations
 
                     b.HasIndex("AuditableEntityID");
 
+                    b.HasIndex("QuranStudentID");
+
                     b.HasIndex("ReadingDayID");
 
-                    b.ToTable("Readings");
+                    b.ToTable("Readings", t =>
+                        {
+                            t.HasTrigger("terInsertReading");
+                        });
+
+                    b.HasAnnotation("SqlServer:UseSqlOutputClause", false);
                 });
 
             modelBuilder.Entity("DAL.Models.clsReadingDay", b =>
@@ -730,14 +745,16 @@ namespace DAL.Migrations
                     b.Property<int?>("AuditableEntityID")
                         .HasColumnType("int");
 
-                    b.Property<int>("QuranStudentID")
-                        .HasColumnType("int");
+                    b.Property<string>("Discription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ReadingDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ID");
 
                     b.HasIndex("AuditableEntityID");
-
-                    b.HasIndex("QuranStudentID");
 
                     b.ToTable("ReadingDay");
                 });
@@ -1005,11 +1022,15 @@ namespace DAL.Migrations
                         .WithMany()
                         .HasForeignKey("AuditableEntityID");
 
-                    b.HasOne("DAL.Models.clsProject", "project")
+                    b.HasOne("DAL.Models.clsClass", "Class")
                         .WithMany()
-                        .HasForeignKey("ProjectID")
+                        .HasForeignKey("ClassID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("DAL.Models.clsProject", "project")
+                        .WithMany()
+                        .HasForeignKey("ProjectID");
 
                     b.HasOne("DAL.Models.clsStudent", "student")
                         .WithMany()
@@ -1018,6 +1039,8 @@ namespace DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("AuditableEntity");
+
+                    b.Navigation("Class");
 
                     b.Navigation("project");
 
@@ -1030,6 +1053,12 @@ namespace DAL.Migrations
                         .WithMany()
                         .HasForeignKey("AuditableEntityID");
 
+                    b.HasOne("DAL.Models.clsQuranStudent", "QuranStudent")
+                        .WithMany()
+                        .HasForeignKey("QuranStudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("DAL.Models.clsReadingDay", "ReadingDay")
                         .WithMany()
                         .HasForeignKey("ReadingDayID")
@@ -1037,6 +1066,8 @@ namespace DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("AuditableEntity");
+
+                    b.Navigation("QuranStudent");
 
                     b.Navigation("ReadingDay");
                 });
@@ -1047,15 +1078,7 @@ namespace DAL.Migrations
                         .WithMany()
                         .HasForeignKey("AuditableEntityID");
 
-                    b.HasOne("DAL.Models.clsQuranStudent", "QuranStudent")
-                        .WithMany()
-                        .HasForeignKey("QuranStudentID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("AuditableEntity");
-
-                    b.Navigation("QuranStudent");
                 });
 
             modelBuilder.Entity("DAL.Models.clsStudent", b =>

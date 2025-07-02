@@ -105,7 +105,7 @@ namespace DAL.Classes
             if (person == null)
                 return null;
 
-            string SqlTeacherTVF = @"SELECT * FROM [dbo].[ufn_FilterTeachet] (" +
+            string SqlTeacherTVF = @"SELECT * FROM [dbo].[ufn_FilterTeacher] (" +
                                     GetSqlTeacherTvfQuiery() + "," +
                                     person.GetSqlPersonTvfQuiery() + ")";
 

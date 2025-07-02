@@ -37,6 +37,11 @@ namespace DAL.EF
 
         public DbSet<clsPersonTableView> PersonTableView { get; set; }
         public DbSet<clsStudentTableView> StudentTableView { get; set; }
+        public DbSet<clsBasicTestInfo> BasicTestInfos { get; set; }
+        public DbSet<clsQuranTest> QuranTests { get; set; }
+        public DbSet<clsGroup> Groups { get; set; }
+        public DbSet<clsMember> Members { get; set; }
+        public DbSet<clsNomination> Nominations { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -50,5 +55,8 @@ namespace DAL.EF
                 .ToView(null);
             modelBuilder.Entity<clsReading>().ToTable(rt => rt.HasTrigger("terInsertReading"));
         }
+
+      
+
     }
 }

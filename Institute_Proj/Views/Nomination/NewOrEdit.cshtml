@@ -1,0 +1,67 @@
+﻿@model DAL.Models.TableViews.clsNominationTableView
+@using DAL.Models
+
+@{
+    ViewData["Title"] = "NewOrEdit";
+    Layout = null;
+    SelectList BasicTestList = new SelectList((List<clsBasicTestInfo>)ViewBag.TestsList, "ID", "TestName", Model.BasicTestID);
+}
+
+<h1>NewOrEdit</h1>
+
+<h4>clsNominationTableView</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="NewOrEdit">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NominationID" class="control-label"></label>
+                <input asp-for="NominationID" hidden class="form-control" />
+                <p>@Model.NominationID</p>
+                <span asp-validation-for="NominationID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuranStudentID" class="control-label"></label>
+                <input asp-for="QuranStudentID" hidden class="form-control" />
+                <p>@Model.QuranStudentID</p>
+                <span asp-validation-for="QuranStudentID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuranStudentFullName" class="control-label"></label>
+                <p>@Model.QuranStudentFullName</p>
+                <span asp-validation-for="QuranStudentFullName" class="text-danger"></span>
+            </div>
+@*             <div class="form-group">
+                <label asp-for="NominationDate" class="control-label"></label>
+                <input asp-for="NominationDate" class="form-control" />
+                <span asp-validation-for="NominationDate" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="BasicTestID"  class="control-label"></label>
+                <select asp-items="BasicTestList" asp-for="BasicTestID">
+                    <option></option>
+                </select>
+                <span asp-validation-for="BasicTestID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TestDate" class="control-label"></label>
+                <input asp-for="TestDate" class="form-control" />
+                <span asp-validation-for="TestDate" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="TestName" class="control-label"></label>
+                <input asp-for="TestName" class="form-control" />
+                <span asp-validation-for="TestName" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

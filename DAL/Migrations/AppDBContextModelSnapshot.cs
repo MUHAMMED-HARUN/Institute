@@ -282,6 +282,39 @@ namespace DAL.Migrations
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("DAL.Models.clsBasicTestInfo", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<short>("MaxGrade")
+                        .HasColumnType("smallint");
+
+                    b.Property<short>("MinGrade")
+                        .HasColumnType("smallint");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TestDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TestName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("BasicTestInfos");
+                });
+
             modelBuilder.Entity("DAL.Models.clsCity", b =>
                 {
                     b.Property<int>("ID")
@@ -486,6 +519,56 @@ namespace DAL.Migrations
                     b.ToTable("EnrolmentTeachers");
                 });
 
+            modelBuilder.Entity("DAL.Models.clsGroup", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime?>("CompletionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GroupName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Groups");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsMember", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("GroupID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PersonID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("GroupID");
+
+                    b.HasIndex("PersonID");
+
+                    b.ToTable("Members");
+                });
+
             modelBuilder.Entity("DAL.Models.clsNeighborhood", b =>
                 {
                     b.Property<int>("ID")
@@ -658,30 +741,61 @@ namespace DAL.Migrations
                     b.Property<int?>("AuditableEntityID")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProjectID")
+                    b.Property<int>("ClassID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProjectID")
                         .HasColumnType("int");
 
                     b.Property<int>("StudentID")
                         .HasColumnType("int");
 
-                    b.Property<byte>("TotalInstalledParts")
+                    b.Property<byte?>("TotalInstalledParts")
                         .HasColumnType("tinyint");
 
                     b.Property<short>("TotalSavedPages")
                         .HasColumnType("smallint");
 
-                    b.Property<byte>("performanceRating")
+                    b.Property<byte?>("performanceRating")
                         .HasColumnType("tinyint");
 
                     b.HasKey("ID");
 
                     b.HasIndex("AuditableEntityID");
 
+                    b.HasIndex("ClassID");
+
                     b.HasIndex("ProjectID");
 
                     b.HasIndex("StudentID");
 
                     b.ToTable("QuranStudents");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsQuranTest", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("CommitteeID")
+                        .HasColumnType("int");
+
+                    b.Property<short>("Grade")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("NominationID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CommitteeID");
+
+                    b.HasIndex("NominationID");
+
+                    b.ToTable("QuranTests");
                 });
 
             modelBuilder.Entity("DAL.Models.clsReading", b =>
@@ -718,7 +832,12 @@ namespace DAL.Migrations
 
                     b.HasIndex("ReadingDayID");
 
-                    b.ToTable("Readings");
+                    b.ToTable("Readings", t =>
+                        {
+                            t.HasTrigger("terInsertReading");
+                        });
+
+                    b.HasAnnotation("SqlServer:UseSqlOutputClause", false);
                 });
 
             modelBuilder.Entity("DAL.Models.clsReadingDay", b =>
@@ -809,6 +928,38 @@ namespace DAL.Migrations
                     b.HasIndex("PersonID");
 
                     b.ToTable("clsTeacher");
+                });
+
+            modelBuilder.Entity("DAL.interfaceCalsses.clsNomination", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("BasicTestID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("NominationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("QuranStudentID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("TestDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte>("TestStatus")
+                        .HasColumnType("tinyint");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("BasicTestID");
+
+                    b.HasIndex("QuranStudentID");
+
+                    b.ToTable("Nominations");
                 });
 
             modelBuilder.Entity("DAL.Models.clsAddress", b =>
@@ -941,6 +1092,25 @@ namespace DAL.Migrations
                     b.Navigation("Teacher");
                 });
 
+            modelBuilder.Entity("DAL.Models.clsMember", b =>
+                {
+                    b.HasOne("DAL.Models.clsGroup", "Group")
+                        .WithMany()
+                        .HasForeignKey("GroupID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DAL.Models.clsPerson", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Person");
+                });
+
             modelBuilder.Entity("DAL.Models.clsNeighborhood", b =>
                 {
                     b.HasOne("DAL.Models.AuditableEntity", "AuditableEntity")
@@ -1009,11 +1179,15 @@ namespace DAL.Migrations
                         .WithMany()
                         .HasForeignKey("AuditableEntityID");
 
-                    b.HasOne("DAL.Models.clsProject", "project")
+                    b.HasOne("DAL.Models.clsClass", "Class")
                         .WithMany()
-                        .HasForeignKey("ProjectID")
+                        .HasForeignKey("ClassID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("DAL.Models.clsProject", "project")
+                        .WithMany()
+                        .HasForeignKey("ProjectID");
 
                     b.HasOne("DAL.Models.clsStudent", "student")
                         .WithMany()
@@ -1023,9 +1197,30 @@ namespace DAL.Migrations
 
                     b.Navigation("AuditableEntity");
 
+                    b.Navigation("Class");
+
                     b.Navigation("project");
 
                     b.Navigation("student");
+                });
+
+            modelBuilder.Entity("DAL.Models.clsQuranTest", b =>
+                {
+                    b.HasOne("DAL.Models.clsGroup", "Committee")
+                        .WithMany()
+                        .HasForeignKey("CommitteeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DAL.interfaceCalsses.clsNomination", "Nomination")
+                        .WithMany()
+                        .HasForeignKey("NominationID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Committee");
+
+                    b.Navigation("Nomination");
                 });
 
             modelBuilder.Entity("DAL.Models.clsReading", b =>
@@ -1094,6 +1289,25 @@ namespace DAL.Migrations
                     b.Navigation("AuditableEntity");
 
                     b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("DAL.interfaceCalsses.clsNomination", b =>
+                {
+                    b.HasOne("DAL.Models.clsBasicTestInfo", "BasicTest")
+                        .WithMany()
+                        .HasForeignKey("BasicTestID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DAL.Models.clsQuranStudent", "QuranStudent")
+                        .WithMany()
+                        .HasForeignKey("QuranStudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BasicTest");
+
+                    b.Navigation("QuranStudent");
                 });
 #pragma warning restore 612, 618
         }

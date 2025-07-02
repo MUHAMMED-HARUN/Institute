@@ -1,0 +1,157 @@
+﻿@using DAL.Models.TableFilters
+@model clsFilterNomination
+
+<h3>قائمة الترشيحات</h3>
+
+<div>
+    <div id="filterItem">
+        <div class="col-12 col-md-auto d-flex align-items-center mb-3">
+            <label for="searchFieldSelect" class="form-label mb-0 me-2">بحث حسب</label>
+            <select id="searchFieldSelect" class="form-select w-auto">
+                <option selected value="-1">لا شيء</option>
+                <option data-pattern="^[\u0600-\u06FFa-zA-Z ]{2,100}$" value="FullName">اسم الطالب</option>
+            </select>
+
+            <input type="text" id="searchInput" name="" class="form-control ms-2" style="min-width: 200px;" disabled placeholder="" />
+        </div>
+
+        <div class="col-12 col-md-auto d-flex align-items-center mb-3">
+            <label for="startDate" class="form-label mb-0 me-2">من تاريخ الاختبار</label>
+            <input type="date" id="startDate" name="StartTestDate" class="form-control me-3" />
+            <label for="endDate" class="form-label mb-0 me-2">إلى تاريخ الاختبار</label>
+            <input type="date" id="endDate" name="EndTestDate" class="form-control" />
+        </div>
+
+        <div class="col-12 col-md-auto d-flex align-items-center mb-3">
+            <button type="button" id="btnSearch" class="btn btn-primary me-2">بحث</button>
+            <button type="button" id="btnReset" class="btn btn-secondary">إرجاع</button>
+        </div>
+    </div>
+
+    <table class="table table-hover mt-4">
+        <thead>
+            <tr>
+                <th>معرف الترشيح</th>
+                <th>معرف الطالب</th>
+                <th>اسم الطالب</th>
+                <th>تاريخ الترشيح</th>
+                <th>معرف الاختبار</th>
+                <th>اسم الاختبار</th>
+                <th>تاريخ الاختبار</th>
+                <th>الاجرائات</th>
+            </tr>
+        </thead>
+        <tbody id="resultTableBody">
+            <div class="modal fade" id="nominationModal" tabindex="-1" aria-labelledby="nominationModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">إضافة ترشيح</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+                        </div>
+                        <div class="modal-body" id="modalContent">
+                            <!-- سيتم تحميل محتوى النموذج هنا -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @foreach (var item in Model.NominationTableView)
+            {
+                <tr>
+                    <td>@item.NominationID</td>
+                    <td>@item.QuranStudentID</td>
+                    <td>@item.QuranStudentFullName</td>
+                    <td>@item.NominationDate?.ToString("yyyy-MM-dd")</td>
+                    <td>@item.BasicTestID</td>
+                    <td>@item.TestName</td>
+                    <td>@item.TestDate?.ToString("yyyy-MM-dd")</td>
+                    <td>
+                    <td><button class="btn btn-success btnAddNomination" data-nominationid="@item.NominationID">اختبار</button></td>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#searchFieldSelect").on("change", function () {
+                const selected = $(this).val();
+                const input = $("#searchInput");
+                if (selected === "-1") {
+                    input.attr("name", "").val("").prop("disabled", true).attr("placeholder", "");
+                } else {
+                    input.attr("name", selected).prop("disabled", false).attr("placeholder", "أدخل " + $(this).find("option:selected").text());
+                }
+            });
+
+            $("#btnSearch").on("click", function () {
+                let dataToSend = {
+                    StartTestDate: $("#startDate").val(),
+                    EndTestDate: $("#endDate").val()
+                };
+
+                let fieldName = $("#searchInput").attr("name");
+                let fieldValue = $("#searchInput").val();
+                if (fieldName && fieldName !== "-1") {
+                    dataToSend[fieldName] = fieldValue;
+                }
+
+                $.ajax({
+                    url: '/Nomination/Search',
+                    type: 'POST',
+                    data: dataToSend,
+                    success: function (data) {
+                        $('#resultTableBody').html('');
+                        data.forEach(function (d) {
+                            const row = `<tr>
+                                <td>${d.nominationID}</td>
+                                <td>${d.quranStudentID}</td>
+                                <td>${d.quranStudentFullName}</td>
+                                <td>${d.nominationDate}</td>
+                                <td>${d.basicTestID}</td>
+                                <td>${d.testName}</td>
+                                <td>${d.testDate}</td>
+                            </tr>`;
+                            $('#resultTableBody').append(row);
+                        });
+                    },
+                    error: function () {
+                        alert("حدث خطأ أثناء البحث.");
+                    }
+                });
+            });
+
+            $("#btnReset").on("click", function () {
+                $("#filterItem").find("input").val("");
+                $("#filterItem").find("select").val("-1");
+                $("#searchInput").prop("disabled", true).attr("name", "").val("");
+            });
+        });
+                $(document).ready(function () {
+                $(".btnAddNomination").on("click", function () {
+                            const NominationID = $(this).data("nominationid")
+                    $.ajax({
+                                        url: '/Test/TestQuranStudent', // تأكد أن هذا المسار صحيح
+                        data: { NominationID: NominationID },
+                        type: 'GET',
+                        success: function (data) {
+                            $("#modalContent").html(data);
+                            $("#nominationModal").modal('show');
+                        },
+                        error: function () {
+                            alert("فشل تحميل النموذج.");
+                        }
+                    });
+                });
+            });
+
+    </script>
+}
+
+
+
+

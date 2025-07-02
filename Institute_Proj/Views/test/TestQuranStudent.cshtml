@@ -1,0 +1,70 @@
+﻿@model ViewModel.clsQuranTestViewModel
+
+@{
+    Layout = null;
+    SelectList CommitteeList = new SelectList(ViewBag.Committee, "ID", "GroupName", Model.CommitteeID);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TestQuranStudent</title>
+</head>
+<body>
+
+<h4>clsQuranTestViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="TestQuranStudent">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="QSTestID" class="control-label"></label>
+                <input asp-for="QSTestID" hidden class="form-control" />
+                <p>@Model.QSTestID</p>
+                <span asp-validation-for="QSTestID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CommitteeID" class="control-label"></label>
+                <select asp-for="CommitteeID" asp-items="CommitteeList">
+
+                </select>
+                <span asp-validation-for="CommitteeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Grade" class="control-label"></label>
+                <input asp-for="Grade" class="form-control" />
+                <span asp-validation-for="Grade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NominationID" class="control-label"></label>
+                <input asp-for="NominationID" hidden class="form-control" />
+                <p>@Model.NominationID</p>
+                <span asp-validation-for="NominationID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QSID" class="control-label"></label>
+                <input asp-for="QSID" hidden class="form-control" />
+                <p>@Model.QSID</p>
+                <span asp-validation-for="QSID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QSName" class="control-label"></label>
+               <p>@Model.QSName</p>
+                <span asp-validation-for="QSName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>

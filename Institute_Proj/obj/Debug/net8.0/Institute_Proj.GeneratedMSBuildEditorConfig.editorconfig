@@ -34,6 +34,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Institute_Proj/Institute_Proj/Views/Nomination/NewOrEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm9taW5hdGlvblxOZXdPckVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Institute_Proj/Institute_Proj/Views/Nomination/NominationList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm9taW5hdGlvblxOb21pbmF0aW9uTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Institute_Proj/Institute_Proj/Views/People/NewOrEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVvcGxlXE5ld09yRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -146,8 +154,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxUZWFjaGVyTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Institute_Proj/Institute_Proj/Views/test/_CityAndCountry.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdGVzdFxfQ2l0eUFuZENvdW50cnkuY3NodG1s
+[C:/Institute_Proj/Institute_Proj/Views/test/TestList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdGVzdFxUZXN0TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Institute_Proj/Institute_Proj/Views/test/TestQuranStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdGVzdFxUZXN0UXVyYW5TdHVkZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Institute_Proj/Institute_Proj/Views/_ViewImports.cshtml]

@@ -18,7 +18,7 @@ namespace Institute_Proj
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AppDBContext>(option =>
-                option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                option.UseSqlServer(builder.Configuration.GetConnectionString("cs")));
 
             builder.Services.AddScoped<IPerson, PersonRepository>();
             builder.Services.AddScoped<IPersonService, PersonService>();
@@ -36,6 +36,10 @@ namespace Institute_Proj
             builder.Services.AddScoped<IQuranStudentService, QuranStudentService>();
             builder.Services.AddScoped<IReading, ReadingRepository>();
             builder.Services.AddScoped<IReadingService, ReadingService>();
+            builder.Services.AddScoped<ITest,TestRepository>();
+            builder.Services.AddScoped<ITestService,TestService>();
+            builder.Services.AddScoped<IGroup, GroupRepository>();
+            builder.Services.AddScoped<IGroupService, GroupService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

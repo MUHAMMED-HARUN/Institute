@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ViewModel.clsQuranTestViewModel>
+
+@{
+    ViewData["Title"] = "قائمة اختبارات القرآن";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0 text-success"><i class="fa fa-check-circle me-2"></i>قائمة اختبارات القرآن</h3>
+@*         <a asp-action="Create" class="btn btn-sm btn-primary">
+            <i class="fa fa-plus me-1"></i>إضافة اختبار جديد
+        </a> *@
+    </div>
+
+    <table class="table table-bordered table-hover table-striped text-center">
+        <thead class="table-success">
+            <tr>
+                <th>رقم الاختبار</th>
+                <th>اللجنة</th>
+                <th>العلامة</th>
+                <th>رقم الترشيح</th>
+                <th>رقم الطالب</th>
+                <th>اسم الطالب</th>
+                <th>الإجراءات</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.QSTestID</td>
+                    <td>@item.CommitteeName</td>
+                    <td>@item.Grade</td>
+                    <td>@item.NominationID</td>
+                    <td>@item.QSID</td>
+                    <td>@item.QSName</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

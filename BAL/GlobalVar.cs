@@ -85,5 +85,10 @@
         {
             QuranDept= 1,
         }
+
+        public enum TestStatus
+        {
+            Withdraw=1 , Waiting,Pass,Fail
+        }
     }
 }
