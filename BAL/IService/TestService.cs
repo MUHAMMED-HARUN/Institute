@@ -29,7 +29,10 @@ namespace BAL.IService
         {
             return _TestRepo.GetBasicTestInfos();
         }
-
+        public clsBasicTestInfo GetBasicTestInfo(int BasicTestID)
+        {
+            return _TestRepo.GetBasicTestInfo(BasicTestID);
+        }
 
         // Nomination
         public clsNomination GetNomination(int NominationID)
@@ -47,6 +50,10 @@ namespace BAL.IService
         public List<clsNominationTableView> GetNominationList(clsFilterNomination filter)
         {
             return _TestRepo.GetNominationList(filter);
+        }
+        public bool HasActiveQuranTsetNomination(int QSID, int BTestID)
+        {
+           return _TestRepo.HasActiveQuranTsetNomination(QSID, BTestID);
         }
 
         public bool SaveNominate()

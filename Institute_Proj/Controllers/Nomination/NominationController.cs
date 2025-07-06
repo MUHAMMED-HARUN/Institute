@@ -1,5 +1,6 @@
 ﻿using BAL.interfaceCalsses;
 using BAL.Mapper;
+using BAL.ViewModel;
 using DAL.Models.TableFilters;
 using DAL.Models.TableViews;
 using Microsoft.AspNetCore.Mvc;
@@ -29,19 +30,19 @@ namespace Institute_Proj.Controllers.Nomination
         public IActionResult NewOrEdit(int QuranStudentID)
         {
             Mapper mapper = new Mapper(_Service);
-            clsNominationTableView Model = mapper.MapNomination(QuranStudentID);
+            clsNominationModel Model = mapper.MapNomination(QuranStudentID);
             ViewBag.TestsList = _TestService.GetBasicTestInfos();
             return View("NewOrEdit", Model);
         }
         [HttpPost]
-        public IActionResult NewOrEdit(clsNominationTableView Model)
+        public IActionResult NewOrEdit(clsNominationModel Model)
         { 
             ModelState.Remove("TestName");
             ModelState.Remove("QuranStudentFullName");
             if (!ModelState.IsValid)
             {
                 ViewBag.TestsList = _TestService.GetBasicTestInfos();
-                return View(Model);
+                return PartialView(Model);
             }
             Mapper mapper = new Mapper(_Service);
             _TestService.Nomination = mapper.MapNomination(Model);

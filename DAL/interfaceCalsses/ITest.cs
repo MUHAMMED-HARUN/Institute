@@ -14,14 +14,14 @@ namespace DAL.interfaceCalsses
     {
         // Basic Test
         public List<clsBasicTestInfo> GetBasicTestInfos();
-
+        public clsBasicTestInfo GetBasicTestInfo(int BasicTestID);
 
         // Nomination
         public clsNomination GetNomination(int NominationID);
         public bool NominateForTesting(clsNomination nomination);
         public bool UpdateNominate(clsNomination nomination);
         public List<clsNominationTableView> GetNominationList(clsFilterNomination filter);
-
+        public bool HasActiveQuranTsetNomination(int QSID,int BTestID);
         // Quran Test
         public clsQuranTest GetQuranTest(int QTestID);
         public bool TestQuranStudent(clsQuranTest quranTest);

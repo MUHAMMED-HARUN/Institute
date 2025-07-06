@@ -18,7 +18,7 @@ namespace BAL.interfaceCalsses
         public clsQuranTest QuranTest { get; set; }
          // Basic Test
         public List<clsBasicTestInfo> GetBasicTestInfos();
-
+        public clsBasicTestInfo GetBasicTestInfo(int BasicTestID);
 
         // Nomination
         public clsNomination GetNomination(int NominationID);
@@ -26,6 +26,7 @@ namespace BAL.interfaceCalsses
         public bool UpdateNominate(clsNomination nomination);
         public List<clsNominationTableView> GetNominationList(clsFilterNomination filter);
         public bool SaveNominate();
+        public bool HasActiveQuranTsetNomination(int QSID, int BTestID);
         // Quran Test
         public clsQuranTest GetQuranTest(int QTestID);
         public bool TestQuranStudent(clsQuranTest quranTest);

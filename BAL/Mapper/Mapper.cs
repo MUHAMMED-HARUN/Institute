@@ -679,7 +679,7 @@ namespace BAL.Mapper
             model.ReadingDayID = readingDay.ID;
             return (model);
         }
-        public clsNominationTableView MapNomination(int QuranStudentID)
+        public clsNominationTableView MapNominationTableV(int QuranStudentID)
         {
             _testService = (ITestService)_service.GetService(typeof(ITestService));
             _quranStudentService = (IQuranStudentService)_service.GetService(typeof(IQuranStudentService));
@@ -693,6 +693,55 @@ namespace BAL.Mapper
             Model.QuranStudentFullName = _quranStudentService.GetAll(filter).FirstOrDefault()?.FullName;
             _testService.SaveMode = GlobalVar._SaveMode.New;
             return Model;
+        }
+        public clsNominationModel MapNomination(int QuranStudentID)
+        {
+            _testService = (ITestService)_service.GetService(typeof(ITestService));
+            _quranStudentService = (IQuranStudentService)_service.GetService(typeof(IQuranStudentService));
+            if (_testService == null || _quranStudentService == null)
+                return new clsNominationModel();
+
+            clsNominationModel Model = new clsNominationModel();
+            Model.QuranStudentID = QuranStudentID;
+            clsQuranStudentFilter filter = new clsQuranStudentFilter();
+            filter.QuranStudentID = QuranStudentID;
+            Model.QuranStudentFullName = _quranStudentService.GetAll(filter).FirstOrDefault()?.FullName;
+            _testService.SaveMode = GlobalVar._SaveMode.New;
+            return Model;
+        }
+        public clsNomination MapNomination(clsNominationModel model)
+        {
+            _testService = (ITestService)_service.GetService(typeof(ITestService));
+            if (_testService == null)
+                return new clsNomination();
+            clsNomination nomination = new clsNomination();
+            if (model.NominationID > 0)
+            {
+                nomination = _testService.GetNomination(model.NominationID);
+                nomination.ID = model.NominationID;
+                if (nomination == null)
+                {
+                    nomination = new clsNomination();
+                    _testService.SaveMode = GlobalVar._SaveMode.New;
+                }
+                _testService.SaveMode = GlobalVar._SaveMode.Update;
+            }
+            else
+            {
+                nomination = new clsNomination();
+                _testService.SaveMode = GlobalVar._SaveMode.New;
+            }
+
+
+            nomination.BasicTestID = model.BasicTestID;
+            nomination.QuranStudentID = model.QuranStudentID;
+            if (_testService.SaveMode == GlobalVar._SaveMode.New)
+                nomination.NominationDate = DateTime.Now;
+            nomination.FromPart = model.FromPart ;
+            nomination.ToPart = model.ToPart  ;
+            nomination.TestDate = model.TestDate;
+            nomination.TestStatus = 1;// Edit This
+            return nomination;
         }
         public clsNomination MapNomination(clsNominationTableView model)
         {

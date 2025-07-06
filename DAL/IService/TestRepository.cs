@@ -29,7 +29,10 @@ namespace DAL.IService
         {
             return _Context.BasicTestInfos.ToList();
         }
-
+        public clsBasicTestInfo GetBasicTestInfo(int BasicTestID)
+        {
+            return _Context.BasicTestInfos.Where(b => b.ID == BasicTestID).FirstOrDefault();
+        }
 
         // Nomination
 
@@ -112,7 +115,11 @@ namespace DAL.IService
         {
             return GetNominationTableView(filter);
         }
-
+        public bool HasActiveQuranTsetNomination(int QSID, int BTestID)
+        {
+            return _Context.Nominations
+                .Any(n => n.QuranStudentID == QSID && n.BasicTestID == BTestID && n.TestStatus == 2);// Test Waiting
+        }
         // Quran Test
         public clsQuranTest GetQuranTest(int QTestID)
         {
