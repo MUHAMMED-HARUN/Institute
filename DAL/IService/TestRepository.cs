@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -95,7 +96,10 @@ namespace DAL.IService
                             NominationDate = reader["NominationDate"] as DateTime?,
                             BasicTestID = reader["BasicTestID"] as int?,
                             TestDate = reader["TestDate"] as DateTime?,
-                            TestName = reader["TestName"] as string
+                            TestName = reader["TestName"] as string,
+                            FromPart = reader["FromPart"] as byte?,
+                            ToPart = reader["ToPart"] as byte?
+
                         };
                         Result.Add(Nomination);
                     }
@@ -110,6 +114,10 @@ namespace DAL.IService
         }
 
         // Quran Test
+        public clsQuranTest GetQuranTest(int QTestID)
+        {
+            return _Context.QuranTests.AsNoTracking().Where(qt => qt.ID == QTestID).FirstOrDefault();
+        }
         public bool TestQuranStudent(clsQuranTest quranTest)
         {
             _Context.QuranTests.Add(quranTest);
@@ -119,18 +127,54 @@ namespace DAL.IService
         {
             return true;
         }
-        public List<clsQuranTestViewModel> GetQuranStudentTests()
+        public List<clsQuranTestViewModel> GetFilteredQuranTests(clsQuranTestFilter filter)
         {
-            return _Context.QuranTests.Select(qt => new clsQuranTestViewModel
+            using (var command = _Context.Database.GetDbConnection().CreateCommand())
             {
-                QSTestID = qt.ID,
-                CommitteeID = qt.CommitteeID,
-                CommitteeName = qt.Committee.GroupName,
-                Grade = qt.Grade,
-                NominationID = qt.NominationID,
-                QSID = qt.Nomination.QuranStudentID,
-                QSName = qt.Nomination.QuranStudent.student.Person.FirstName
-            }).ToList();
+                command.CommandText = @"
+            SELECT * FROM dbo.ufn_FilterQuranTests
+            (@NominationID, @CommitteeName, @StartGrade, @EndGrade, @FromPart, @ToPart, @QSName)";
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add(new SqlParameter("@NominationID", filter.NominationID ?? (object)DBNull.Value));
+                command.Parameters.Add(new SqlParameter("@CommitteeName", filter.CommitteeName ?? (object)DBNull.Value));
+                command.Parameters.Add(new SqlParameter("@StartGrade", filter.StartGrade ?? (object)DBNull.Value));
+                command.Parameters.Add(new SqlParameter("@EndGrade", filter.EndGrade ?? (object)DBNull.Value));
+                command.Parameters.Add(new SqlParameter("@FromPart", filter.FromPart ?? (object)DBNull.Value));
+                command.Parameters.Add(new SqlParameter("@ToPart", filter.ToPart ?? (object)DBNull.Value));
+                command.Parameters.Add(new SqlParameter("@QSName", filter.QSName ?? (object)DBNull.Value));
+
+                if (command.Connection.State != ConnectionState.Open)
+                    command.Connection.Open();
+
+                var result = new List<clsQuranTestViewModel>();
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(new clsQuranTestViewModel
+                        {
+                            QSTestID = reader.GetInt32(0),
+                            CommitteeID = reader.GetInt32(1),
+                            CommitteeName = reader.GetString(2),
+                            Grade = reader.GetInt16(3),
+                            NominationID = reader.GetInt32(4),
+                            QSID = reader.GetInt32(5),
+                            QSName = reader.GetString(6),
+                            FromPart = reader.IsDBNull(7) ? null : (byte?)reader.GetByte(7),
+                            ToPart = reader.IsDBNull(8) ? null : (byte?)reader.GetByte(8),
+                        });
+                    }
+                }
+
+                return result;
+            }
+        }
+
+        public List<clsQuranTestViewModel> GetQuranStudentTests(clsQuranTestFilter filter)
+        {
+
+            return GetFilteredQuranTests(filter);
         }
     }
 }

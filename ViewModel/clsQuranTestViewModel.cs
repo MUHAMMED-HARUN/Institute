@@ -10,12 +10,13 @@ namespace ViewModel
     {
         public int QSTestID { get; set; }
         public int CommitteeID { get; set; }
-        public string CommitteeName { get; set; }
+        public string? CommitteeName { get; set; }
         public short Grade { get; set; }
-        
         public int NominationID { get; set; }
         public int QSID { get;set; }
-        public string QSName { get; set; }
+        public string? QSName { get; set; }
+        public byte? FromPart { get; set; }
+        public byte? ToPart { get; set; }
 
 
     }

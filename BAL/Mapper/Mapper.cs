@@ -722,7 +722,8 @@ namespace BAL.Mapper
             nomination.QuranStudentID= model.QuranStudentID.Value;
             if (_testService.SaveMode == GlobalVar._SaveMode.New)
                 nomination.NominationDate = DateTime.Now;
-            
+            nomination.FromPart = model.FromPart ?? 0;  
+            nomination.ToPart = model.ToPart??0;
             nomination.TestDate = model.TestDate.Value;
             nomination.TestStatus = 1;// Edit This
             return nomination;
@@ -741,10 +742,42 @@ namespace BAL.Mapper
             if (nomination == null)
                 return new clsQuranTestViewModel();
 
+
             Model.NominationID = nomination.ID;
+            Model.FromPart = nomination.FromPart;
+            Model.ToPart = nomination.ToPart;
             Model.QSName = _quranStudentService.GetAll(new clsQuranStudentFilter()).FirstOrDefault()?.FullName;
             Model.QSID = nomination.QuranStudentID;
+           
             return Model;
+        }
+        public clsQuranTest MapQuranTest(clsQuranTestViewModel model)
+        {
+            _testService = (ITestService)_service.GetService(typeof(ITestService));
+           
+            if (_testService == null)
+                return new clsQuranTest();
+
+                clsQuranTest quranTest= new clsQuranTest();
+            if (model.QSTestID > 0)
+            {
+               quranTest = _testService.GetQuranTest(model.QSTestID);
+                _testService.SaveMode = GlobalVar._SaveMode.Update;
+                if (quranTest == null)
+                    quranTest.ID = model.QSTestID;
+
+            }
+            if(quranTest == null|| model.QSTestID <= 0)
+            {
+                _testService.SaveMode = GlobalVar._SaveMode.New;
+                quranTest = new clsQuranTest();
+            }
+            
+            quranTest.NominationID = model.NominationID;
+            quranTest.CommitteeID=model.CommitteeID;
+            quranTest.Grade=model.Grade;
+            
+            return quranTest;
         }
     }
 }

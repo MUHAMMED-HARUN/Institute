@@ -23,8 +23,9 @@ namespace DAL.interfaceCalsses
         public List<clsNominationTableView> GetNominationList(clsFilterNomination filter);
 
         // Quran Test
+        public clsQuranTest GetQuranTest(int QTestID);
         public bool TestQuranStudent(clsQuranTest quranTest);
         public bool UpdateQuranStudentTest (clsQuranTest quranTest);
-        public List<clsQuranTestViewModel> GetQuranStudentTests();
+        public List<clsQuranTestViewModel> GetQuranStudentTests(clsQuranTestFilter filter);
     }
 }

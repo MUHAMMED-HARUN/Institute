@@ -18,6 +18,7 @@ namespace BAL.IService
         ITest _TestRepo;
         public GlobalVar._SaveMode SaveMode { get; set; }
         public virtual clsNomination Nomination { get; set; }
+        public virtual clsQuranTest QuranTest { get; set; }
         public TestService(ITest test)
         {
             _TestRepo = test;
@@ -65,6 +66,10 @@ namespace BAL.IService
             return false;
         }
         // Quran Test
+        public clsQuranTest GetQuranTest(int QTestID)
+        {
+           return _TestRepo.GetQuranTest(QTestID);
+        }
         public bool TestQuranStudent(clsQuranTest quranTest)
         {
           return  _TestRepo.TestQuranStudent(quranTest);
@@ -73,9 +78,24 @@ namespace BAL.IService
         {
             return _TestRepo.UpdateQuranStudentTest(quranTest);
         }
-        public List<clsQuranTestViewModel> GetQuranStudentTests()
+        public bool SaveQuranTest()
         {
-            return _TestRepo.GetQuranStudentTests();
+            if (SaveMode == GlobalVar._SaveMode.New)
+            {
+                if (TestQuranStudent(QuranTest))
+                {
+                    SaveMode = GlobalVar._SaveMode.Update;
+                    return true;
+                }
+            }
+            else
+                return UpdateQuranStudentTest(QuranTest);
+
+            return false; 
+        }
+        public List<clsQuranTestViewModel> GetQuranStudentTests(clsQuranTestFilter filter)
+        {
+            return _TestRepo.GetQuranStudentTests(filter);
         }
     }
 }

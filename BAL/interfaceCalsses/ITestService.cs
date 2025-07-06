@@ -15,6 +15,7 @@ namespace BAL.interfaceCalsses
     {
         public GlobalVar._SaveMode SaveMode { get; set; }
        public clsNomination Nomination { get; set; }
+        public clsQuranTest QuranTest { get; set; }
          // Basic Test
         public List<clsBasicTestInfo> GetBasicTestInfos();
 
@@ -26,8 +27,10 @@ namespace BAL.interfaceCalsses
         public List<clsNominationTableView> GetNominationList(clsFilterNomination filter);
         public bool SaveNominate();
         // Quran Test
+        public clsQuranTest GetQuranTest(int QTestID);
         public bool TestQuranStudent(clsQuranTest quranTest);
         public bool UpdateQuranStudentTest(clsQuranTest quranTest);
-        public List<clsQuranTestViewModel> GetQuranStudentTests();
+        public bool SaveQuranTest();
+        public List<clsQuranTestViewModel> GetQuranStudentTests(clsQuranTestFilter filter);
     }
 }

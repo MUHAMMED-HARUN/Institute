@@ -18,6 +18,8 @@ namespace DAL.Models
         [ForeignKey("QuranStudent")]
         public int QuranStudentID { get; set; }
         public virtual clsQuranStudent QuranStudent { get; set; }
+        public byte FromPart {  get; set; }
+        public byte? ToPart { get; set; } 
         public DateTime NominationDate { get; set; }
         public DateTime TestDate { get; set; }
         public byte TestStatus { get; set; }

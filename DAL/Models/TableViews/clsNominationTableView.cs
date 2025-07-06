@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace DAL.Models.TableViews
 {
     public class clsNominationTableView
@@ -23,5 +24,9 @@ namespace DAL.Models.TableViews
         public DateTime? TestDate { get; set; }
         [Display(Name = "اسم الاختبار")]
         public string TestName { get; set; }
+        [Display(Name ="من")]
+        public byte? FromPart { get; set; }
+        [Display(Name = "الى")]
+        public byte? ToPart { get; set; }
     }
 }

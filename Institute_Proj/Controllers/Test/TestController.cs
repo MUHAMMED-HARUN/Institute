@@ -1,5 +1,7 @@
 ﻿using BAL.interfaceCalsses;
 using BAL.Mapper;
+using DAL.Models;
+using DAL.Models.TableFilters;
 using Microsoft.AspNetCore.Mvc;
 using ViewModel;
 
@@ -20,24 +22,32 @@ namespace Institute_Proj.Controllers.Test
         {
             clsQuranTestViewModel Model = new clsQuranTestViewModel();
           
-            return View("", _testService.GetQuranStudentTests());
+            return View("TestList", _testService.GetQuranStudentTests(new clsQuranTestFilter()));
         }
         [HttpGet]
         public IActionResult TestQuranStudent(int NominationID)
         {
+
             Mapper mapper = new Mapper(_service);
             ViewModel.clsQuranTestViewModel model = mapper.MapQuranTest(NominationID);
-            ViewBag.Committee = _groupService.GetGroupList();
+                ViewBag.Committee = _groupService.GetGroupList();
             return View("TestQuranStudent", model);
         }
         [HttpPost]
         public IActionResult TestQuranStudent(clsQuranTestViewModel model)
         {
-            //Mapper mapper = new Mapper(_service);
-            //ViewModel.clsQuranTestViewModel model = mapper.MapQuranTest(NominationID);
-            //ViewBag.Committee = _groupService.GetGroupList();
-            //return View("TestQuranStudent", model);
-            return View(model);
+            if (ModelState.IsValid == null)
+            {
+                ViewBag.Committee = _groupService.GetGroupList();
+                return View(model);
+            }
+            Mapper mapper = new Mapper(_service);
+           _testService.QuranTest = mapper.MapQuranTest(model);
+
+            if (_testService.SaveQuranTest())
+                return RedirectToAction("Index", "Nomination");
+            else
+                return View(model);
         }
     }
 }

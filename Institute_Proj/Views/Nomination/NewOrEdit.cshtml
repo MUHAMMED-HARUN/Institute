@@ -49,11 +49,16 @@
                 <input asp-for="TestDate" class="form-control" />
                 <span asp-validation-for="TestDate" class="text-danger"></span>
             </div>
-            @* <div class="form-group">
-                <label asp-for="TestName" class="control-label"></label>
-                <input asp-for="TestName" class="form-control" />
-                <span asp-validation-for="TestName" class="text-danger"></span>
-            </div> *@
+            <div class="form-group">
+                <label asp-for="FromPart" class="control-label"></label>
+                <input asp-for="FromPart" class="form-control" />
+                <span asp-validation-for="FromPart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToPart" class="control-label"></label>
+                <input asp-for="ToPart" class="form-control" />
+                <span asp-validation-for="ToPart" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

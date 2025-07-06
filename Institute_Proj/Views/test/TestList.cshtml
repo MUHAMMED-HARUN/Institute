@@ -16,11 +16,11 @@
         <thead class="table-success">
             <tr>
                 <th>رقم الاختبار</th>
-                <th>اللجنة</th>
-                <th>العلامة</th>
-                <th>رقم الترشيح</th>
-                <th>رقم الطالب</th>
                 <th>اسم الطالب</th>
+                <th>من الجزء</th>
+                <th>الى الجزء</th>
+                <th>العلامة</th>
+                <th>اللجنة</th>
                 <th>الإجراءات</th>
             </tr>
         </thead>
@@ -30,11 +30,11 @@
             {
                 <tr>
                     <td>@item.QSTestID</td>
-                    <td>@item.CommitteeName</td>
-                    <td>@item.Grade</td>
-                    <td>@item.NominationID</td>
-                    <td>@item.QSID</td>
                     <td>@item.QSName</td>
+                    <td>@item.FromPart</td>
+                    <td>@item.ToPart</td>
+                    <td>@item.Grade</td>
+                    <td>@item.CommitteeName</td>
 
                 </tr>
             }

@@ -32,11 +32,11 @@
         <thead>
             <tr>
                 <th>معرف الترشيح</th>
-                <th>معرف الطالب</th>
                 <th>اسم الطالب</th>
-                <th>تاريخ الترشيح</th>
-                <th>معرف الاختبار</th>
                 <th>اسم الاختبار</th>
+                <th>من الجزء</th>
+                <th>الى الجزء</th>
+                <th>تاريخ الترشيح</th>
                 <th>تاريخ الاختبار</th>
                 <th>الاجرائات</th>
             </tr>
@@ -59,11 +59,11 @@
             {
                 <tr>
                     <td>@item.NominationID</td>
-                    <td>@item.QuranStudentID</td>
                     <td>@item.QuranStudentFullName</td>
-                    <td>@item.NominationDate?.ToString("yyyy-MM-dd")</td>
-                    <td>@item.BasicTestID</td>
                     <td>@item.TestName</td>
+                    <td>@item.FromPart</td>
+                    <td>@item.ToPart</td>
+                    <td>@item.NominationDate?.ToString("yyyy-MM-dd")</td>
                     <td>@item.TestDate?.ToString("yyyy-MM-dd")</td>
                     <td>
                     <td><button class="btn btn-success btnAddNomination" data-nominationid="@item.NominationID">اختبار</button></td>
