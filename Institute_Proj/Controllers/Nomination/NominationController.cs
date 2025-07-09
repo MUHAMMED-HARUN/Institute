@@ -3,10 +3,14 @@ using BAL.Mapper;
 using BAL.ViewModel;
 using DAL.Models.TableFilters;
 using DAL.Models.TableViews;
+using Institute_Proj.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Institute_Proj.Controllers.Nomination
 {
+    [Authorize(Roles = clsRoleString.Teacher)]
+
     public class NominationController : Controller
     {
         ITestService _TestService;

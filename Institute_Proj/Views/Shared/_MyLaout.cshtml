@@ -12,16 +12,22 @@
     <link rel="stylesheet" href="~/css/MySite.css">
 </head>
 <body>
+
     <!-- Sidebar -->
     <div class="sideBarContiner">
         <i class="fa-solid fa-bars menu-icon"></i>
 
+
     <div class="sidebar">
         <h4 class="text-center py-3">لوحة التحكم</h4>
+
+        <partial name="_LoginPartial" />
+
         <a href="/Home/Index"><i class="fa fa-home me-2"></i>الرئيسية</a>
         <hr />
         <a href="/People/Index"><i class="fa fa-users me-2"></i>الاشخاص</a>
         <hr />
+
 
        <div class="studentSidebar">
             <a href="/Student/Index"><i class="fa fa-user-graduate me-2"></i>الطلاب</a>
@@ -52,6 +58,8 @@
                     <a asp-action="Index" asp-controller="Test">نتائج الاختبارات</a>
                 </div>
             </div>
+        <hr />
+            <a asp-area="Identity" asp-page="/Account/Register">انشاء مستخدم</a>
     </div>
     </div>
     <!-- Main content -->

@@ -6,11 +6,14 @@ using BAL.ViewModel;
 using DAL.Models;
 using DAL.Models.TableFilters;
 using DAL.Models.TableViews;
+using Institute_Proj.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Institute_Proj.Controllers.Pepole
 {
+    [Authorize(Roles=clsRoleString.Teacher )]
     public class PeopleController : Controller
     {
         // List of people

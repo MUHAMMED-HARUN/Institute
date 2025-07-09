@@ -5,15 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL.Models;
 using DAL.Models.TableViews;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 namespace DAL.EF
 {
-    public class AppDBContext : DbContext
+    public class AppDBContext : IdentityDbContext<IdentityUser>
     {
         public AppDBContext() : base()
         {
         }
-        public AppDBContext(DbContextOptions options) : base(options)
+        public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
         {
         }
         public DbSet<clsAddress> Addresses { get; set; }
@@ -54,6 +56,43 @@ namespace DAL.EF
                 .HasNoKey()
                 .ToView(null);
             modelBuilder.Entity<clsReading>().ToTable(rt => rt.HasTrigger("terInsertReading"));
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "Admin",
+                    NormalizedName = "admin",
+                    ConcurrencyStamp = Guid.NewGuid().ToString(),
+                },
+
+               new IdentityRole()
+
+               {
+
+                   Id = Guid.NewGuid().ToString(),
+
+                   Name = "Student",
+
+                   NormalizedName = "student",
+
+                   ConcurrencyStamp = Guid.NewGuid().ToString(),
+
+               },
+
+               new IdentityRole()
+
+               {
+
+                   Id = Guid.NewGuid().ToString(),
+
+                   Name = "Teacher",
+
+                   NormalizedName = "teacher",
+
+                   ConcurrencyStamp = Guid.NewGuid().ToString(),
+
+               }
+                );
         }
 
       

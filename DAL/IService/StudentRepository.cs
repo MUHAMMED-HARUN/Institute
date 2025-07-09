@@ -112,6 +112,7 @@ namespace DAL.IService
 
                 if (connection.Connection.State != System.Data.ConnectionState.Open)
                     connection.Connection.Open();
+                
                 List<SqlParameter> prameters = HandleSqlStudentTvfPrameters(filter, ref person);
                 foreach (var prameter in prameters)
                 {

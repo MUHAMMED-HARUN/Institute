@@ -5,9 +5,9 @@
       "type": "mssql",
       "connectionId": "ConnectionStrings:cs"
     },
-    "mssql2": {
+    "mssql3": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:DefaultConnection"
+      "connectionId": "ConnectionStrings:AppDBContextConnection"
     }
   }
 }

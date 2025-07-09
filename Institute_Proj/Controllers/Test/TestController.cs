@@ -2,11 +2,14 @@
 using BAL.Mapper;
 using DAL.Models;
 using DAL.Models.TableFilters;
+using Institute_Proj.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ViewModel;
 
 namespace Institute_Proj.Controllers.Test
 {
+    [Authorize(Roles = clsRoleString.Teacher)]
     public class TestController : Controller
     {
         ITestService _testService;

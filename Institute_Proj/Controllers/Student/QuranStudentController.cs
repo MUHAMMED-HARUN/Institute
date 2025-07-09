@@ -3,10 +3,13 @@ using BAL.interfaceCalsses;
 using BAL.Mapper;
 using BAL.ViewModel;
 using DAL.Models.TableFilters;
+using Institute_Proj.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Institute_Proj.Controllers.Student
 {
+    [Authorize(Roles = clsRoleString.Teacher)]
     public class QuranStudentController : Controller
     {
         IServiceProvider _service;

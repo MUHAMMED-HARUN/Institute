@@ -1,10 +1,12 @@
-using BAL.Classes;
+﻿using BAL.Classes;
 using BAL.interfaceCalsses;
 using BAL.IService;
 using DAL.Classes;
 using DAL.EF;
 using DAL.interfaceCalsses;
 using DAL.IService;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Institute_Proj
@@ -17,8 +19,26 @@ namespace Institute_Proj
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
             builder.Services.AddDbContext<AppDBContext>(option =>
-                option.UseSqlServer(builder.Configuration.GetConnectionString("cs")));
+                option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false; // لا تحتاج لتأكيد البريد
+                options.User.RequireUniqueEmail = false; // إلغاء إلزام البريد الإلكتروني
+            })
+            .AddEntityFrameworkStores<AppDBContext>()
+            .AddDefaultTokenProviders();
+
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Identity/Account/Login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+            });
+
+            builder.Services.AddSingleton<IEmailSender, FakeEmailSender>();
+
 
             builder.Services.AddScoped<IPerson, PersonRepository>();
             builder.Services.AddScoped<IPersonService, PersonService>();
@@ -50,13 +70,13 @@ namespace Institute_Proj
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-
+            app.MapRazorPages();
             app.Run();
         }
     }

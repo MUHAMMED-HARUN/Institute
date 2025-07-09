@@ -5,8 +5,12 @@ using BAL.Mapper;
 using BAL.interfaceCalsses;
 using DAL.Models.TableFilters;
 using DAL.Models.TableViews;
+using Institute_Proj.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 namespace Institute_Proj.Controllers.Student
 {
+    [Authorize(Roles = clsRoleString.Teacher)]
+
     public class StudentController : Controller
     {
         public readonly IStudentService _studentService;

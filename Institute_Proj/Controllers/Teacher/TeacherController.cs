@@ -3,10 +3,14 @@ using BAL.IService;
 using BAL.Mapper;
 using BAL.ViewModel;
 using DAL.Models.TableFilters;
+using Institute_Proj.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Institute_Proj.Controllers.Teacher
 {
+
+    [Authorize(Roles = clsRoleString.Teacher)]
     public class TeacherController : Controller
     {
         ITeacherService _TeacherService;
